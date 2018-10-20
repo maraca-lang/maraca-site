@@ -11,6 +11,7 @@ const toHtml = maraca => `
       <meta charset="UTF-8">
       <title>Maraca</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"></link>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Code+Pro:400,700" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
@@ -26,6 +27,7 @@ const root = path.join(__dirname, '../');
 fs.removeSync(root + 'public');
 fs.ensureDirSync(root + 'public');
 fs.copySync(root + 'build/maraca.js', root + 'public/maraca.js');
+fs.copySync(root + 'img', root + 'public');
 
 if (!yargs.argv.w) {
   fs.writeFileSync(

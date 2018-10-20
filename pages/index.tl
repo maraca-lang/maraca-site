@@ -1,8 +1,18 @@
 [
   [class: container,
 
-    [:h1, Maraca],
-    [:p, "Intuitive & powerful data language, from simple formulae to advanced custom interfaces."],
+    [:img,
+      src: "/maraca.png",
+      style: [display: block, width: 60px, margin: "0 auto -30px"],
+    ],
+
+    [style: [textAlign: center, paddingBottom: 20px],
+      [:h1, Maraca],
+      [:p,
+        style: [fontWeight: bold, color: "#00852d"],
+        "The intuitive & powerful data language, from simple formulae to advanced interfaces."
+      ],
+    ],
 
     [:h2, Basic syntax],
 
@@ -185,9 +195,9 @@
 
     [:h2, Working with data],
 
-    [:h3, Selecting],
+    [:h3, Accessing],
     [class: cols group,
-      [[:ul, [:li, "If you are using Maraca somewhere that data is available, you can select it using '?'"]]],
+      [[:ul, [:li, "If you are using Maraca somewhere that data is available, you can access it using '?'"]]],
       [:p]
     ],
     [class: cols group,
@@ -232,21 +242,6 @@
         "],
       ]],
     ],
-    [class: cols group,
-      [[:ul, [:li, "Order by multiple values (order by the first, if the same then order by the second, etc)"]]],
-      [[class: code group,
-        [:pre, "
-          Last name? | -First name?
-        "],
-        [:pre, "
-          ...
-          Smith | Jon
-          Smith | Ben
-          Williams | Sarah
-          ...
-        "],
-      ]],
-    ],
 
     [:h1, "Try it out!"],
     [style: [background: "#f9f9f9", padding: 15px 20px, borderRadius: 3px],
@@ -273,7 +268,7 @@
                 [:th, "Order rows by:"],
                 [:th,
                   [:input,
-                    placeholder: "Example: Last name? | -DOB?",
+                    placeholder: "Example: Last name?",
                     value: sort?,
                   ],
                 ],
