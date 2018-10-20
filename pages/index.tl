@@ -183,40 +183,67 @@
       ]],
     ],
 
-    [:h3, Variables],
+    [:h2, Working with data],
+
+    [:h3, Selecting],
     [class: cols group,
-      [[:ul, [:li, "Access variables with '?'"]]],
+      [[:ul, [:li, "If you are using Maraca somewhere that data is available, you can select it using '?'"]]],
       [:p]
     ],
     [class: cols group,
-      [[:ul, [:li, "In # filter use for row number"]]],
+      [[:ul, [:li, "In some places, '?' is a single value"]]],
       [[class: code group,
         [:pre, "
           ?
         "],
         [:pre, "
           10
+          Hello
+          ...
         "],
       ]],
     ],
     [class: cols group,
-      [[:ul, [:li, "Everywhere else use with field names"]]],
+      [[:ul, [:li, "Otherwise, you choose a field / column"]]],
       [[class: code group,
         [:pre, "
           First name?
         "],
         [:pre, "
-          Hannah
+          William
+          Charlotte
+          ...
         "],
       ]],
     ],
 
-    [:h3, Sorting],
+    [:h3, Ordering],
     [class: cols group,
-      [[:ul, [:li, "Sort by multiple values"]]],
+      [[:ul, [:li, "Order in reverse"]]],
       [[class: code group,
         [:pre, "
-          Last name? | First name?
+          -Last name?
+        "],
+        [:pre, "
+          ...
+          Williams
+          Smith
+          ...
+        "],
+      ]],
+    ],
+    [class: cols group,
+      [[:ul, [:li, "Order by multiple values (order by the first, if the same then order by the second, etc)"]]],
+      [[class: code group,
+        [:pre, "
+          Last name? | -First name?
+        "],
+        [:pre, "
+          ...
+          Smith | Jon
+          Smith | Ben
+          Williams | Sarah
+          ...
         "],
       ]],
     ],
@@ -225,37 +252,37 @@
     [style: [background: "#f9f9f9", padding: 15px 20px, borderRadius: 3px],
       {
         fields: [First name, Last name, DOB, Score 1, Score 2],
-        filter: * & "DOB? < @15 years ago",
-        sort: * & "Last name? | -DOB?",
-        limit: * & "5 < ?, ? <= 10",
+        filter: *,
+        sort: *,
+        limit: *,
         formula: * & "(Score 1? + Score 2?) / 2",
 
         [
-          [:table,
+          [:table, style: [marginBottom: 20px],
             [:thead,
               [:tr,
-                [:th, "Filter:", style: [width: 100px]],
+                [:th, "Only show if:", style: [width: 180px]],
                 [:th,
                   [:input,
-                    placeholder: "Enter filter",
-                    value: filter?,
+                    placeholder: "Example: DOB? < @15 years ago",
+                    value: filter?
                   ],
                 ],
               ],
               [:tr,
-                [:th, "Sort:"],
+                [:th, "Order rows by:"],
                 [:th,
                   [:input,
-                    placeholder: "Enter sort",
+                    placeholder: "Example: Last name? | -DOB?",
                     value: sort?,
                   ],
                 ],
               ],
               [:tr,
-                [:th, "# Filter:"],
+                [:th, "Only show rows:"],
                 [:th,
                   [:input,
-                    placeholder: "Enter # filter",
+                    placeholder: "Example: ? <= 10",
                     value: limit?,
                   ],
                 ],
@@ -265,7 +292,7 @@
           [:table, class: table,
             [:thead,
               [:tr,
-                [:th, style: [width: 50px], "#"],
+                [:th, style: [width: 50px], "Row"],
                 ...
                 fields?
                 [f=>> [:th, f?]],

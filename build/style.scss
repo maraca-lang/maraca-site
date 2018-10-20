@@ -1,6 +1,21 @@
 $primary: #ee5a24;
 $secondary: #40739e;
 
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
 html {
   box-sizing: border-box;
 }
@@ -126,6 +141,11 @@ textarea {
 
   input {
     color: $secondary;
+    @include placeholder {
+      font-style: italic;
+      color: #aaa;
+      font-weight: normal;
+    }
     display: block;
     font-weight: bold;
     width: 100%;
