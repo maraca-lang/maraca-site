@@ -2,4 +2,5 @@
   .[
     : home?,
     try: try?,
+    docs: docs?,
   ]

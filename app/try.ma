@@ -2,6 +2,7 @@
   code: "1 + 1",
   format: ,
   open: true,
+  #title("Try | Maraca"),
   [
     [
       fill: 0 0 60,
