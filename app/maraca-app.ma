@@ -3,25 +3,23 @@
     [
       input=>
         [
+          : row,
+          gap: 20,
           [
-            : row,
-            gap: 20,
-            [
-              style: Source Code Pro bold exact,
-              fill: 0 0 98,
-              round: 5,
-              pad: 10,
-              width: 0.5,
-              color: colors?.green,
-              input?,
-            ],
-            [
-              fill: 0 0 98,
-              round: 5,
-              pad: 10,
-              width: 0.5,
-              ##(input?) [],
-            ],
+            style: Source Code Pro bold exact,
+            fill: 0 0 98,
+            round: 5,
+            pad: 10,
+            width: 0.6,
+            color: colors?.green,
+            input?,
+          ],
+          [
+            fill: 0 0 98,
+            round: 5,
+            pad: 10,
+            width: 0.4,
+            ##(input?) [],
           ],
         ],
     ],
@@ -187,6 +185,49 @@
           ",
         [
           style: 18 bold,
+          Images,
+        ],
+        "Use the image key to create an image.",
+        code?
+          ."
+          [
+            image: \"./image.png\",
+          ]
+          ",
+        [
+          style: 18 bold,
+          "Hover & focus",
+        ],
+        "
+        Set the hover and/or focus keys to nil to watch for changes to a box's state. The value can then be used elsewhere, for example to change the background color.
+        ",
+        code?
+          ."
+          [
+            hover: ,
+            pad: 10,
+            fill: 50 70 (hover?, 60, => 70),
+            Hello,
+          ]
+          ",
+        [
+          style: 18 bold,
+          "Height & width",
+        ],
+        "
+        Similarly, set the height and/or width keys to nil to watch for changes to a box's size.
+        ",
+        code?
+          ."
+          [
+            width: ,
+            pad: 10,
+            fill: 50 70 70,
+            Width\\: (width?),
+          ]
+          ",
+        [
+          style: 18 bold,
           Inputs,
         ],
         "
@@ -197,10 +238,11 @@
           {
             value: ,
             [
-              gap: 20,
+              gap: 15,
               [
                 pad: 5,
-                fill: 0 0 90,
+                focus: ,
+                fill: 0 0 (focus?, 80, => 90),
                 input: value?,
               ],
               Value\\: (value?),
@@ -209,19 +251,27 @@
           ",
         [
           style: 18 bold,
-          "Hover & focus",
+          "Click event",
         ],
         "
-        Set the hover or focus key to nil to watch for changes to a boxes state. The value can then be used elsewhere, for example to change the fill color.
+        If the click property is set, then the current value of the value property (nil if not set) will be pushed to the provided stream when the box is clicked.
         ",
         code?
           ."
-          [
-            hover: ,
-            pad: 10,
-            fill: 50 70 (hover?, 60, => 70),
-            Hello,
-          ]
+          {
+            count: 1,
+            [
+              gap: 15,
+              [
+                click: count?,
+                pad: 10,
+                fill: 80 70 70,
+                value: count? + 1,
+                Hello,
+              ],
+              Count\\: (count?),
+            ]
+          }
           ",
       ],
     ],
