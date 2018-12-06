@@ -1256,9 +1256,9 @@ domain-browser@^1.1.1:
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
 
 domelementtype@1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-1.2.1.tgz#578558ef23befac043a1abb0db07635509393479"
-  integrity sha512-SQVCLFS2E7G5CRCMdn6K9bIhRj1bS6QBWZfF0TUPh4V/BbqrQ619IdSS3/izn0FZ+9l+uODzaZjb08fjOfablA==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
+  integrity sha512-BSKB+TSpMpFI/HOxCNr1O8aMOTZ8hT3pM3GQ0w/mWRmkhEDSFJkkyzz4XQsBV44BChwGkrDfMyjVD0eA2aFV3w==
 
 domelementtype@~1.1.1:
   version "1.1.3"
@@ -2530,7 +2530,7 @@ map-visit@^1.0.0:
 
 "maraca-app@https://github.com/kalambo/maraca-app.git":
   version "0.0.1"
-  resolved "https://github.com/kalambo/maraca-app.git#0f5211801d5de984c625c18467462799b946d64a"
+  resolved "https://github.com/kalambo/maraca-app.git#74441a56dbc90cf0e3152b9bfbb3fa3cb3f8d54b"
   dependencies:
     chart.js "^2.7.3"
     chrono-node "^1.3.5"
@@ -2543,31 +2543,31 @@ map-visit@^1.0.0:
     html-webpack-plugin "^3.2.0"
     load-script "^1.0.0"
     lodash.throttle "^4.1.1"
-    maraca "^0.2.2"
-    maraca-loader "^0.1.0"
+    maraca "^0.2.3"
+    maraca-loader "^0.1.2"
     moment "^2.22.2"
     monaco-editor "^0.15.6"
     monaco-editor-webpack-plugin "^1.7.0"
     prettier "^1.15.3"
-    prettier-plugin-maraca "^0.1.5"
+    prettier-plugin-maraca "^0.1.6"
     rimraf "^2.6.2"
     style-loader "^0.23.1"
     ts-loader "^5.3.1"
-    webpack "^4.27.0"
+    webpack "^4.27.1"
     webpack-cli "^3.1.2"
     webpack-dev-server "^3.1.10"
 
-maraca-loader@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/maraca-loader/-/maraca-loader-0.1.0.tgz#a48fd0e2d1db3386b53845ad43760646c63bf44d"
-  integrity sha512-LKIdeeIRfH4qp6AYonqCWmd87ubkiRRTh8vVtDfEAz5IgPaasTV2d8YxLNHULV7kDBPB2yNH+mLr+MR+xixW+w==
+maraca-loader@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/maraca-loader/-/maraca-loader-0.1.2.tgz#5b82ffb776fd5cd1769117beeb578b655ec3a942"
+  integrity sha512-Vfs8BKyFNFO5XVqRs3UAuP6NPJfue9BY0yEZD/ABtwqPMiJLUzqqMoYzpPHmEuM4dK7QW50ZwwB3+31Q6dQOGQ==
   dependencies:
     fs-extra "^7.0.1"
 
-maraca@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.2.2.tgz#c304f0e94860520abf62074f3a4aafc6ca8f9012"
-  integrity sha512-WZHK2Fy8Bk5oqZlfBg7cofU9GmkKBTjvDd4hvIhDeqnVsseag0G4MXg00ESzXXHaBdsLaZefdgErc1A4ko0/lA==
+maraca@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.2.3.tgz#0a0b97c8ebadd923797d2dc1af262fa8c79ce368"
+  integrity sha512-fG17bia+be/iwM4rAQmQGiV4MEVnRpDd59Wwb5TEaVSjZGJNaqTyPbZIcv+ZgtZ9dgdCEgvRUzwSEiczbH/l7g==
   dependencies:
     moo "^0.5.0"
     nearley "^2.15.1"
@@ -3356,12 +3356,12 @@ postcss@^6.0.1, postcss@^6.0.23:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-prettier-plugin-maraca@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-maraca/-/prettier-plugin-maraca-0.1.5.tgz#97d7d5c9249033fb6139f232976223c589a41c9e"
-  integrity sha512-eJM+igfJwjolfmb6U3scEGq5TSeyOUWoQvi/N6Ib0DuMyAf00G3C1W7Bbj6vK0rfWz0Dqxy0iDnzhFHOXK/MKw==
+prettier-plugin-maraca@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-maraca/-/prettier-plugin-maraca-0.1.6.tgz#b9e8cbc445f8bcb383821dc51eaf7a566bea2208"
+  integrity sha512-y1PhDIYF/MAP5fZS3f/jTLsnUHEq3RHMCfjlxudKbawfkYWLzaLjpQXR9PYoQ6VfiwaqJYaIorKIhKjOdW4FEA==
   dependencies:
-    maraca "^0.2.2"
+    maraca "^0.2.3"
     prettier "^1.15.3"
 
 prettier@^1.15.3:
@@ -4530,10 +4530,10 @@ webpack-sources@^1.1.0, webpack-sources@^1.3.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.27.0:
-  version "4.27.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.27.0.tgz#1db66f03f0239bf797827f0580f53a41abd4067c"
-  integrity sha512-y77EQNIlsB9fUGgpLv/ZzmH+Yd9DgyIF9omX9RFavR5ZFM6HxFm6sqkbBXYxpjbKej9K6hD+Y8qEVg2rWdI2gg==
+webpack@^4.27.1:
+  version "4.27.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.27.1.tgz#5f2e2db446d2266376fa15d7d2277a1a9c2e12bb"
+  integrity sha512-WArHiLvHrlfyRM8i7f+2SFbr/XbQ0bXqTkPF8JpHOzub5482Y3wx7rEO8stuLGOKOgZJcqcisLhD7LrM/+fVMw==
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
     "@webassemblyjs/helper-module-context" "1.7.11"

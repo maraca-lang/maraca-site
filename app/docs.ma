@@ -99,12 +99,14 @@
           style: 18 bold,
           Escaped characters,
         ],
-        "Single non-alphanumeric characters can be escaped with a \\.",
+        "
+        Single non-alphanumeric characters can be entered by prefixing with a single quote.
+        ",
         code?
           .[
             "
-            \\@
-            \\£5
+            '@
+            '£5
             ",
             "
             @
@@ -121,8 +123,8 @@
         code?
           .[
             "
-            \"Let's go!\"
-            \"Hello   123\"
+            ""Let's go!""
+            ""Hello   123""
             ",
             "
             Let's go!
@@ -138,7 +140,7 @@
         ",
         code?
           .[
-            "\"\"",
+            """""",
           ],
       ],
       [
@@ -269,7 +271,7 @@
           .[
             "
             [a, b, c]
-            [10 + 5, Hello world\\!]
+            [10 + 5, Hello world'!]
             ",
             "
             [a, b, c]
@@ -528,9 +530,7 @@
             30
             ",
           ],
-        "
-        This can be used for grouping/precedence (most naturally fits with parentheses).
-        ",
+        "This can be used for grouping/precedence.",
         code?
           .[
             "(2 + 3) * 4",
@@ -571,8 +571,8 @@
           .[
             "
             Hello   world
-            \\£(10 + 20)
-            \"\" XYZ (5 / 2)
+            '£{10 + 20}
+            """" XYZ {5 / 2}
             ",
             "
             Hello world

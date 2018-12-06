@@ -77,14 +77,14 @@
         .[
           "Characters other than letters or numbers",
           "
-          \"£5\"
-          \"Let's go!\"
+          ""£5""
+          ""Let's go!""
           ",
         ],
       code?
         .[
           "Extra spaces",
-          "\"Hello   123\"",
+          """Hello   123""",
         ],
     ],
     [
@@ -100,7 +100,7 @@
           "
           @now
           @tomorrow
-          @\"10/05/80\"
+          @""10/05/80""
           ",
         ],
       code?
@@ -220,7 +220,7 @@
       code?
         .[
           "In some places, '?' is a single value",
-          \?,
+          '?,
           "
           10
           Hello

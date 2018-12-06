@@ -191,7 +191,7 @@
         code?
           ."
           [
-            image: \"./image.png\",
+            image: ""https://picsum.photos/200"",
           ]
           ",
         [
@@ -223,7 +223,7 @@
             width: ,
             pad: 10,
             fill: 50 70 70,
-            Width\\: (width?),
+            Width': {width?},
           ]
           ",
         [
@@ -245,7 +245,7 @@
                 fill: 0 0 (focus?, 80, => 90),
                 input: value?,
               ],
-              Value\\: (value?),
+              Value': {value?},
             ]
           }
           ",
@@ -269,7 +269,7 @@
                 value: count? + 1,
                 Hello,
               ],
-              Count\\: (count?),
+              Count': {count?},
             ]
           }
           ",
