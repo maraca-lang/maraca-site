@@ -45,6 +45,7 @@
           width: 0.5,
           pad: 0 5 5 5,
           fill: 0 0 60,
+          style: 14,
           [code:=?, format:=?],
         ],
         [
