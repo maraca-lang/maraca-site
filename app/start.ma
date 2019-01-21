@@ -1,7 +1,6 @@
 #url
   .[
     : home?,
+    render: render?,
     try: try?,
-    docs: docs?,
-    "maraca-app": "maraca-app"?,
   ]

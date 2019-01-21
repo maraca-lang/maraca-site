@@ -1,5 +1,5 @@
 {
-  code: "1 + 1",
+  value: "1 + 1",
   format: ,
   open: true,
   #title("Try | Maraca"),
@@ -8,7 +8,7 @@
       fill: 0 0 60,
       pad: 5,
       [
-        : row,
+        cols: all,
         width: left,
         gap: 5,
         [
@@ -37,23 +37,20 @@
         ),
       ],
     ],
-    (
-      open?,
-      [
-        : row fixed,
+    [
+      cols: all,
+      (
+        open?,
         [
-          width: 0.5,
           pad: 0 5 5 5,
           fill: 0 0 60,
           style: 14,
-          [code:=?, format:=?],
+          [: code, value:=?, format:=?],
         ],
-        [
-          width: 0.5,
-          ##(code?) [],
-        ],
+      ),
+      [
+        ##(value?) [],
       ],
-      => ##(code?) [],
-    ),
+    ],
   ],
 }
