@@ -4,7 +4,7 @@
   pad: 50 10,
   gap: 40,
   [
-    gap: 15,
+    gap: 20,
     [image: "./maraca.png", width: 40],
     [
       style: 50 bold center,
@@ -18,36 +18,123 @@
     ],
   ],
   [
-    gap: 15,
-    "Maraca is...",
+    gap: 20,
     "
-    Intuitive, human-focused, lightweight, embeddable, functional, reactive, dynamic, structured, data, text based, simple, keyword free, blend of sql/json/react
+    Maraca is a lightweight, embeddable, declarative language for defining & manipulating dynamic structured data.
     ",
+    "Applicable to a wide range of environments & circumstances:",
+    [
+      gap: 10,
+      ::
+        [
+            "Stateful UI",
+            "Database querying",
+            "Configuration files",
+            "And more...",
+          ][
+            v=>> [style: bullet, v?],
+          ],
+    ],
   ],
   code?
     .[
       "
-      [
-        1 + 2,
-      ]
+      {
+        count: #tick % 2,
+        [
+          test,
+          count?.[
+            0: hello,
+            1: world,
+          ],
+        ],
+      }
       ",
     ],
   [
-    gap: 20,
-    [style: 24 bold, color: colors?.red, Key features],
+    gap: 30,
+    [style: 28 bold, color: colors?.red, Key features],
     [
       cols: equal,
       gap: 40,
-      "Dynamic / reactive / functional",
-      "Text based / no keywords / no quotes around text",
-      "Single data structure / lists / context",
+      ::
+        [
+            [
+              Dynamic,
+              "
+              The output of a Maraca program is a changing stream of structured data.
+              ",
+            ],
+            [
+              Concise,
+              "
+              Minimal syntax, and a single data structure for both indexes and keys.
+              ",
+            ],
+            [
+              Powerful,
+              "
+              Seamlessly combine declarative, imperative and functional coding paradigms.
+              ",
+            ],
+          ]
+          .[
+            [title, text]=>>
+              [
+                gap: 20,
+                [style: bold 20, color: colors?.green, title?],
+                text?,
+              ],
+          ],
     ],
   ],
   [
-    gap: 20,
-    [style: 24 bold, color: colors?.red, "Goals / roadmap"],
-    "Current: alpha, javascript, render/app",
-    "Next: finish core syntax/features, performance, continue render/app",
-    "Future: sql/querying, other languages/envs",
+    gap: 30,
+    [style: 28 bold, color: colors?.red, Roadmap],
+    [
+      gap: 20,
+      [style: bold 20, color: colors?.green, Current status],
+      [
+        gap: 15,
+        ::
+          [
+              "Alpha, working towards v1",
+              "Core syntax almost complete",
+              "Initial JS runtime",
+              "Initial JS renderer and bootstrapper",
+            ][
+              v=>> [style: bullet, v?],
+            ],
+      ],
+    ],
+    [
+      gap: 20,
+      [style: bold 20, color: colors?.green, Up next],
+      [
+        gap: 15,
+        ::
+          [
+              "Specify and complete v1 syntax",
+              "Improve JS runtime performance",
+              "Improve JS renderer and bootstrapper",
+            ][
+              v=>> [style: bullet, v?],
+            ],
+      ],
+    ],
+    [
+      gap: 20,
+      [style: bold 20, color: colors?.green, Future goals],
+      [
+        gap: 15,
+        ::
+          [
+              "Built Macara-to-SQL converter",
+              "Runtimes for other languages",
+            ][
+              v=>> [style: bullet, v?],
+            ],
+      ],
+    ],
   ],
 ]

@@ -9,4 +9,12 @@ webfont.load({
 
 export default (create, indexer) => ({
   data: create(indexer(), () => ({ initial: toData(data) })),
+  tick: create(indexer(), ({ output }) => {
+    let count = 0;
+    const interval = setInterval(() => output(toData(count++)), 1000);
+    return {
+      initial: toData(count++),
+      stop: () => clearInterval(interval),
+    };
+  }),
 });

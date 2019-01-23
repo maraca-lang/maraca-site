@@ -32,7 +32,9 @@
                     style: italic,
                     color: 0 0 50,
                     pad: (i? == 1, 10, => 5) 10 10,
-                    print: ##(v?) [User: [Profile: [Last name: Smith]]],
+                    print:
+                      ##(v?)
+                        [User: [Profile: [First name: John, Last name: Smith]]],
                   ],
                 ],
           ],

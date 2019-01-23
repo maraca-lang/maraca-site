@@ -18,7 +18,7 @@
         [
           cols: all,
           width: left,
-          gap: 10,
+          gap: 15,
           height: middle,
           click: #url,
           value: [],
