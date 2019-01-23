@@ -9,8 +9,9 @@
       ::
         [Input, Output]
           .[
-            v=>>
+            i=> v=>
               [
+                :: (i? == 1, [], => [width: 0.35]),
                 style: italic,
                 color: 0 0 80,
                 fill: 0 0 95,
@@ -29,10 +30,10 @@
                     v?,
                   ],
                   [
-                    style: italic,
-                    color: 0 0 50,
+                    style: Montserrat 18 normal,
+                    color: 0 0 20,
                     pad: (i? == 1, 10, => 5) 10 10,
-                    print: ##(v?) [User: [Profile: [Last name: Smith]]],
+                    ##(v?) [User: [Profile: [Last name: Smith]]],
                   ],
                 ],
           ],

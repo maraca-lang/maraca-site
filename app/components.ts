@@ -55,7 +55,7 @@ export default {
       format: true,
     });
     const setters = getSetters(values, {}, { value: true })[1];
-    result.style.height = '600px';
+    result.style.height = '500px';
     if (!result.__editor) {
       result.__editorFormat = format;
       result.__editor = CodeMirror(result, {
