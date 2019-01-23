@@ -2535,16 +2535,16 @@ maraca-loader@^0.1.2:
     fs-extra "^7.0.1"
 
 maraca-render@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/maraca-render/-/maraca-render-0.2.1.tgz#3e853ac4d9352cdc601cb754d03f510e8ec50bb4"
-  integrity sha512-4NUWxbhJnCWuKrQtKwIrRQNsFypMcem8fZ++wRWbxu2oL5x5gdC0qQcBTpo1TWhD2CZxb+OdFnHkaJzDcyaQWA==
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/maraca-render/-/maraca-render-0.2.2.tgz#c69428f212aed00e8c3afcdc62a890eba4e59fb6"
+  integrity sha512-RxGWLotV3eKj+bZF3xf71oplCOTJY5vsc3JofBOin0L+Ibe4EwMaHM7Tt+B6OBrd4C45go5GdBVFCF7vs80U6g==
   dependencies:
     element-resize-detector "^1.2.0"
     lodash.throttle "^4.1.1"
     maraca "^0.2.4"
     prettier "^1.16.1"
 
-maraca@^0.2.3, maraca@^0.2.4:
+maraca@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.2.4.tgz#9a16aec425922d43700b11e8e4b2901e62fadee1"
   integrity sha512-xlVfOtqlWHpPM7cuSqX9PatitrjelSu4xGT4ykaWRGho4Vv1NcnZ4xZTUlja4a5oINQaWqT5VyxTunUeLGD+Bw==
@@ -3323,15 +3323,15 @@ postcss@^7.0.5, postcss@^7.0.6:
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-prettier-plugin-maraca@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-maraca/-/prettier-plugin-maraca-0.1.6.tgz#b9e8cbc445f8bcb383821dc51eaf7a566bea2208"
-  integrity sha512-y1PhDIYF/MAP5fZS3f/jTLsnUHEq3RHMCfjlxudKbawfkYWLzaLjpQXR9PYoQ6VfiwaqJYaIorKIhKjOdW4FEA==
+prettier-plugin-maraca@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-maraca/-/prettier-plugin-maraca-0.1.7.tgz#301f073460f706cb759c7978205418e27bf41a27"
+  integrity sha512-8/cjhwYqEQzeLSJtnDi4KI5qK2XmKzkifvBrouecRfKC1o803ykNWoiSi5i9+q+0LH6fzLwqHnuMyGai+nLhzg==
   dependencies:
-    maraca "^0.2.3"
-    prettier "^1.15.3"
+    maraca "^0.2.4"
+    prettier "^1.16.1"
 
-prettier@^1.15.3, prettier@^1.16.1:
+prettier@^1.16.1:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.1.tgz#534c2c9d7853f8845e5e078384e71973bd74089f"
   integrity sha512-XXUITwIkGb3CPJ2hforHah/zTINRyie5006Jd2HKy2qz7snEJXl0KLfsJZW/wst9g6R2rFvqba3VpNYdu1hDcA==
