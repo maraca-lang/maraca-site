@@ -23,7 +23,7 @@
           click: #url,
           value: [],
           pad: 5,
-          [image: "./maraca.png", width: 18],
+          [image: "../img/maraca.png", width: 18],
           [
             style: 26,
             color: colors?.red,

@@ -1,5 +1,5 @@
 {
-  value: "[1 + 1]",
+  value: "1 + 1",
   format: ,
   open: true,
   print: true,

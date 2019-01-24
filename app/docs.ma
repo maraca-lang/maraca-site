@@ -6,7 +6,7 @@
     pad: 50 10,
     cols: all,
     gap: 40,
-    ("docs-"{page?, start})?,
+    ("docs-"{page?, overview})?,
     [
       width: 0.25,
       style: bold,
@@ -17,10 +17,13 @@
         gap: 0,
         ::
           [
-              [Start],
+              [Overview],
               [Values, values],
               [Lists, lists],
               [Combining, combining],
+              [Functions, functions],
+              [Logic, logic],
+              [Patterns, patterns],
             ][
               [text, url]=>>
                 [

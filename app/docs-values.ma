@@ -83,30 +83,4 @@
     "If either value can't be converted to a number, nil is returned.",
     code?.["hello + world"],
   ],
-  [
-    gap: 25,
-    [
-      style: 26 bold,
-      color: colors?.red,
-      "True / False",
-    ],
-    "
-    Logical operations in Maraca return either the string 'true' (for true), or nil (for false).
-    ",
-    [
-      style: 18 bold,
-      Equal,
-    ],
-    code?.["2 == 6"],
-    [
-      style: 18 bold,
-      Comparisons,
-    ],
-    code?.["5 < 3", "5 <= 5", "8 > 2", "1 >= 3"],
-    [
-      style: 18 bold,
-      Not,
-    ],
-    code?.["8 ! 2", "! 3 < 5"],
-  ],
 ]

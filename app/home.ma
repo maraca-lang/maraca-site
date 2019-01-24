@@ -5,7 +5,7 @@
   gap: 40,
   [
     gap: 20,
-    [image: "./maraca.png", width: 40],
+    [image: "../img/maraca.png", width: 40],
     [
       style: 50 bold center,
       color: colors?.red,
@@ -99,9 +99,9 @@
         ::
           [
               "Alpha, working towards v1",
-              "Core syntax almost complete",
-              "Initial JS runtime",
-              "Initial JS renderer and bootstrapper",
+              "Finalising core syntax",
+              "Initial js/web runtime",
+              "Initial js/web renderer and bootstrapper",
             ][
               v=>> [style: bullet, v?],
             ],
@@ -115,8 +115,8 @@
         ::
           [
               "Specify and complete v1 syntax",
-              "Improve JS runtime performance",
-              "Improve JS renderer and bootstrapper",
+              "Improve js/web runtime performance",
+              "Improve js/web renderer and bootstrapper",
             ][
               v=>> [style: bullet, v?],
             ],
