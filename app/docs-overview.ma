@@ -15,7 +15,7 @@
       Setup,
     ],
     "
-    Currently, only js/web is supported. Click 'Web' above to get your environment set up, or 'Try' to use the online REPL.
+    Currently, only js / web is supported. Click 'Web' above to get your environment set up, or 'Try' to use the online REPL.
     ",
     [
       style: 18 bold,

@@ -7,10 +7,6 @@
   ],
   [
     gap: 25,
-    "Intro text",
-  ],
-  [
-    gap: 25,
     [
       style: 26 bold,
       color: colors?.red,
