@@ -15,7 +15,6 @@ import * as prism from 'prismjs';
 window.CodeMirror = CodeMirror;
 import 'codemirror/addon/mode/simple';
 import 'codemirror/lib/codemirror.css';
-import { findChild } from '../../maraca-render/lib/utils';
 
 CodeMirror.defineSimpleMode('maraca', {
   start: [
@@ -54,6 +53,11 @@ const formatCode = code => {
     return code;
   }
 };
+
+const getChildren = node =>
+  node && ([] as any).slice.call(node.childNodes).filter(c => c.__maraca);
+const findChild = (node, depth) =>
+  Array.from({ length: depth }).reduce(res => res && getChildren(res)[0], node);
 
 export default {
   editor: (node, values) => {
