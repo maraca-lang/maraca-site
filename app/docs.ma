@@ -20,16 +20,17 @@
               [Overview],
               [Values, values],
               [Lists, lists],
+              [Operators, operators],
               [Combining, combining],
               [Functions, functions],
-              [Logic, logic],
-              [Patterns, patterns],
+              [Shorthands, shorthands],
+              [Data, data],
             ][
               [text, url]=>>
                 [
                   pad: 10,
-                  click: #url,
-                  value: [docs, url?],
+                  click: ,
+                  #url; click? & [docs, url?],
                   hover: ,
                   fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
                   color: (page? == url?, colors?.red, => colors?.green),

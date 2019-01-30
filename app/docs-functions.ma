@@ -12,7 +12,7 @@
     ",
     [
       style: 18 bold,
-      Simple defaults,
+      Defaults,
     ],
     "The most simple default value is just a constant.",
     code?.["z.[x: a, y: b, => c]"],
@@ -29,8 +29,24 @@
       Map functions,
     ],
     "
-    There is also a special 'map' default, which only works with list keys/arguments, and applies the function individually to every item of the provided list.
+    There is also a special 'map' default, which only works with list arguments, and applies the function individually to every key / value pair of the provided list. There is also a shorthand syntax for when you only need to access the items.
     ",
-    code?.["[5, 10, 15].[v=>> v? + 5]"],
+    code?
+      .[
+        "[5, 10, 15].[k=> v=> [k?, v?]]",
+        "[5, 10, 15].[v=>> v? + 5]",
+      ],
+    "
+    By default, map functions assign the mapped values to the same keys, but you can assign new keys instead.
+    ",
+    code?.["[a, b, c].[v=>> Item {v?}: v?]"],
+    [
+      style: 18 bold,
+      Argument destructuring,
+    ],
+    "
+    Function arguments are unpacked onto the parameter value provided, allowing for destructuring.
+    ",
+    code?.["[1, 2].[[x, y]=> x? + y?]"],
   ],
 ]

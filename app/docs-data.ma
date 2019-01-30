@@ -3,7 +3,7 @@
   [
     style: 40 bold,
     color: colors?.red,
-    Patterns,
+    Data,
   ],
   [
     gap: 25,
@@ -12,10 +12,10 @@
     ",
     [
       style: 18 bold,
-      Indexing,
+      Index,
     ],
     "
-    To replace list keys with indices while maintaining the sort order, map through the list and unpack each item onto the next available index.
+    To turn a keyed list into an indexed one while maintaining the sort order, map through it and unpack each item onto the next available index.
     ",
     code?
       .[
@@ -32,7 +32,7 @@
       style: 18 bold,
       Sort,
     ],
-    "First re-key its items, and then index them.",
+    "First re-key the items, and then index them.",
     code?
       .[
         "

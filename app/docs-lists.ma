@@ -68,6 +68,16 @@
     ],
     "Accessing a missing key returns nil.",
     code?.["[x: a, y: b] z"],
+    [
+      style: 18 bold,
+      Unpacking,
+    ],
+    "The unpack operator assigns all keys of a list onto the parent list.",
+    code?.["[x: a, :: [y: b, c]]"],
+    "
+    By default keys are maintained during unpacking, but another list can be provided to transform them, similar to destructuring in other languages.
+    ",
+    code?.["[x: a, [y, z]:: [b, c]]"],
   ],
   [
     gap: 25,
@@ -109,5 +119,26 @@
     code?.["[x: a, [y: x?]]", "[x: a, [y: z?], z: b]"],
     "In contrast, containing lists can't access values from nested lists.",
     code?.["[[x: a], y: x?]"],
+  ],
+  [
+    gap: 25,
+    [
+      style: 26 bold,
+      color: colors?.red,
+      Shorthands,
+    ],
+    "
+    There are two shorthand operators for assigning keys to their own value, either directly or from the context list.
+    ",
+    code?
+      .[
+        "
+        [
+          x: 1,
+          [x:=],
+          [x:=?],
+        ]
+        ",
+      ],
   ],
 ]

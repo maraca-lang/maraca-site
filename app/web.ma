@@ -21,8 +21,8 @@
               [text, url]=>>
                 [
                   pad: 10,
-                  click: #url,
-                  value: [web, url?],
+                  click: ,
+                  #url; click? & [web, url?],
                   hover: ,
                   fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
                   color: (page? == url?, colors?.red, => colors?.green),
@@ -42,8 +42,8 @@
               [text, url]=>>
                 [
                   pad: 10,
-                  click: #url,
-                  value: [web, url?],
+                  click: ,
+                  #url; click? & [web, url?],
                   hover: ,
                   fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
                   color: (page? == url?, colors?.red, => colors?.green),
@@ -64,8 +64,8 @@
               [text, url]=>>
                 [
                   pad: 10,
-                  click: #url,
-                  value: [web, url?],
+                  click: ,
+                  #url; click? & [web, url?],
                   hover: ,
                   fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
                   color: (page? == url?, colors?.red, => colors?.green),

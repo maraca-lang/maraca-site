@@ -8,8 +8,9 @@
   "devDependencies": {
     "codemirror": "^5.43.0",
     "maraca-app": "https://github.com/kalambo/maraca-app.git",
-    "prettier": "^1.16.1",
-    "prettier-plugin-maraca": "^0.1.7",
+    "prettier": "^1.16.2",
+    "prettier-plugin-maraca": "^0.1.8",
+    "prismjs": "^1.15.0",
     "typescript": "^3.2.4",
     "webfontloader": "^1.6.28"
   }

@@ -3,38 +3,15 @@
   [
     style: 40 bold,
     color: colors?.red,
-    Logic,
+    Shorthands,
   ],
   [
     gap: 25,
     "
-    Logical operations in Maraca return either the string 'true' (for true), or nil (for false).
+    There are shorthand lists using different bracket types, which function as OR/AND boolean logic (utilising the fact that nil values are removed from lists).
     ",
-    [
-      style: 18 bold,
-      Equal,
-    ],
-    code?.["2 == 6"],
-    [
-      style: 18 bold,
-      Comparisons,
-    ],
-    code?.["5 < 3", "5 <= 5", "8 > 2", "1 >= 3"],
-    [
-      style: 18 bold,
-      Not,
-    ],
-    code?.["8 ! 2", "! 3 < 5"],
-  ],
-  [
-    gap: 25,
-    [
-      style: 26 bold,
-      color: colors?.red,
-      "Shorthand lists",
-    ],
     "
-    There are shorthand lists using different bracket types, which can be used for 'and'/'or' boolean logic (utilising the fact that nil values are removed from lists), and for grouping/precedence.
+    These can then also be used in other ways, such as for grouping expressions, writing imperative code, and forming ternary operations.
     ",
     [
       style: 18 bold,
@@ -56,15 +33,48 @@
     code?.["3.[1 == 2, 3 < 4, 5 == 5]", "2.[1 == 1, 2 < 4]"],
     "A list with parentheses is shorthand for this 'and' pattern.",
     code?.["(1 == 2, 3 < 4, 5 == 5)", "(1 == 1, 2 < 4)"],
+  ],
+  [
+    gap: 25,
+    [
+      style: 26 bold,
+      color: colors?.red,
+      "Common uses",
+    ],
     [
       style: 18 bold,
-      "Aside: grouping / precedence",
+      Grouping,
     ],
     "
     For lists with a single value, both the above shorthands translate into accessing the 1 key, ie. the single value itself. Therefore they are equivalent to writing that value directly.
     ",
-    code?.["10 + 20", "(10 + 20)", "{10 + 20}"],
+    code?.["10 + 20", "{10 + 20}", "(10 + 20)"],
     "This can be used for grouping / precedence.",
     code?.["(2 + 3) * 4"],
+    [
+      style: 18 bold,
+      Imperative code,
+    ],
+    "
+    You can write code in an imperative style using an OR shorthand list, by using all items for key assignments apart from the final return statement.
+    ",
+    code?
+      .[
+        "
+        {
+          x: 2,
+          y: 3,
+          x? * y?,
+        }
+        ",
+      ],
+    [
+      style: 18 bold,
+      Ternary,
+    ],
+    "
+    You can create a ternary expression using an AND shorthand list with a default.
+    ",
+    code?.["(1 == 2, x, => y)"],
   ],
 ]

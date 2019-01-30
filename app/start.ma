@@ -20,8 +20,8 @@
           width: left,
           gap: 15,
           height: middle,
-          click: #url,
-          value: [],
+          click: ,
+          #url; click? & [],
           pad: 5,
           [image: "../img/maraca.png", width: 18],
           [
@@ -39,8 +39,8 @@
                 [text, url]=>>
                   [
                     pad: 0 5,
-                    click: #url,
-                    value: [url?],
+                    click: ,
+                    #url; click? & [url?],
                     hover: ,
                     [
                       pad: 0 0 2,
@@ -61,8 +61,8 @@
         [
           width: right,
           pad: 5,
-          click: #url,
-          value: "https://github.com/kalambo/maraca",
+          click: ,
+          #url; click? & "https://github.com/kalambo/maraca",
           GitHub,
         ],
       ],

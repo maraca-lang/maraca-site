@@ -31,11 +31,11 @@
       Api,
     ],
     [
+      : code,
       style: Source Code Pro bold exact,
       cols: 2,
       fill: 0 0 98,
       round: 10,
-      color: colors?.green,
       pad: 10,
       "
       import maraca from 'maraca';
@@ -44,7 +44,7 @@
       const data = maraca(config, source);
 
       // stream
-      maraca(config, source, data => console.log(data));
+      maraca(config, source, update);
       ",
     ],
   ],

@@ -51,36 +51,4 @@
     ",
     code?.[""""""],
   ],
-  [
-    gap: 25,
-    [
-      style: 26 bold,
-      color: colors?.red,
-      Arithmetic,
-    ],
-    "
-    For arithmetic operations, Maraca converts values into their numeric value, before appling the operator and converting the result back to a string.
-    ",
-    [
-      style: 18 bold,
-      "Basic arithmetic",
-    ],
-    code?.["1 + 2", "5 - 1", "3 * 4", "5 / 2"],
-    [
-      style: 18 bold,
-      Powers,
-    ],
-    code?.["2 ^ 3"],
-    [
-      style: 18 bold,
-      "Modulo (remainder after division)",
-    ],
-    code?.["8 % 3"],
-    [
-      style: 18 bold,
-      "Non-numeric values return nil",
-    ],
-    "If either value can't be converted to a number, nil is returned.",
-    code?.["hello + world"],
-  ],
 ]

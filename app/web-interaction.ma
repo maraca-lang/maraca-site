@@ -85,9 +85,7 @@
       color: colors?.red,
       Clicking,
     ],
-    "
-    If the click property is set, then the current value of the value property (nil if not set) will be pushed to the provided stream when the box is clicked.
-    ",
+    "The click value can be used to trigger other actions.",
     code2?
       .[
         "
@@ -96,8 +94,7 @@
           [
             gap: 15,
             [
-              click: count?,
-              value: count? + 1,
+              count?; click? & count? + 1,
               pad: 10,
               fill: 80 70 70,
               Hello,

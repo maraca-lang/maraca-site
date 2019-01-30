@@ -8,12 +8,17 @@
   [
     gap: 20,
     "
-    Underlying everything above is the concept of 'combining' expressions together, which happens when two expressions are written next to each other in Maraca.
-    ",
-    "
-    Multiple expressions next to each other are combined pairwise, from left to right, so the following are equivalent.
+    In Maraca, two expressions written next to each other are 'combined'. Multiple expressions next to each other are combined pairwise, from left to right, so the following are equivalent.
     ",
     code?.["a b c d", "(((a b) c) d)"],
+  ],
+  [
+    gap: 20,
+    [
+      style: 26 bold,
+      color: colors?.red,
+      Cases,
+    ],
     "
     For every pair, the operation applied depends on the types being combined (out of nil, value, and list).
     ",
@@ -45,6 +50,14 @@
     The dot operator also performs combination, but at a lower precedence than direct combinations. This is useful for avoiding lots of parentheses, for example the following are equivalent.
     ",
     code?.["(User?)(Profile)(Last name)", "User?.Profile.Last name"],
+    "
+    Also, the dot operator behaves differently for nil/value combinations, treating nil as an empty list. This allows for nested key lookups on potentially nil values.
+    ",
+    code?
+      .[
+        "[x: 1] y z",
+        "[x: 1].y.z",
+      ],
     "When used between values, no space is added.",
     code?.["Hello.world"],
   ],
