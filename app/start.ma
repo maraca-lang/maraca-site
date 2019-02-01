@@ -24,11 +24,7 @@
           #url; click? & [],
           pad: 5,
           [image: "../img/maraca.png", width: 18],
-          [
-            style: 26,
-            color: colors?.red,
-            Maraca,
-          ],
+          [style: 26, color: colors?.red, Maraca],
         ],
         [
           cols: all,
@@ -46,11 +42,7 @@
                       pad: 0 0 2,
                       fill:
                         ({page? == url?, hover?}, colors?.green, => 0 0 100),
-                      [
-                        pad: 5 0 3,
-                        fill: 0 0 100,
-                        text?,
-                      ],
+                      [pad: 5 0 3, fill: 0 0 100, text?],
                     ],
                   ],
               ],
@@ -67,12 +59,6 @@
         ],
       ],
     ],
-    page?
-      .[
-        : home?,
-        docs:=?,
-        web:=?,
-        try:=?,
-      ],
+    page?.[: home?, docs:=?, web:=?, try:=?],
   ],
 }

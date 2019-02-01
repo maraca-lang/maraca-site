@@ -1,5 +1,5 @@
 {
-  ['_, page]:: #url,
+  [_, page]:: #url,
   #title("Web | Maraca"),
   [
     width: 1000,
@@ -15,9 +15,7 @@
         round: 10,
         pad: 15,
         ::
-          [
-              [Overview],
-            ][
+          [[Overview]][
               [text, url]=>>
                 [
                   pad: 10,
@@ -29,16 +27,9 @@
                   text?,
                 ],
             ],
-        [
-          pad: 30 10 10,
-          style: 14,
-          SETUP,
-        ],
+        [pad: 30 10 10, style: 14, SETUP],
         ::
-          [
-              [App, app],
-              [Runtime, runtime],
-            ][
+          [[App, app], [Runtime, runtime]][
               [text, url]=>>
                 [
                   pad: 10,
@@ -50,17 +41,9 @@
                   text?,
                 ],
             ],
-        [
-          pad: 30 10 10,
-          style: 14,
-          RENDER,
-        ],
+        [pad: 30 10 10, style: 14, RENDER],
         ::
-          [
-              [Layout, layout],
-              [Styling, styling],
-              [Interaction, interaction],
-            ][
+          [[Layout, layout], [Styling, styling], [Interaction, interaction]][
               [text, url]=>>
                 [
                   pad: 10,

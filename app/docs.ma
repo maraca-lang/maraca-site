@@ -1,5 +1,5 @@
 {
-  ['_, page]:: #url,
+  [_, page]:: #url,
   #title("Docs | Maraca"),
   [
     width: 1000,
@@ -22,8 +22,10 @@
               [Lists, lists],
               [Operators, operators],
               [Combining, combining],
-              [Functions, functions],
+              [Context, context],
               [Shorthands, shorthands],
+              [Functions, functions],
+              [Streams, streams],
               [Data, data],
             ][
               [text, url]=>>

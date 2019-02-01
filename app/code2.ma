@@ -25,15 +25,12 @@
             i=> v=>
               ::
                 [
-                  [
-                    pad: (i? == 1, 10, => 5) 10 10,
-                    v?,
-                  ],
+                  [pad: (i? == 1, 10, => 5) 10 10, v?],
                   [
                     style: Montserrat 18 normal,
                     color: 0 0 20,
                     pad: (i? == 1, 10, => 5) 10 10,
-                    ##(v?) [User: [Profile: [Last name: Smith]]],
+                    v? $ [User: [Profile: [Last name: Smith]]],
                   ],
                 ],
           ],

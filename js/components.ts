@@ -18,19 +18,21 @@ import 'codemirror/lib/codemirror.css';
 
 CodeMirror.defineSimpleMode('maraca', {
   start: [
-    { regex: /'\S/, token: 'string' },
+    { regex: /('(\S|\n)|_)/, token: 'string' },
     { regex: /\[|\(|\{/, token: 'attribute', indent: true },
     { regex: /\]|\)|\}/, token: 'attribute', dedent: true },
     { regex: /,/, token: 'attribute' },
     {
-      regex: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\\?|:=|::|:|=>>|=>|~)/,
+      regex: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\\?|:=|::|:|;|=>>|=>|~)/,
       token: 'keyword',
     },
     { regex: /\?/, token: 'attribute' },
-    { regex: /(@@@|@@|@|##|#)((\d+\.\d+)|([a-zA-Z0-9]+))?/, token: 'def' },
-    { regex: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\./, token: 'operator' },
+    { regex: /@@@|@@|@/, token: 'def' },
+    { regex: /#((\d+\.\d+)|([a-zA-Z0-9]+))?/, token: 'def' },
+    { regex: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|&|\$/, token: 'operator' },
     { regex: /(\d+\.\d+)|([a-zA-Z0-9]+)/, token: 'number' },
     { regex: /"/, token: 'string', push: 'string' },
+    { regex: /`[^`]*`/, token: 'comment' },
   ],
   string: [
     { regex: /[^"]+/, token: 'string' },

@@ -66,9 +66,7 @@
       [
         fill: 0 0 98,
         pad: 10,
-        [
-          :: (printview?, [print: ##(value?) []], => [##(value?) []]),
-        ],
+        [:: (printview?, [print: value? $ []], => [value? $ []])],
       ],
     ],
   ],

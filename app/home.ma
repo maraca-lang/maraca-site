@@ -6,11 +6,7 @@
   [
     gap: 20,
     [image: "../img/maraca.png", width: 40],
-    [
-      style: 50 bold center,
-      color: colors?.red,
-      Maraca,
-    ],
+    [style: 50 bold center, color: colors?.red, Maraca],
     [
       style: 20 bold center,
       color: colors?.green,
@@ -19,9 +15,7 @@
   ],
   [
     gap: 20,
-    "
-    Maraca is a lightweight, embeddable, declarative language for defining & manipulating dynamic structured data.
-    ",
+    "Maraca is a lightweight, embeddable, declarative language for defining & manipulating dynamic structured data.",
     "Applicable to a wide range of environments & circumstances:",
     [
       gap: 10,
@@ -31,15 +25,12 @@
             "Database querying",
             "Configuration files",
             "And more...",
-          ][
-            v=>> [style: bullet, v?],
-          ],
+          ][v=>> [style: bullet, v?]],
     ],
   ],
   code?
     .[
-      "
-      {
+      "{
         count: #tick % 2,
         [
           test,
@@ -48,8 +39,7 @@
             1: world,
           ],
         ],
-      }
-      ",
+      }",
     ],
   [
     gap: 30,
@@ -61,30 +51,20 @@
         [
             [
               Dynamic,
-              "
-              The output of a Maraca program is a changing stream of structured data.
-              ",
+              "The output of a Maraca program is a changing stream of structured data.",
             ],
             [
               Concise,
-              "
-              Minimal syntax, and a single data structure for both indexes and keys.
-              ",
+              "Minimal syntax, and a single data structure for both indexes and keys.",
             ],
             [
               Powerful,
-              "
-              Seamlessly combine declarative, imperative and functional coding paradigms.
-              ",
+              "Seamlessly combine declarative, imperative and functional coding paradigms.",
             ],
           ]
           .[
             [title, text]=>>
-              [
-                gap: 20,
-                [style: bold 20, color: colors?.green, title?],
-                text?,
-              ],
+              [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
           ],
     ],
   ],
@@ -102,9 +82,7 @@
               "Finalising core syntax",
               "Initial js/web runtime",
               "Initial js/web renderer and bootstrapper",
-            ][
-              v=>> [style: bullet, v?],
-            ],
+            ][v=>> [style: bullet, v?]],
       ],
     ],
     [
@@ -117,9 +95,7 @@
               "Specify and complete v1 syntax",
               "Improve js/web runtime performance",
               "Improve js/web renderer and bootstrapper",
-            ][
-              v=>> [style: bullet, v?],
-            ],
+            ][v=>> [style: bullet, v?]],
       ],
     ],
     [
@@ -128,10 +104,7 @@
       [
         gap: 15,
         ::
-          [
-              "Built Macara-to-SQL converter",
-              "Runtimes for other languages",
-            ][
+          ["Built Macara-to-SQL converter", "Runtimes for other languages"][
               v=>> [style: bullet, v?],
             ],
       ],
