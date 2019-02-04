@@ -14,7 +14,7 @@
     [style: 26 bold, color: colors?.red, Concatenating values],
     "Combining two nil/value expressions concatenates them together, treating nil as the empty string.",
     "If neither value is nil and there are any spaces between the expressions, a single space is added between the them.",
-    code?.["Hello   world", "'£{10 + 20}", """"" XYZ {5 / 2}"],
+    code?.["Hello   world", "'£(30)", """"" WX YZ"],
   ],
   [
     gap: 25,,
@@ -25,18 +25,14 @@
     "A positive integer 'n' accesses the 'n'th value of a list.",
     code?.["2 [a, b, c]", "[a, b, c] 1"],
     "Accessing a missing key returns nil, or the default if provided.",
-    code?.["[x: a, y: b] z", "[x: a, y: b, => c] z"],,
-
-    [style: 18 bold, "Common uses"],
-    "As well as just accessing values, key lookup on lists can be used for if/else and switch statements.",
-    code?.["(1 == 2) [true: Yes, : No]", "(4 / 2) [1: a, 2: b, c: 3]"],
+    code?.["[x: a, y: b] z", "[x: a, y: b, => c] z"],
   ],
   [
     gap: 25,,
 
     [style: 26 bold, color: colors?.red, "The dot operator"],
     "The dot operator also performs combination, but at a lower precedence than direct combinations. This is useful for avoiding lots of parentheses, for example the following are equivalent.",
-    code?.["(User?)(Profile)(Last name)", "User?.Profile.Last name"],,
+    code?.["([a b: c])(a b)", "[a b: c].a b"],,
 
     "When used between values, no space is added.",
     code?.["Hello.world"],,
