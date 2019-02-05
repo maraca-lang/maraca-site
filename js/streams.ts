@@ -1,3 +1,4 @@
+import * as chrono from 'chrono-node';
 import { createMethod, toData, toTypedValue } from 'maraca';
 import * as webfont from 'webfontloader';
 
@@ -10,43 +11,70 @@ const map = m => ({ initial, output }) => ({
   update: value => output(toData(m(value))),
 });
 
-export default (create, indexer) => ({
-  data: create(indexer(), () => ({
-    initial: toData({
-      A: { Name: 'Sue' },
-      B: { Name: 'Bob' },
-      C: { Name: 'Joe' },
+const toDateData = ({ type, value }) => {
+  if (type !== 'value') return { type: 'nil' };
+  const date = chrono.parseDate(value, new Date(), { forwardDate: true });
+  return date ? { type: 'value', value: date.toISOString() } : { type: 'nil' };
+};
+
+export default {
+  '@': [
+    arg => ({ get, output }) => {
+      let prev = toDateData(get(arg));
+      const tryOutput = () => {
+        const next = toDateData(get(arg));
+        if (next.value !== prev.value) output(next);
+        prev = next;
+      };
+      let interval = setInterval(tryOutput, 1000);
+      return {
+        initial: prev,
+        update: () => {
+          clearInterval(interval);
+          tryOutput();
+          interval = setInterval(tryOutput, 1000);
+        },
+        stop: () => clearInterval(interval),
+      };
+    },
+  ],
+  '#': {
+    data: () => ({
+      initial: toData({
+        A: { Name: 'Sue' },
+        B: { Name: 'Bob' },
+        C: { Name: 'Joe' },
+      }),
     }),
-  })),
-  tick: create(indexer(), ({ output }) => {
-    let count = 0;
-    const interval = setInterval(() => output(toData(count++)), 1000);
-    return {
-      initial: toData(count++),
-      stop: () => clearInterval(interval),
-    };
-  }),
-  slowtick: create(indexer(), ({ output }) => {
-    let count = 0;
-    const interval = setInterval(() => output(toData(count++)), 2000);
-    return {
-      initial: toData(count++),
-      stop: () => clearInterval(interval),
-    };
-  }),
-  date: createMethod(
-    create,
-    map(x => {
-      const v = toTypedValue(x);
-      if (v.type !== 'time') return null;
-      return [
-        (`${v.value.getDate()}` as any).padStart(2, '0'),
-        (`${v.value.getMonth() + 1}` as any).padStart(2, '0'),
-        `${v.value.getFullYear()}`.slice(2),
-      ].join('/');
-    }),
-  ),
-});
+    tick: ({ output }) => {
+      let count = 0;
+      const interval = setInterval(() => output(toData(count++)), 1000);
+      return {
+        initial: toData(count++),
+        stop: () => clearInterval(interval),
+      };
+    },
+    slowtick: ({ output }) => {
+      let count = 0;
+      const interval = setInterval(() => output(toData(count++)), 2000);
+      return {
+        initial: toData(count++),
+        stop: () => clearInterval(interval),
+      };
+    },
+    date: createMethod(
+      map(x => {
+        const v = toTypedValue(x);
+        if (v.type !== 'time') return null;
+        return [
+          (`${v.value.getDate()}` as any).padStart(2, '0'),
+          (`${v.value.getMonth() + 1}` as any).padStart(2, '0'),
+          `${v.value.getFullYear()}`.slice(2),
+        ].join('/');
+      }),
+    ),
+  },
+};
 
 // arg => ({ get, output }) => {
 //   let interval;

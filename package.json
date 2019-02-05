@@ -10,7 +10,7 @@
     "codemirror": "^5.43.0",
     "maraca-app": "https://github.com/kalambo/maraca-app.git",
     "prettier": "^1.16.4",
-    "prettier-plugin-maraca": "^0.1.9",
+    "prettier-plugin-maraca": "^0.2.0",
     "prismjs": "^1.15.0",
     "typescript": "^3.3.1",
     "webfontloader": "^1.6.28"
