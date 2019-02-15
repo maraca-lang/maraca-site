@@ -21,6 +21,10 @@
 
     [style: 18 bold, Changing keys],
     "By default, map functions assign the mapped values to the same keys, but you can assign new keys instead.",
-    code?.["[a, b, c].[v=>> Item {v?}: v?]"],
+    code?.["[a, b, c].[v=>> Item {v?}: v?]"],,
+
+    [style: 18 bold, Initial items],
+    "Any items in the map list are used to initialise the new list. This can be useful for list 'reductions', where a map is used to generate a single value, such as a sum.",
+    code?.["[1, 2, 3].[sum: 0, v=>> sum: sum? + v?].sum"],
   ],
 ]

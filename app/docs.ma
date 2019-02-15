@@ -23,7 +23,7 @@
               [Combining, combining],
               [Operators, operators],
               [Context, context],
-              [Shorthands, shorthands],
+              [Semilists, semilists],
               [Functions, functions],
               [Streams, streams],
               [Data, data],

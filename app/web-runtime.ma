@@ -22,6 +22,7 @@
     [style: 26 bold, color: colors?.red, Api],
     [
       : code,
+      lang: js,
       style: Source Code Pro bold exact,
       cols: 2,
       fill: 0 0 98,

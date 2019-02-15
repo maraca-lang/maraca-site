@@ -1,6 +1,7 @@
-import { parse, toData } from 'maraca';
+import { compare, parse, toData } from 'maraca';
 import {
   createNode,
+  findChild,
   getSetters,
   getValues,
   parseValue,
@@ -10,6 +11,8 @@ import * as CodeMirror from 'codemirror';
 import * as prettier from 'prettier/standalone';
 import * as prettierMaraca from 'prettier-plugin-maraca';
 import * as prism from 'prismjs';
+
+import * as printMaraca from './print';
 
 // @ts-ignore
 window.CodeMirror = CodeMirror;
@@ -44,22 +47,51 @@ CodeMirror.defineSimpleMode('maraca', {
   },
 });
 
-const formatCode = code => {
+const languages = {
+  ...prism.languages,
+  maraca: {
+    string: { pattern: /("[^"]*")|('(\S|\n)|_)/, greedy: true },
+    punctuation: /\[|\(|\{|\]|\)|\}|,|\?/,
+    keyword: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\\?|:=|::|:|;|=>>|=>|~)/,
+    function: /(@@@|@@|@)|(#((\d+\.\d+)|([a-zA-Z0-9]+))?)/,
+    operator: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|&|\$/,
+    number: { pattern: /(\d+\.\d+)|([a-zA-Z0-9]+)/, greedy: true },
+    comment: { pattern: /`[^`]*`/, greedy: true },
+  },
+};
+
+const printValue = value => {
+  if (value.type !== 'list') {
+    return `"${(value.value || '').replace(/"/g, '""')}"`;
+  }
+  return `[${[
+    ...value.value.indices.map((v, i) => ({
+      index: true,
+      key: toData(i + 1),
+      value: v,
+    })),
+    ...Object.keys(value.value.values).map(k => value.value.values[k]),
+  ]
+    .filter(v => v.value.type !== 'nil')
+    .sort((a, b) => compare(a.key, b.key))
+    .map(({ index, key, value }) =>
+      index ? printValue(value) : `${printValue(key)}: ${printValue(value)}`,
+    )
+    .join(', ')}]`;
+};
+
+const formatCode = (code, plugin, printWidth?) => {
   try {
     parse(code);
     return prettier.format(code, {
       parser: 'maraca',
-      plugins: [prettierMaraca],
+      plugins: [plugin],
+      printWidth: Math.min(80, printWidth || 40),
     });
   } catch {
     return code;
   }
 };
-
-const getChildren = node =>
-  node && ([] as any).slice.call(node.childNodes).filter(c => c.__maraca);
-const findChild = (node, depth) =>
-  Array.from({ length: depth }).reduce(res => res && getChildren(res)[0], node);
 
 export default {
   editor: (node, values) => {
@@ -83,7 +115,9 @@ export default {
       });
     }
     const formatted =
-      format === result.__editorFormat ? value : formatCode(value);
+      format === result.__editorFormat
+        ? value
+        : formatCode(value, prettierMaraca);
     result.__editorFormat = format;
     if (formatted !== value) {
       setters.value(toData(formatted));
@@ -95,15 +129,44 @@ export default {
     return result;
   },
   code: (node, values, indices, context) =>
-    updateBox(node, values, context, inner => {
+    updateBox(node, values, context, (inner, text) => {
+      let child = findChild(inner, 1);
+      if (!child) {
+        child = createNode('span');
+        inner.appendChild(child);
+      }
+      const lang = getValues(values, { lang: 'string' }).lang || 'maraca';
+      const value = parseValue('string', indices[0] || { type: 'nil' });
+      child.innerHTML = prism.highlight(
+        lang === 'maraca'
+          ? formatCode(
+              value,
+              prettierMaraca,
+              Math.ceil(inner.offsetWidth / (text.size * 0.8)),
+            )
+          : value,
+        languages[lang],
+      );
+    }),
+  print: (node, values, indices, context) =>
+    updateBox(node, values, context, (inner, text) => {
       let child = findChild(inner, 1);
       if (!child) {
         child = createNode('span');
         inner.appendChild(child);
       }
       child.innerHTML = prism.highlight(
-        parseValue('string', indices[0]),
-        prism.languages.javascript,
+        formatCode(
+          printValue(parseValue(true, indices[0] || { type: 'nil' })),
+          printMaraca,
+          Math.ceil(inner.offsetWidth / (text.size * 0.8)),
+        ),
+        {
+          string: /_/,
+          punctuation: /\[|\]|,/,
+          keyword: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?:\s/,
+          number: /./,
+        },
       );
     }),
 };

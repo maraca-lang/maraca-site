@@ -15,14 +15,15 @@
             i=> v=>
               ::
                 [
-                  [pad: (i? == 1, 10, => 5) 10 10, v?],
+                  [: code, style: 18, pad: (i? == 1, 10, => 5) 10 10, v?],
                   [
-                    color: 0 0 50,
+                    : print,
+                    style: 18,
+                    color: 0 0 63,
                     pad: (i? == 1, 10, => 5) 10 10,
-                    print:
-                      v?
-                      $
-                      [User: [Profile: [First name: John, Last name: Smith]]],
+                    v?
+                    $
+                    [User: [Profile: [First name: John, Last name: Smith]]],
                   ],
                 ],
           ],

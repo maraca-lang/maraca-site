@@ -1,15 +1,12 @@
 import * as chrono from 'chrono-node';
-import { createMethod, toData, toTypedValue } from 'maraca';
+import { toData, toTypedValue } from 'maraca';
 import * as webfont from 'webfontloader';
 
 webfont.load({
   google: { families: ['Montserrat:400,700', 'Source+Code+Pro:400,700'] },
 });
 
-const map = m => ({ initial, output }) => ({
-  initial: toData(m(initial)),
-  update: value => output(toData(m(value))),
-});
+const map = m => emit => value => emit(toData(m(value)));
 
 const toDateData = ({ type, value }) => {
   if (type !== 'value') return { type: 'nil' };
@@ -19,50 +16,42 @@ const toDateData = ({ type, value }) => {
 
 export default {
   '@': [
-    arg => ({ get, output }) => {
-      let prev = toDateData(get(arg));
-      const tryOutput = () => {
-        const next = toDateData(get(arg));
-        if (next.value !== prev.value) output(next);
-        prev = next;
-      };
-      let interval = setInterval(tryOutput, 1000);
-      return {
-        initial: prev,
-        update: () => {
-          clearInterval(interval);
-          tryOutput();
-          interval = setInterval(tryOutput, 1000);
-        },
-        stop: () => clearInterval(interval),
+    emit => {
+      let prev;
+      let interval;
+      return value => {
+        if (interval) clearInterval(interval);
+        if (value) {
+          const update = () => {
+            const next = toDateData(value);
+            if (!prev || next.value !== prev.value) emit(next);
+            prev = next;
+          };
+          update();
+          interval = setInterval(update, 1000);
+        }
       };
     },
   ],
   '#': {
-    data: () => ({
-      initial: toData({
-        A: { Name: 'Sue' },
-        B: { Name: 'Bob' },
-        C: { Name: 'Joe' },
-      }),
+    data: toData({
+      A: { Name: 'Sue' },
+      B: { Name: 'Bob' },
+      C: { Name: 'Joe' },
     }),
-    tick: ({ output }) => {
+    tick: emit => {
       let count = 0;
-      const interval = setInterval(() => output(toData(count++)), 1000);
-      return {
-        initial: toData(count++),
-        stop: () => clearInterval(interval),
-      };
+      emit(toData(count++));
+      const interval = setInterval(() => emit(toData(count++)), 1000);
+      return () => clearInterval(interval);
     },
-    slowtick: ({ output }) => {
+    slowtick: emit => {
       let count = 0;
-      const interval = setInterval(() => output(toData(count++)), 2000);
-      return {
-        initial: toData(count++),
-        stop: () => clearInterval(interval),
-      };
+      emit(toData(count++));
+      const interval = setInterval(() => emit(toData(count++)), 2000);
+      return () => clearInterval(interval);
     },
-    date: createMethod(
+    date: toData(
       map(x => {
         const v = toTypedValue(x);
         if (v.type !== 'time') return null;
