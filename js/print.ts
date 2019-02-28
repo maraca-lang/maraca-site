@@ -82,7 +82,7 @@ const printConfig = (
       ]),
     );
   }
-  if (type === 'value') return info.value === ' ' ? '_' : info.value;
+  if (type === 'value') return info.value;
   if (type === 'nil') return '';
 };
 

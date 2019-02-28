@@ -38,12 +38,12 @@
         "[
           x: 2,
           y: 3,
-          x? * y?,
+          z: x? * y?,
         ]",
       ],,
 
-    [style: 18 bold, Shorthands],
-    "Lists ignore entries which are nil (equivalent to false), which allows for shorthand syntaxes for boolean logic - parentheses for AND, braces for OR.",
+    [style: 18 bold, Semilists],
+    "Lists ignore entries which are nil, which allows for shorthand syntaxes for boolean logic, called semilists - parentheses for AND, braces for OR.",
     code?.["(1 == 2, 3 < 4)", "{1 == 2, 3 < 4}"],
     "These can then also be used in other ways, such as for grouping expressions and writing imperative code.",
     code?

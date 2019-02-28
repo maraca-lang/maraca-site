@@ -14,7 +14,7 @@
     [style: 26 bold, color: colors?.red, Concatenating values],
     "Combining two nil/value expressions concatenates them together, treating nil as the empty string.",
     "If neither value is nil and there are any spaces between the expressions, a single space is added between the them.",
-    code?.["Hello   world", "'£(30)", """"" WX YZ"],
+    code?.["Hello   world", "'£30", """"" WX YZ"],
   ],
   [
     gap: 25,,

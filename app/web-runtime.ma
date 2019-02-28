@@ -34,7 +34,7 @@
       const data = maraca(config, source);
 
       // stream
-      maraca(config, source, update);",
+      maraca(config, source, data => update(data));",
     ],
   ],
 ]

@@ -16,31 +16,7 @@
   [
     gap: 20,
     "Maraca is a lightweight, embeddable, declarative language for defining & manipulating dynamic structured data.",
-    "Applicable to a wide range of environments & circumstances:",
-    [
-      gap: 10,
-      ::
-        [
-            "Stateful UI",
-            "Database querying",
-            "Configuration files",
-            "And more...",
-          ][v=>> [style: bullet, v?]],
-    ],
   ],
-  code?
-    .[
-      "{
-        count: #tick % 2,
-        [
-          test,
-          count?.[
-            0: hello,
-            1: world,
-          ],
-        ],
-      }",
-    ],
   [
     gap: 30,
     [style: 28 bold, color: colors?.red, Key features],
@@ -67,6 +43,37 @@
               [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
           ],
     ],
+  ],
+  [
+    gap: 30,
+    [style: 28 bold, color: colors?.red, Uses],
+    [
+      gap: 10,
+      ::
+        [
+            "Configuration files",
+            "Data templating",
+            "Interactive, stateful UIs (such as this site)",
+            "And more...",
+          ][v=>> [style: bullet, v?]],
+    ],
+  ],
+  [
+    gap: 30,
+    [style: 28 bold, color: colors?.red, Example],
+    code?
+      .[
+        "{
+          count: #tick % 2,
+          [
+            test,
+            count?.[
+              0: hello,
+              1: world,
+            ],
+          ],
+        }",
+      ],
   ],
   [
     gap: 30,
