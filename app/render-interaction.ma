@@ -9,7 +9,6 @@
     code2?
       .[
         "[
-          hover: ,
           pad: 10,
           fill: 50 70 (hover?, 60, => 70),
           Hello,
@@ -24,7 +23,6 @@
     code2?
       .[
         "[
-          width: ,
           pad: 10,
           fill: 50 70 70,
           Width': {width?},
@@ -44,7 +42,6 @@
             gap: 15,
             [
               pad: 10,
-              focus: ,
               fill: 0 0 (focus?, 80, => 90),
               input: value?,
             ],
@@ -65,7 +62,7 @@
           [
             gap: 15,
             [
-              count?; click? & count? + 1,
+              count?; count? + 1 | click?,
               pad: 10,
               fill: 80 70 70,
               Hello,

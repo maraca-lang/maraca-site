@@ -20,8 +20,7 @@
           width: left,
           gap: 15,
           height: middle,
-          click: ,
-          #url; click? & [],
+          #url; [] | click?,
           pad: 5,
           [image: "../img/maraca.png", width: 18],
           [style: 26, color: colors?.red, Maraca],
@@ -31,12 +30,17 @@
           gap: 30,
           width: left,
           ::
-            [[Docs, docs], [Web, web], [Try, try]][
+            [
+                [Setup, setup],
+                [Docs, docs],
+                [Render, render],
+                [Tutorials, tutorials],
+                [Try, try],
+              ][
                 [text, url]=>>
                   [
                     pad: 0 5,
-                    click: ,
-                    #url; click? & [url?],
+                    #url; [url?] | click?,
                     hover: ,
                     [
                       pad: 0 0 2,
@@ -53,12 +57,11 @@
         [
           width: right,
           pad: 5,
-          click: ,
-          #url; click? & "https://github.com/kalambo/maraca",
+          #url; "https://github.com/maraca-lang" | click?,
           GitHub,
         ],
       ],
     ],
-    page?.[: home?, docs:=?, web:=?, try:=?],
+    page?.[: home?, setup:=?, docs:=?, render:=?, tutorials:=?, try:=?],
   ],
 }

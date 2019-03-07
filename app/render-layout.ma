@@ -4,7 +4,7 @@
   [
     gap: 25,,
 
-    "Maraca-render uses a column based layout system, using the 'cols' property to set the number of columns.",
+    "Maraca render uses a column based layout system, using the 'cols' property to set the number of columns.",
     code2?
       .[
         "[

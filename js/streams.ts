@@ -1,12 +1,10 @@
 import * as chrono from 'chrono-node';
-import { toData, toTypedValue } from 'maraca';
+import { fromJs, toJs } from 'maraca';
 import * as webfont from 'webfontloader';
 
 webfont.load({
   google: { families: ['Montserrat:400,700', 'Source+Code+Pro:400,700'] },
 });
-
-const map = m => emit => value => emit(toData(m(value)));
 
 const toDateData = ({ type, value }) => {
   if (type !== 'value') return { type: 'nil' };
@@ -34,34 +32,39 @@ export default {
     },
   ],
   '#': {
-    data: toData({
+    data: fromJs({
       A: { Name: 'Sue' },
       B: { Name: 'Bob' },
       C: { Name: 'Joe' },
     }),
     tick: emit => {
       let count = 0;
-      emit(toData(count++));
-      const interval = setInterval(() => emit(toData(count++)), 1000);
+      emit(fromJs(count++));
+      const interval = setInterval(() => emit(fromJs(count++)), 1000);
       return () => clearInterval(interval);
     },
     slowtick: emit => {
       let count = 0;
-      emit(toData(count++));
-      const interval = setInterval(() => emit(toData(count++)), 2000);
+      emit(fromJs(count++));
+      const interval = setInterval(() => emit(fromJs(count++)), 2000);
       return () => clearInterval(interval);
     },
-    date: toData(
-      map(x => {
-        const v = toTypedValue(x);
-        if (v.type !== 'time') return null;
-        return [
-          (`${v.value.getDate()}` as any).padStart(2, '0'),
-          (`${v.value.getMonth() + 1}` as any).padStart(2, '0'),
-          `${v.value.getFullYear()}`.slice(2),
-        ].join('/');
-      }),
-    ),
+    date: fromJs(emit => value => {
+      if (value) {
+        const v = toJs(value);
+        emit(
+          fromJs(
+            Object.prototype.toString.call(v) !== '[object Date]'
+              ? null
+              : [
+                  (`${v.getDate()}` as any).padStart(2, '0'),
+                  (`${v.getMonth() + 1}` as any).padStart(2, '0'),
+                  `${v.getFullYear()}`.slice(2),
+                ].join('/'),
+          ),
+        );
+      }
+    }),
   },
 };
 

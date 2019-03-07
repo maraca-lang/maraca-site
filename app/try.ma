@@ -16,19 +16,16 @@
         gap: 5,
         [
           pad: 5 15,
-          hover: ,
           style: center,
           color: 0 0 100,
           fill: 40 85 (hover?, 45, => 50),
-          click: ,
-          open?; click? & !open?,
+          open?; !open? | click?,
           (open?, Hide, => Show) Code,
         ],
         (
           open?,
           [
             pad: 5 15,
-            hover: ,
             style: center,
             color: 0 0 100,
             fill: 40 85 (hover?, 45, => 50),
@@ -42,12 +39,10 @@
         width: right,
         [
           pad: 5 15,
-          hover: ,
           style: center,
           color: 0 0 100,
           fill: 40 85 (hover?, 45, => 50),
-          click: ,
-          printview?; click? & !printview?,
+          printview?; !printview? | click?,
           "Toggle Print / Render",
         ],
       ],
@@ -66,7 +61,7 @@
       [
         fill: 0 0 98,
         pad: 10,
-        [:: (printview?, [print: value? $ []], => [value? $ []])],
+        [:: (printview?, [: print, style: 18, value? $ []], => [value? $ []])],
       ],
     ],
   ],

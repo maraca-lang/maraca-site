@@ -29,7 +29,7 @@
 
     [style: 18 bold, Snapshot],
     "The snapshot operator outputs the current value on the right everytime the value on the left emits.",
-    code?.["#slowtick & @now"],,
+    code?.["@now | #slowtick"],,
 
     [style: 18 bold, Merge],
     "The merge operator merges the stream on the right into the stream on the left, and returns nil.",
@@ -41,7 +41,7 @@
       .[
         "[
           x: 0,
-          x?; #tick & x? + 10,
+          x?; x? + 10 | #tick,
         ]",
       ],
   ],

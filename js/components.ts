@@ -1,4 +1,4 @@
-import { compare, parse, toData } from 'maraca';
+import { fromJs, parse } from 'maraca';
 import {
   createNode,
   findChild,
@@ -26,13 +26,13 @@ CodeMirror.defineSimpleMode('maraca', {
     { regex: /\]|\)|\}/, token: 'attribute', dedent: true },
     { regex: /,/, token: 'attribute' },
     {
-      regex: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\\?|:=|::|:|;|=>>|=>|~)/,
+      regex: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\?|:=|::|:|;|=>>|=>|~)/,
       token: 'keyword',
     },
     { regex: /\?/, token: 'attribute' },
     { regex: /@@@|@@|@/, token: 'def' },
     { regex: /#((\d+\.\d+)|([a-zA-Z0-9]+))?/, token: 'def' },
-    { regex: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|&|\$/, token: 'operator' },
+    { regex: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/, token: 'operator' },
     { regex: /(\d+\.\d+)|([a-zA-Z0-9]+)/, token: 'number' },
     { regex: /"/, token: 'string', push: 'string' },
     { regex: /`[^`]*`/, token: 'comment' },
@@ -52,30 +52,33 @@ const languages = {
   maraca: {
     string: { pattern: /("[^"]*")|('(\S|\n)|_)/, greedy: true },
     punctuation: /\[|\(|\{|\]|\)|\}|,|\?/,
-    keyword: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\\?|:=|::|:|;|=>>|=>|~)/,
+    keyword: {
+      pattern: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\?|:=|::|:|;|=>>|=>|~)/,
+      greedy: true,
+    },
     function: /(@@@|@@|@)|(#((\d+\.\d+)|([a-zA-Z0-9]+))?)/,
-    operator: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|&|\$/,
+    operator: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
     number: { pattern: /(\d+\.\d+)|([a-zA-Z0-9]+)/, greedy: true },
     comment: { pattern: /`[^`]*`/, greedy: true },
   },
 };
 
+const isIndex = data => {
+  if (data.type === 'list') return false;
+  const s = data.value || '';
+  const n = parseFloat(s);
+  return !isNaN(s) && !isNaN(n) && n === Math.floor(n) && n > 0 && n;
+};
 const printValue = value => {
   if (value.type !== 'list') {
     return `"${(value.value || '').replace(/"/g, '""')}"`;
   }
-  return `[${[
-    ...value.value.indices.map((v, i) => ({
-      index: true,
-      key: toData(i + 1),
-      value: v,
-    })),
-    ...Object.keys(value.value.values).map(k => value.value.values[k]),
-  ]
+  return `[${value.value
     .filter(v => v.value.type !== 'nil')
-    .sort((a, b) => compare(a.key, b.key))
-    .map(({ index, key, value }) =>
-      index ? printValue(value) : `${printValue(key)}: ${printValue(value)}`,
+    .map(({ key, value }) =>
+      isIndex(key)
+        ? printValue(value)
+        : `${printValue(key)}: ${printValue(value)}`,
     )
     .join(', ')}]`;
 };
@@ -111,7 +114,7 @@ export default {
         lineNumbers: true,
       });
       result.__editor.on('change', () => {
-        setters.value(toData(result.__editor.getDoc().getValue()));
+        setters.value(fromJs(result.__editor.getDoc().getValue()));
       });
     }
     const formatted =
@@ -120,7 +123,7 @@ export default {
         : formatCode(value, prettierMaraca);
     result.__editorFormat = format;
     if (formatted !== value) {
-      setters.value(toData(formatted));
+      setters.value(fromJs(formatted));
     }
     if (formatted !== result.__editor.getDoc().getValue()) {
       result.__editor.getDoc().setValue(formatted);

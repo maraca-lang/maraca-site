@@ -4,7 +4,10 @@
   [
     gap: 25,,
 
-    "List defaults can be functions of the provided key.",
+    "Lists can have a default value for when a missing key is accessed.",
+    code?.["z.[x: a, y: b, => c]"],,
+
+    "These defaults can be functions of the provided key.",
     code?.["10.[v=> v? + 5]"],,
 
     [style: 18 bold, Argument destructuring],
