@@ -1,4 +1,3 @@
-import * as chrono from 'chrono-node';
 import { fromJs, toJs } from 'maraca';
 import * as webfont from 'webfontloader';
 
@@ -6,10 +5,33 @@ webfont.load({
   google: { families: ['Montserrat:400,700', 'Source+Code+Pro:400,700'] },
 });
 
-const toDateData = ({ type, value }) => {
+const toDateData = (chrono, { type, value }) => {
   if (type !== 'value') return { type: 'nil' };
   const date = chrono.parseDate(value, new Date(), { forwardDate: true });
   return date ? { type: 'value', value: date.toISOString() } : { type: 'nil' };
+};
+
+const withPromise = (getPromise, run) => {
+  let promiseValue;
+  let current;
+  let stopped = false;
+  return value => {
+    if (!value) {
+      stopped = true;
+    } else {
+      current = value;
+      if (!promiseValue) {
+        getPromise().then(v => {
+          if (!stopped) {
+            promiseValue = v;
+            run(promiseValue, current);
+          }
+        });
+      } else {
+        run(promiseValue, current);
+      }
+    }
+  };
 };
 
 export default {
@@ -17,18 +39,21 @@ export default {
     emit => {
       let prev;
       let interval;
-      return value => {
-        if (interval) clearInterval(interval);
-        if (value) {
-          const update = () => {
-            const next = toDateData(value);
-            if (!prev || next.value !== prev.value) emit(next);
-            prev = next;
-          };
-          update();
-          interval = setInterval(update, 1000);
-        }
-      };
+      return withPromise(
+        () => import('chrono-node'),
+        (chrono, value) => {
+          if (interval) clearInterval(interval);
+          if (value) {
+            const update = () => {
+              const next = toDateData(chrono, value);
+              if (!prev || next.value !== prev.value) emit(next);
+              prev = next;
+            };
+            update();
+            interval = setInterval(update, 1000);
+          }
+        },
+      );
     },
   ],
   '#': {
