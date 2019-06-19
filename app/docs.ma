@@ -2,13 +2,13 @@
   [_, page]:: #url,
   #title("Docs | Maraca"),
   [
-    width: 1000,
+    x: 1000,
     pad: 50 10,
     cols: all,
-    gap: 40,
+    gap: 37,
     ("docs-"{page?, data})?,
     [
-      width: 0.25,
+      x: 0.25,
       style: bold,
       [
         fill: 0 0 98,
@@ -25,11 +25,12 @@
               [Functions, functions],
               [Semilists, semilists],
               [Streams, streams],
+              [Metacode, metacode],
             ][
               [text, url]=>>
                 [
                   pad: 10,
-                  #url; [docs, url?] | click?,
+                  click? | [docs, url?] -> #url,
                   fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
                   color: (page? == url?, colors?.red, => colors?.green),
                   text?,

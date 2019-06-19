@@ -1,6 +1,6 @@
 [
   gap: 40,
-  [style: 40 bold, color: colors?.red, Data],
+  [style: 40 bold, color: colors?.red, Data Operations],
   [
     gap: 25,,
 
@@ -35,7 +35,7 @@
       .[
         "#data
         .[v=>> :: [v?]]
-        .[k=> v=> (k? >= 2, v?)]
+        .[v=> k=> (k? >= 2, v?)]
         .[v=>> :: [v?]]",
       ],
   ],

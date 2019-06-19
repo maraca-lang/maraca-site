@@ -1,13 +1,8 @@
 {
-  link:
-    [
-      [text, to]=>
-        [: text, color: colors?.green, style: bold, #url; to? | click?, text?],
-    ],
   [_, page]:: #url,
   #title("Setup | Maraca"),
   [
-    width: 750,
+    x: 750,
     pad: 50 10,
     gap: 40,
     [style: 40 bold, color: colors?.red, Setup],
@@ -68,7 +63,7 @@
             "prettier-plugin-maraca",
             "https://github.com/maraca-lang/prettier-plugin-maraca",
           ],
-        ". It is highly recommended to use this as manually managing indentation in Maraca files can be very time-consuming.",
+        ". It is highly recommended to use this instead of manually managing indentation in Maraca files.",
       ],,
 
       [style: 18 bold, Editor extensions],

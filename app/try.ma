@@ -1,25 +1,24 @@
 {
   value: "1 + 1",
-  format: ,
   open: true,
   printview: true,
   #title("Try | Maraca"),
   [
-    width: 1000,
+    x: 1000,
     [
       fill: 0 0 60,
       pad: 5,
-      cols: all,
+      cols: equal,
       [
         cols: all,
-        width: left,
+        x: left,
         gap: 5,
         [
           pad: 5 15,
           style: center,
           color: 0 0 100,
           fill: 40 85 (hover?, 45, => 50),
-          open?; !open? | click?,
+          click? | !open? -> open?,
           (open?, Hide, => Show) Code,
         ],
         (
@@ -30,34 +29,27 @@
             color: 0 0 100,
             fill: 40 85 (hover?, 45, => 50),
             click: format?,
+            click? | #format.value? -> value?,
             Format Code,
           ],
         ),
       ],
       [
         cols: all,
-        width: right,
+        x: right,
         [
           pad: 5 15,
           style: center,
           color: 0 0 100,
           fill: 40 85 (hover?, 45, => 50),
-          printview?; !printview? | click?,
+          click? | !printview? -> printview?,
           "Toggle Print / Render",
         ],
       ],
     ],
     [
-      cols: all,
-      (
-        open?,
-        [
-          pad: 0 5 5 5,
-          fill: 0 0 60,
-          style: 14,
-          [: editor, value:=?, format:=?],
-        ],
-      ),
+      cols: equal,
+      (open?, [pad: 0 5 5 5, fill: 0 0 60, style: 14, [: editor, value:=?]]),
       [
         fill: 0 0 98,
         pad: 10,

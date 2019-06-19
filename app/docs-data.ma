@@ -20,7 +20,7 @@
 
     [style: 18 bold, Special characters],
     "Single non-alphanumeric characters can be entered by prefixing with a single quote.",
-    code?.["'@", "'£5"],
+    code?.["'@", "'£"],
     "In addition, an underscore is equivalent to a single space.",
     code?.['_],,
 
@@ -41,7 +41,9 @@
 
     [style: 18 bold, Nils are ignored],
     "Each comma-separated item of a list is automatically assigned to the next available integer index, except for nil values which are ignored.",
-    code?.["[a, , b, , c]"],,
+    code?.["[a, , b, , c]"],
+    "(Note that if you are using the Prettier plugin, you can take advantage of this and use multiple commas to create spaces between lines.)",
+    code?.["[Lorem ipsum dolor, , Sed do eiusmod tempor]"],,
 
     [style: 18 bold, Nesting],
     "Both values and keys can also themselves be lists.",

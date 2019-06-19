@@ -8,13 +8,15 @@
     "These semilists can then also be used in other ways, such as for grouping expressions, writing imperative code, and forming ternary operations.",,
 
     [style: 18 bold, And],
-    "Accessing the last key of a list is equivalent to an 'and' operation on all its values - it will return non-nil (true) only if all of the values are non-nil. (More precisely, it will return the last value if all are non-nil, otherwise nil).",
+    "Accessing the last indexed value of a list is equivalent to an 'and' operation on all its values - it will return non-nil (true) only if all of the values are non-nil. (More precisely, it will return the last value if all are non-nil, otherwise nil).",
     code?.["3.[!1, 3 < 4, 5 == 5]", "2.[1 == 1, 2 < 4]"],
     "A parenthesis semilist is shorthand for this 'and' pattern.",
-    code?.["(!1, 3 < 4, 5 == 5)", "(1 == 1, 2 < 4)"],,
+    code?.["(!1, 3 < 4, 5 == 5)", "(1 == 1, 2 < 4)"],
+    "Note that this syntax ignores function declarations when counting indices.",
+    code?.["(a, b, => c)"],,
 
     [style: 18 bold, Or],
-    "Accessing the first key of a list is equivalent to an 'or' operation on all its values - it will return non-nil (true) if any of the values are non-nil. (More precisely, it will return the first non-nil value in the list).",
+    "Accessing the first indexed value of a list is equivalent to an 'or' operation on all its values - it will return non-nil (true) if any of the values are non-nil. (More precisely, it will return the first non-nil value in the list).",
     code?.["1.[!1, 3 < 4, 5 == 5]", "1.[1 == 2, 4 < 2]"],
     "A braces semilist is shorthand for this 'or' pattern.",
     code?.["{!1, 3 < 4, 5 == 5}", "{1 == 2, 4 < 2}"],

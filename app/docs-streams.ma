@@ -28,20 +28,20 @@
     "As well as using streams for dynamic values, they can also be used as events, where the emitting of a value is important, rather than the value itself.",,
 
     [style: 18 bold, Snapshot],
-    "The snapshot operator outputs the current value on the right everytime the value on the left emits.",
-    code?.["@now | #slowtick"],,
+    "The snapshot operator outputs the current value on the right everytime the stream on the left emits.",
+    code?.["#slowtick | @now"],,
 
-    [style: 18 bold, Merge],
-    "The merge operator merges the stream on the right into the stream on the left, and returns nil.",
-    code?.["[x: hello, x?; #tick]"],,
+    [style: 18 bold, Push],
+    "Whenever the stream on the left emits, the push operator pushes a static copy of the value into the stream on the right.",
+    code?.["[x: hello, #tick -> x?]"],,
 
     [style: 18 bold, Triggering updates],
-    "Together, the snapshot and merge operators allow for updating values in response to changes to other values.",
+    "Together, the snapshot and push operators allow for updating values in response to events.",
     code?
       .[
         "[
-          x: 0,
-          x?; x? + 10 | #tick,
+          x: 10,
+          #tick | x? + 10 -> x?,
         ]",
       ],
   ],

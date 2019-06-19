@@ -4,10 +4,37 @@
   [
     gap: 25,,
 
+    "The default 'box' component has a number of properties that can be used to style both it and it's contents.",,
+
+    [style: 18 bold, No units],
+    "Numerical values are unitless, with whole numbers interpreted as pixels, and decimals as percentages.",,
+
+    [style: 18 bold, Directional values],
+    "For any directional property that applies to the different sides of the box, you can enter 1-4 numeric values, for [top/bottom/all] [left/right] [bottom] [right].",,
+
+    [style: 18 bold, Color format],
+    "Note that colors are entered in HCL (hue/chroma/luminance), with hue scaled to 0-100.",
+  ],
+  [
+    gap: 25,,
+
     [style: 26 bold, color: colors?.red, Text],
-    "To set the style of the text in a box, use the style and color properties.",
-    "The style property may include a numeric font size, any combination of the words normal/bold/italic, and optionally one of left/center/right.",
-    "The color property expects three numeric values, for hue (0 to 100 circular), chromacity/saturation (0 to 100-150), and lightness (0 to 100-150).",
+    "To set the style of the text in a box, use the 'style' and 'color' properties.",
+    "The style property may include:",
+    [
+      pad: 0 25 0 0,
+      gap: 10,
+      [style: bullet, "A numeric font size"],
+      [style: bullet, "A second (larger) numeric line height"],
+      [
+        style: bullet,
+        "Any combination of the words 'normal' / 'bold' / 'italic / strike'",
+      ],
+      [style: bullet, "One of 'left' / 'center' / 'right'"],
+      [style: bullet, "The tag 'bullet' for a bullet point"],
+      [style: bullet, "The tag 'password' to hide characters"],
+      [style: bullet, "The tag 'flow' (see the Layout page)"],
+    ],
     code2?
       .[
         "[
@@ -21,18 +48,12 @@
     gap: 25,,
 
     [style: 26 bold, color: colors?.red, Boxes],
-    "There are a number of properties for styling boxes.",
-    "For any directional property that applies to the different sides of the box, you can enter 1-4 numeric values, for (top/bottom/all) (left/right) (bottom) (right).",
-    "The pad property adds a gap around the contents of the box (directional).",
-    "The fill property adds a background color, using the same color syntax as for text.",
-    "The round property adds corner rounding (directional - anticlockwise from top left).",
+    "For styling boxes, the 'fill' property adds a background color, and the 'round' property adds corner rounding (directional - anticlockwise from top left).",
     code2?
       .[
         "[
-          pad: 30 10,
           fill: 50 70 70,
-          round: 20,
-          Hello,
+          round: 10 10 0 0,
         ]",
       ],
   ],

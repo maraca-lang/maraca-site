@@ -4,44 +4,46 @@
     style: Montserrat 18,
     color: 0 0 20,
     [
-      cols: all,
       style: 18 bold,
       color: colors?.green,
-      width: 1000,
-      height: middle,
+      gap: 10,
+      cols: all,
+      x: 1000,
+      y: middle,
       pad: 10 5,
       [
         cols: all,
         gap: 50,
-        width: left,
-        height: middle,
+        x: left,
+        y: middle,
         [
           cols: all,
-          width: left,
           gap: 15,
-          height: middle,
-          #url; [] | click?,
+          x: left,
+          y: middle,
           pad: 5,
-          [image: "../img/maraca.png", width: 18],
+          click? | [] -> #url,
+          [image: "../img/maraca.png", x: 18],
           [style: 26, color: colors?.red, Maraca],
         ],
         [
           cols: all,
           gap: 30,
-          width: left,
+          x: left,
+          y: middle,
           ::
             [
                 [Setup, setup],
                 [Docs, docs],
                 [Render, render],
-                [Tutorials, tutorials],
+                [Guides, guides],
                 [Try, try],
               ][
                 [text, url]=>>
                   [
                     pad: 0 5,
-                    #url; [url?] | click?,
                     hover: ,
+                    click? | [url?] -> #url,
                     [
                       pad: 0 0 2,
                       fill:
@@ -53,15 +55,16 @@
         ],
       ],
       [
-        width: 150,
+        x: 150,
+        y: middle,
         [
-          width: right,
+          x: right,
+          click? | "https://github.com/maraca-lang" -> #url,
           pad: 5,
-          #url; "https://github.com/maraca-lang" | click?,
           GitHub,
         ],
       ],
     ],
-    page?.[: home?, setup:=?, docs:=?, render:=?, tutorials:=?, try:=?],
+    page?.[: home?, setup:=?, docs:=?, render:=?, guides:=?, try:=?],
   ],
 }

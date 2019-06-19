@@ -1,11 +1,11 @@
 [
   #title(Maraca),
-  width: 750,
+  x: 750,
   pad: 50 10,
   gap: 40,
   [
     gap: 20,
-    [image: "../img/maraca.png", width: 40],
+    [image: "../img/maraca.png", x: 40],
     [style: 50 bold center, color: colors?.red, Maraca],
     [
       style: 20 bold center,
@@ -16,6 +16,7 @@
   [
     gap: 20,
     "Maraca is a lightweight, embeddable, declarative language for defining & manipulating dynamic structured data.",
+    "And when combined with Maraca-Render, it can be a powerful language for creating interactive UI, such as this site..",
   ],
   [
     gap: 30,
@@ -48,73 +49,73 @@
     gap: 30,
     [style: 28 bold, color: colors?.red, Uses],
     [
-      gap: 10,
+      cols: equal,
+      gap: 40,
       ::
         [
-            "Configuration files",
-            "Data templating",
-            "Interactive, stateful UIs (such as this site)",
-            "And more...",
-          ][v=>> [style: bullet, v?]],
-    ],
-  ],
-  [
-    gap: 30,
-    [style: 28 bold, color: colors?.red, Example],
-    code?
-      .[
-        "{
-          count: #tick % 2,
-          [
-            test,
-            count?.[
-              0: hello,
-              1: world,
+            [
+              Data templating,
+              "Run a Maraca file statically to compose a data structure, similar to Jsonnet.",
             ],
+            [
+              Coordination,
+              "Concise syntax and access to context work well for high level configuration files.",
+            ],
+            [
+              Interactive UIs,
+              "Use with Maraca-Render to declaratively create UIs, similar to React and React-DOM.",
+            ],
+          ]
+          .[
+            [title, text]=>>
+              [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
           ],
-        }",
-      ],
+    ],
   ],
   [
     gap: 30,
-    [style: 28 bold, color: colors?.red, Roadmap],
+    [style: 28 bold, color: colors?.red, Getting started],,
+
     [
-      gap: 20,
-      [style: bold 20, color: colors?.green, Current status],
-      [
-        gap: 15,
-        ::
+      "To get a high level overview, take a look at the ",
+      link?.["Todo App Guide", [guides, todo]],
+      ", along with the ",
+      link?.["Maraca-Render documentation", [render]],
+      ", to see Maraca in action without worrying about the precise details.",
+    ],
+    [
+      "Quite soon however, you'll want to read through the main ",
+      link?.["Maraca Docs", [docs]],
+      " to see how the core language works.",
+    ],
+    [
+      "To try out Maraca yourself, either use the ",
+      link?.["Try page", [try]],
+      ", or follow the instructions on the ",
+      link?.["Setup page", [setup]],
+      '.,
+    ],
+  ],
+  [
+    gap: 30,
+    [style: 28 bold, color: colors?.red, Example],,
+
+    "This basic example uses Maraca and Maraca-Render to create a colorful, hoverable button which increments a counter.",
+    code3?
+      ."{
+        count: 1,
+        [
+          gap: 15,
           [
-              "Alpha, working towards v1",
-              "Finalising core syntax",
-              "Initial js/web runtime",
-              "Initial js/web renderer and bootstrapper",
-            ][v=>> [style: bullet, v?]],
-      ],
-    ],
-    [
-      gap: 20,
-      [style: bold 20, color: colors?.green, Up next],
-      [
-        gap: 15,
-        ::
-          [
-              "Specify and complete v1 syntax",
-              "Improve js/web runtime performance",
-              "Improve js/web renderer and bootstrapper",
-            ][v=>> [style: bullet, v?]],
-      ],
-    ],
-    [
-      gap: 20,
-      [style: bold 20, color: colors?.green, Future goals],
-      [
-        gap: 15,
-        ::
-          ["Built Macara-to-SQL converter", "Runtimes for other languages"][
-              v=>> [style: bullet, v?],
-            ],
-      ],
-    ],
+            pad: 10,
+            fill: (#tick * 5) 80 (hover?, 80, => 70),
+            round: 5,
+            style: bold,
+            Click me,
+            click? | count? + 1 -> count?,
+          ],
+          Count': {count?},
+        ]
+      }",
   ],
 ]

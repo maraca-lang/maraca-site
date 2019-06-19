@@ -5,14 +5,23 @@
       cols: 2,
       fill: 0 0 98,
       round: 10,
-      color: colors?.green,
       ::
         [Input, Output]
-          .[v=>> [style: italic, color: 0 0 80, fill: 0 0 95, pad: 10, v?]],
+          .[
+            v=> i=>
+              [
+                x: (i? == 1, 0.5),
+                style: italic,
+                color: 0 0 80,
+                fill: 0 0 95,
+                pad: 10,
+                v?,
+              ],
+          ],
       ::
         inputs?
           .[
-            i=> v=>
+            v=> i=>
               ::
                 [
                   [: code, style: 18, pad: (i? == 1, 10, => 5) 10 10, v?],
@@ -21,9 +30,7 @@
                     style: 18,
                     color: 0 0 63,
                     pad: (i? == 1, 10, => 5) 10 10,
-                    v?
-                    $
-                    [User: [Profile: [First name: John, Last name: Smith]]],
+                    v? $ [],
                   ],
                 ],
           ],

@@ -1,11 +1,10 @@
 import { fromJs, parse } from 'maraca';
 import {
-  createNode,
-  findChild,
-  getSetters,
-  getValues,
+  createNodes,
+  createUpdater,
+  padNode,
+  padText,
   parseValue,
-  updateBox,
 } from 'maraca-render';
 import * as prism from 'prismjs';
 
@@ -13,20 +12,31 @@ import printMaraca from './print';
 
 import 'codemirror/lib/codemirror.css';
 
-const loadPrettier = async () => {
-  const [prettier, prettierMaraca] = await Promise.all([
-    import('prettier/standalone'),
-    import('prettier-plugin-maraca'),
-  ]);
-  return { prettier, prettierMaraca };
+const withPromises = (...promises) => {
+  const func = promises.pop();
+  let resolved;
+  let current;
+  let stopped;
+  const run = () => func(...resolved, ...current);
+  Promise.all(promises).then(res => {
+    if (!stopped) {
+      resolved = res;
+      run();
+    }
+  });
+  return {
+    update: (...args) => {
+      current = args;
+      if (resolved) run();
+    },
+    destroy: () => {
+      stopped = true;
+    },
+  };
 };
 
 const loadCodeMirror = async () => {
-  const [
-    { prettier, prettierMaraca },
-    { default: CodeMirror },
-  ] = await Promise.all([
-    loadPrettier(),
+  const [{ default: CodeMirror }] = await Promise.all([
     import('codemirror'),
     import('codemirror/addon/mode/simple'),
   ]);
@@ -37,14 +47,14 @@ const loadCodeMirror = async () => {
       { regex: /\]|\)|\}/, token: 'attribute', dedent: true },
       { regex: /,/, token: 'attribute' },
       {
-        regex: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\?|:=|::|:|;|=>>|=>|~)/,
+        regex: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|::|:|=>>|=>|~)/,
         token: 'keyword',
       },
       { regex: /\?/, token: 'attribute' },
       { regex: /@@@|@@|@/, token: 'def' },
       { regex: /#((\d+\.\d+)|([a-zA-Z0-9]+))?/, token: 'def' },
       {
-        regex: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
+        regex: /->|<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
         token: 'operator',
       },
       { regex: /(\d+\.\d+)|([a-zA-Z0-9]+)/, token: 'number' },
@@ -62,7 +72,7 @@ const loadCodeMirror = async () => {
   });
   // @ts-ignore
   window.CodeMirror = CodeMirror;
-  return { CodeMirror, prettier, prettierMaraca };
+  return CodeMirror;
 };
 
 const languages = {
@@ -71,11 +81,11 @@ const languages = {
     string: { pattern: /("[^"]*")|('(\S|\n)|_)/, greedy: true },
     punctuation: /\[|\(|\{|\]|\)|\}|,|\?/,
     keyword: {
-      pattern: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?(:=\?|:=|::|:|;|=>>|=>|~)/,
+      pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|::|:|=>>|=>|~)/,
       greedy: true,
     },
     function: /(@@@|@@|@)|(#((\d+\.\d+)|([a-zA-Z0-9]+))?)/,
-    operator: /<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
+    operator: /->|<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
     number: { pattern: /(\d+\.\d+)|([a-zA-Z0-9]+)/, greedy: true },
     comment: { pattern: /`[^`]*`/, greedy: true },
   },
@@ -101,7 +111,7 @@ const printValue = value => {
     .join(', ')}]`;
 };
 
-const formatCode = (prettier, code, plugin, printWidth?) => {
+const formatCode = (prettier, plugin, code, printWidth?) => {
   try {
     parse(code);
     return prettier.format(code, {
@@ -114,111 +124,103 @@ const formatCode = (prettier, code, plugin, printWidth?) => {
   }
 };
 
-const withPromise = (getPromise, comp) => {
-  let value;
-  let node;
-  let args;
-  return (n, ...a) => {
-    const first = !args;
-    node = n || createNode('div');
-    args = a;
-    if (first) {
-      getPromise().then(v => {
-        value = v;
-        comp(value, node, ...args);
-      });
-    } else if (value) {
-      comp(value, node, ...args);
-    }
-    return node;
-  };
-};
-
 export default {
-  editor: withPromise(
-    loadCodeMirror,
-    ({ CodeMirror, prettier, prettierMaraca }, node, values) => {
-      const { value = '', format } = getValues(values, {
-        value: 'string',
-        format: true,
-      });
-      const setters = getSetters(values, {}, { value: true })[1];
-      node.style.height = '500px';
-      if (!node.__editor) {
-        node.__editorFormat = format;
-        node.__editor = CodeMirror(node, {
-          value,
-          mode: 'maraca',
-          tabSize: 2,
-          lineNumbers: true,
-        });
-        node.__editor.on('change', () => {
-          setters.value(fromJs(node.__editor.getDoc().getValue()));
-        });
-      }
-      const formatted =
-        format === node.__editorFormat
-          ? value
-          : formatCode(prettier, value, prettierMaraca);
-      node.__editorFormat = format;
-      if (formatted !== value) {
-        setters.value(fromJs(formatted));
-      }
-      if (formatted !== node.__editor.getDoc().getValue()) {
-        node.__editor.getDoc().setValue(formatted);
-      }
-      setTimeout(() => node.__editor.refresh());
-    },
-  ),
-  code: withPromise(
-    loadPrettier,
-    ({ prettier, prettierMaraca }, node, values, indices, context) =>
-      updateBox(node, values, context, (inner, text) => {
-        let child = findChild(inner, 1);
-        if (!child) {
-          child = createNode('span');
-          inner.appendChild(child);
-        }
-        const lang = getValues(values, { lang: 'string' }).lang || 'maraca';
-        const value = parseValue('string', indices[0] || { type: 'nil' });
-        child.innerHTML = prism.highlight(
-          lang === 'maraca'
-            ? formatCode(
+  code: () => {
+    const [node, inner] = createNodes('div', 'span');
+    const nodeUpdater = createUpdater();
+    const innerUpdater = createUpdater();
+    return {
+      node,
+      ...withPromises(
+        import('prettier/standalone'),
+        import('prettier-plugin-maraca'),
+        (prettier, prettierMaraca, values, indices, base) => {
+          nodeUpdater(node, base.info.box.props);
+          innerUpdater(inner, base.info.text.props);
+          padText(inner, base.info.text.pad);
+          padNode(inner, 'pad', base.info.box.pad);
+
+          const lang = parseValue('string', values.lang) || 'maraca';
+          const value = parseValue('string', indices[0] || { type: 'nil' });
+          setTimeout(() => {
+            inner.innerHTML = prism.highlight(
+              lang === 'maraca'
+                ? formatCode(
+                    prettier,
+                    prettierMaraca,
+                    value,
+                    Math.ceil(node.offsetWidth / (base.context.size * 0.65)),
+                  )
+                : value,
+              languages[lang],
+            );
+          });
+        },
+      ),
+    };
+  },
+  print: () => {
+    const [node, inner] = createNodes('div', 'span');
+    const nodeUpdater = createUpdater();
+    const innerUpdater = createUpdater();
+    return {
+      node,
+      ...withPromises(
+        import('prettier/standalone'),
+        (prettier, _, indices, base) => {
+          nodeUpdater(node, base.info.box.props);
+          innerUpdater(inner, base.info.text.props);
+          padText(inner, base.info.text.pad);
+          padNode(inner, 'pad', base.info.box.pad);
+
+          setTimeout(() => {
+            inner.innerHTML = prism.highlight(
+              formatCode(
                 prettier,
-                value,
-                prettierMaraca,
-                Math.ceil(inner.offsetWidth / (text.size * 0.8)),
-              )
-            : value,
-          languages[lang],
-        );
-      }),
-  ),
-  print: withPromise(
-    loadPrettier,
-    ({ prettier }, node, values, indices, context) =>
-      updateBox(node, values, context, (inner, text) => {
-        let child = findChild(inner, 1);
-        if (!child) {
-          child = createNode('span');
-          inner.appendChild(child);
+                printMaraca(prettier),
+                printValue(parseValue(true, indices[0] || { type: 'nil' })),
+                Math.ceil(node.offsetWidth / (base.context.size * 0.8)),
+              ),
+              {
+                string: /_/,
+                punctuation: /\[|\]|,/,
+                keyword: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?:\s/,
+                number: /./,
+              },
+            );
+          });
+        },
+      ),
+    };
+  },
+  editor: () => {
+    const [node] = createNodes('div');
+    const updater = createUpdater();
+    return {
+      node,
+      ...withPromises(loadCodeMirror(), (CodeMirror, values, _, base) => {
+        updater(node, base.info.text.props, base.info.box.props);
+        const value = parseValue('string', values.value) || '';
+        const setValue = values.value.set;
+        node.style.height = '500px';
+        if (!node.__editor) {
+          node.__editor = CodeMirror(node, {
+            value,
+            mode: 'maraca',
+            tabSize: 2,
+            lineNumbers: true,
+          });
+          node.__editor.on('change', () => {
+            setValue(fromJs(node.__editor.getDoc().getValue()));
+          });
         }
-        child.innerHTML = prism.highlight(
-          formatCode(
-            prettier,
-            printValue(parseValue(true, indices[0] || { type: 'nil' })),
-            printMaraca(prettier),
-            Math.ceil(inner.offsetWidth / (text.size * 0.8)),
-          ),
-          {
-            string: /_/,
-            punctuation: /\[|\]|,/,
-            keyword: /((\\d+\\.\\d+)|([a-zA-Z0-9]+))?:\s/,
-            number: /./,
-          },
-        );
+        if (value !== node.__editor.getDoc().getValue()) {
+          node.__editor.getDoc().setValue(value);
+        }
+        setTimeout(() => node.__editor.refresh());
       }),
-  ),
+    };
+  },
 };
 
 if (typeof window !== 'undefined') {

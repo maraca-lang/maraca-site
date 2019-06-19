@@ -17,8 +17,9 @@
     [style: 18 bold, Powers],
     code?.["2 ^ 3"],,
 
-    [style: 18 bold, "Modulo (remainder after division)"],
-    code?.["8 % 3"],,
+    [style: 18 bold, Modulo],
+    "The modulo operator calculates the remainder after division, except when there is no remainder in which case it returns the divisor (i.e. the result of x % 5 will be in the range 1-5, rather than 0-4).",
+    code?.["8 % 3", "5 % 5"],,
 
     [style: 18 bold, "Non-numeric values return nil"],
     "If either value can't be converted to a number, nil is returned.",

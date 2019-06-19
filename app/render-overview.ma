@@ -4,36 +4,52 @@
   [
     gap: 25,,
 
-    "Maraca render is an experimental rendering system for creating UIs with Maraca, taking full advantage of the dynamic structured data features of the Maraca language.",,
+    "Maraca-Render transforms a Maraca stream into a UI, taking full advantage of the dynamic structured data features of the Maraca language (somewhat similar to the relationship between React and React-DOM).",,
 
-    "The relationship between Maraca and Maraca render is similar to that of React and React-DOM.",,
-
-    "Currently, this is available for web, with Maraca render outputting HTML & CSS. Loosely, this turns Maraca files into a dynamic equivalent of HTML (with inline CSS).",,
-
-    [style: 18 bold, Components],
-    "Values are simply displayed as text, while lists are transformed into components, with indexed values as children (sub-components) and other values as properties.",,
-
-    [style: 18 bold, Interactivity],
-    "Values in Maraca are streams, which allows Maraca render to provide interactivity. For example, streams can emit on events (such as clicking a component), or can track live values (such as input values and component widths).",
+    "Currently, this is available for web, with Maraca-Render outputting HTML & CSS.",
   ],
   [
     gap: 25,,
 
-    [style: 26 bold, color: colors?.red, Example],
+    [style: 26 bold, color: colors?.red, Lists as components],,
+
+    "Maraca-Render interprets Maraca lists as components, with indexed values as children (sub-components) and other values as properties. A custom component can be specified using the nil key, otherwise a default 'box' component is used.",,
+
+    "Loosely, this turns Maraca files into a sort of dynamic XML. For example, the following are conceptually equivalent:",
+    [
+      cols: equal,
+      style: Source Code Pro bold exact,
+      fill: 0 0 98,
+      round: 10,
+      [[: code, pad: 10, "[pad: 10, Hello, [:panel,style: bold, World]]"]],
+      [
+        [
+          : code,
+          lang: html,
+          pad: 10,
+          "<box pad=""10"">
+            Hello
+            <panel style=""bold"">
+              World
+            </panel>
+          </box>",
+        ],
+      ],
+    ],
+  ],
+  [
+    gap: 25,,
+
+    [style: 26 bold, color: colors?.red, Dynamic streams],,
+
+    "The key difference of course is that Maraca files are dynamic, not just a static description of a data structure like XML. This allows for changes and reactivity within components to be expressed directly:",
     code2?
       .[
-        "{
-          value: ,
-          [
-            gap: 15,
-            [
-              pad: 10,
-              fill: 0 0 (focus?, 80, => 90),
-              input: value?,
-            ],
-            Value': {value?},
-          ]
-        }",
+        "[
+          pad: 10,
+          fill: (#tick * 5) 80 80,
+          (hover?, Hello'!, => Hover me)
+        ]",
       ],
   ],
 ]
