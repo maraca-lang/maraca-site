@@ -1,5 +1,5 @@
 {
-  [_, page]:: #url,
+  [_, page]: #url,
   #title("Guides | Maraca"),
   [
     x: 1000,
@@ -15,7 +15,7 @@
         round: 10,
         pad: 15,
         gap: 0,
-        ::
+        ~:
           [[Data Operations], [Todo App, todo]][
               [text, url]=>>
                 [

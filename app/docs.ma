@@ -1,5 +1,5 @@
 {
-  [_, page]:: #url,
+  [_, page]: #url,
   #title("Docs | Maraca"),
   [
     x: 1000,
@@ -15,7 +15,7 @@
         round: 10,
         pad: 15,
         gap: 0,
-        ::
+        ~:
           [
               [Data],
               [Combining, combining],

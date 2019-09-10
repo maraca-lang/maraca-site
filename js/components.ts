@@ -42,7 +42,7 @@ const loadCodeMirror = async () => {
   ]);
   CodeMirror.defineSimpleMode('maraca', {
     start: [
-      { regex: /('(\S|\n)|_)/, token: 'string' },
+      { regex: /(\\(\S|\n)|_)/, token: 'string' },
       { regex: /\[|\(|\{/, token: 'attribute', indent: true },
       { regex: /\]|\)|\}/, token: 'attribute', dedent: true },
       { regex: /,/, token: 'attribute' },
@@ -63,7 +63,7 @@ const loadCodeMirror = async () => {
     ],
     string: [
       { regex: /[^"]+/, token: 'string' },
-      { regex: /""/, token: 'string-2' },
+      { regex: /\\./, token: 'string-2' },
       { regex: /"(?!")/, token: 'string', pop: true },
     ],
     meta: {
@@ -78,7 +78,7 @@ const loadCodeMirror = async () => {
 const languages = {
   ...prism.languages,
   maraca: {
-    string: { pattern: /("[^"]*")|('(\S|\n)|_)/, greedy: true },
+    string: { pattern: /("[^"]*")|(\\(\S|\n)|_)/, greedy: true },
     punctuation: /\[|\(|\{|\]|\)|\}|,|\?/,
     keyword: {
       pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|::|:|=>>|=>|~)/,
@@ -99,10 +99,13 @@ const isIndex = data => {
 };
 const printValue = value => {
   if (value.type !== 'list') {
-    return `"${(value.value || '').replace(/"/g, '""')}"`;
+    return `"${(value.value || '').replace(
+      /([<>"\\\n])/g,
+      (_, m) => `\\${m}`,
+    )}"`;
   }
   return `[${value.value
-    .filter(v => v.value.type !== 'nil')
+    .filter(v => v.value.value)
     .map(({ key, value }) =>
       isIndex(key)
         ? printValue(value)

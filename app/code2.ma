@@ -5,7 +5,7 @@
       cols: 2,
       fill: 0 0 98,
       round: 10,
-      ::
+      ~:
         [Input, Output]
           .[
             v=> i=>
@@ -18,11 +18,11 @@
                 v?,
               ],
           ],
-      ::
+      ~:
         inputs?
           .[
             v=> i=>
-              ::
+              ~:
                 [
                   [: code, style: 18, pad: (i? == 1, 10, => 5) 10 10, v?],
                   [

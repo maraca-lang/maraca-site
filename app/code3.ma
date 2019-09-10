@@ -5,7 +5,7 @@
       cols: 2,
       fill: 0 0 98,
       round: 10,
-      ::
+      ~:
         [Input, Output]
           .[
             v=> i=>

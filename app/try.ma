@@ -53,7 +53,7 @@
       [
         fill: 0 0 98,
         pad: 10,
-        [:: (printview?, [: print, style: 18, value? $ []], => [value? $ []])],
+        [: : (printview?, [: print, style: 18, value? $ []], => [value? $ []])],
       ],
     ],
   ],
