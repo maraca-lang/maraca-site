@@ -43,7 +43,7 @@
           color: 0 0 100,
           fill: 40 85 (hover?, 45, => 50),
           click? | !printview? -> printview?,
-          "Toggle Print / Render",
+          'Toggle Print / Render',
         ],
       ],
     ],
@@ -53,7 +53,7 @@
       [
         fill: 0 0 98,
         pad: 10,
-        [: : (printview?, [: print, style: 18, value? $ []], => [value? $ []])],
+        [~: (printview?, [: print, style: 18, value? $ []], => [value? $ []])],
       ],
     ],
   ],
