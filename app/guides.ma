@@ -16,16 +16,17 @@
         pad: 15,
         gap: 0,
         ~:
-          [[Data Operations], [Todo App, todo]][
-              [text, url]=>>
-                [
-                  pad: 10,
-                  click? | [guides, url?] -> #url,
-                  fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
-                  color: (page? == url?, colors?.red, => colors?.green),
-                  text?,
-                ],
-            ],
+          [[Data Operations], [Todo App, todo]]
+          .[
+            [text, url]=>>
+              [
+                pad: 10,
+                click? | [guides, url?] -> #url,
+                fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
+                color: (page? == url?, colors?.red, => colors?.green),
+                text?,
+              ],
+          ],
       ],
     ],
   ],

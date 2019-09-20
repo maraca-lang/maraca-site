@@ -67,12 +67,12 @@
     static description of a data structure like XML. This allows for changes and
     reactivity within components to be expressed directly:',
     code2?
-      .[
-        "[
-          pad: 10,
-          fill: (#tick * 5) 80 80,
-          (hover?, Hello\\!, => Hover me),
-        ]",
-      ],
+    .[
+      "[
+        pad: 10,
+        fill: (#tick * 5) 80 80,
+        (hover?, Hello\\!, => Hover me),
+      ]",
+    ],
   ],
 ]

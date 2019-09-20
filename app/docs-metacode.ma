@@ -18,13 +18,13 @@
     metacoding.',,
 
     code?
-      .[
-        "{
-          operator: [\\+, \\-, \\*, \\/].(#tick % 4),
-          script: (10 {operator?} 2),
-          Script\\: {script?}\\
-          Result\\: {script? $ []}
-        }",
-      ],
+    .[
+      "{
+        operator: [\\+, \\-, \\*, \\/].(#tick % 4),
+        script: (10 {operator?} 2),
+        Script\\: {script?}\\
+        Result\\: {script? $ []}
+      }",
+    ],
   ],
 ]

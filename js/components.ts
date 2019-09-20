@@ -42,12 +42,12 @@ const loadCodeMirror = async () => {
   ]);
   CodeMirror.defineSimpleMode('maraca', {
     start: [
-      { regex: /(\\(\S|\n)|_)/, token: 'string' },
+      { regex: /(\\(\S|\n)|_)/, token: 'string-2' },
       { regex: /\[|\(|\{/, token: 'attribute', indent: true },
       { regex: /\]|\)|\}/, token: 'attribute', dedent: true },
       { regex: /,/, token: 'attribute' },
       {
-        regex: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|::|:|=>>|=>|~)/,
+        regex: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>|~)/,
         token: 'keyword',
       },
       { regex: /\?/, token: 'attribute' },
@@ -58,13 +58,9 @@ const loadCodeMirror = async () => {
         token: 'operator',
       },
       { regex: /(\d+\.\d+)|([a-zA-Z0-9]+)/, token: 'number' },
-      { regex: /"/, token: 'string', push: 'string' },
+      { regex: /"([^\\]|\\[\S\s])*?"/, token: 'string' },
+      { regex: /'([^\\]|\\[\S\s])*?'/, token: 'string' },
       { regex: /`[^`]*`/, token: 'comment' },
-    ],
-    string: [
-      { regex: /[^"]+/, token: 'string' },
-      { regex: /\\./, token: 'string-2' },
-      { regex: /"(?!")/, token: 'string', pop: true },
     ],
     meta: {
       electricChars: '])}',
@@ -78,10 +74,13 @@ const loadCodeMirror = async () => {
 const languages = {
   ...prism.languages,
   maraca: {
-    string: { pattern: /("[^"]*")|(\\(\S|\n)|_)/, greedy: true },
+    string: {
+      pattern: /("([^\\]|\\[\S\s])*?")|('([^\\]|\\[\S\s])*?')|(\\(\S|\n)|_)/,
+      greedy: true,
+    },
     punctuation: /\[|\(|\{|\]|\)|\}|,|\?/,
     keyword: {
-      pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|::|:|=>>|=>|~)/,
+      pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>|~)/,
       greedy: true,
     },
     function: /(@@@|@@|@)|(#((\d+\.\d+)|([a-zA-Z0-9]+))?)/,

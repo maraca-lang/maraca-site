@@ -17,29 +17,29 @@
     [style: 18 bold, Sort],
     'First re-key the items, and then index them.',
     code?
-      .[
-        "#data
-        .[v=>> v?.Name: v?]
-        .[v=>> ~: [v?]]",
-      ],,
+    .[
+      "#data
+      .[v=>> v?.Name: v?]
+      .[v=>> ~: [v?]]",
+    ],,
 
     [style: 18 bold, Filter],
     'Do an AND operator on each item.',
     code?
-      .[
-        "#data
-        .[v=>> (v?.Name ! Joe, v?)]",
-      ],,
+    .[
+      "#data
+      .[v=>> (v?.Name ! Joe, v?)]",
+    ],,
 
     [style: 18 bold, Slice],
     'First index, then filter as above but using the keys rather than the
     values, then index again.',
     code?
-      .[
-        "#data
-        .[v=>> ~: [v?]]
-        .[v=> k=> (k? >= 2, v?)]
-        .[v=>> ~: [v?]]",
-      ],
+    .[
+      "#data
+      .[v=>> ~: [v?]]
+      .[v=> k=> (k? >= 2, v?)]
+      .[v=>> ~: [v?]]",
+    ],
   ],
 ]

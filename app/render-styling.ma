@@ -42,13 +42,13 @@
       [style: bullet, 'The tag ‘flow’ (see the Layout page)'],
     ],
     code2?
-      .[
-        "[
-          style: 30 center bold italic,
-          color: 60 80 50,
-          Hello,
-        ]",
-      ],
+    .[
+      "[
+        style: 30 center bold italic,
+        color: 60 80 50,
+        Hello,
+      ]",
+    ],
   ],
   [
     gap: 25,,
@@ -58,12 +58,12 @@
     ‘round’ property adds corner rounding (directional - anticlockwise from top
     left).',
     code2?
-      .[
-        "[
-          fill: 50 70 70,
-          round: 10 10 0 0,
-        ]",
-      ],
+    .[
+      "[
+        fill: 50 70 70,
+        round: 10 10 0 0,
+      ]",
+    ],
   ],
   [
     gap: 25,,
@@ -71,10 +71,10 @@
     [style: 26 bold, color: colors?.red, Images],
     'Use the image key to create an image.',
     code2?
-      .[
-        "[
-          image: \"https://picsum.photos/200\",
-        ]",
-      ],
+    .[
+      "[
+        image: \"https://picsum.photos/200\",
+      ]",
+    ],
   ],
 ]

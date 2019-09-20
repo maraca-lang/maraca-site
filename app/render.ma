@@ -17,20 +17,21 @@
         gap: 0,
         ~:
           [
-              [Overview],
-              [Styling, styling],
-              [Layout, layout],
-              [Reactivity, reactivity],
-            ][
-              [text, url]=>>
-                [
-                  pad: 10,
-                  click? | [render, url?] -> #url,
-                  fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
-                  color: (page? == url?, colors?.red, => colors?.green),
-                  text?,
-                ],
-            ],
+            [Overview],
+            [Styling, styling],
+            [Layout, layout],
+            [Reactivity, reactivity],
+          ]
+          .[
+            [text, url]=>>
+              [
+                pad: 10,
+                click? | [render, url?] -> #url,
+                fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
+                color: (page? == url?, colors?.red, => colors?.green),
+                text?,
+              ],
+          ],
       ],
     ],
   ],

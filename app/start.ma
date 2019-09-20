@@ -33,25 +33,25 @@
           y: middle,
           ~:
             [
-                [Setup, setup],
-                [Docs, docs],
-                [Render, render],
-                [Guides, guides],
-                [Try, try],
-              ][
-                [text, url]=>>
+              [Setup, setup],
+              [Docs, docs],
+              [Render, render],
+              [Guides, guides],
+              [Try, try],
+            ]
+            .[
+              [text, url]=>>
+                [
+                  pad: 0 5,
+                  hover: ,
+                  click? | [url?] -> #url,
                   [
-                    pad: 0 5,
-                    hover: ,
-                    click? | [url?] -> #url,
-                    [
-                      pad: 0 0 2,
-                      fill: ({page? == url?, hover?}, colors?.green, => 0 0 100)
-                      ,
-                      [pad: 5 0 3, fill: 0 0 100, text?],
-                    ],
+                    pad: 0 0 2,
+                    fill: ({page? == url?, hover?}, colors?.green, => 0 0 100),
+                    [pad: 5 0 3, fill: 0 0 100, text?],
                   ],
-              ],
+                ],
+            ],
         ],
       ],
       [

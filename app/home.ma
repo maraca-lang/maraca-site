@@ -28,26 +28,26 @@
       gap: 40,
       ~:
         [
-            [
-              Dynamic,
-              'The output of a Maraca program is a changing stream of structured
-              data.',
-            ],
-            [
-              Concise,
-              'Minimal syntax, and a single data structure for both indexes and
-              keys.',
-            ],
-            [
-              Powerful,
-              'Seamlessly combine declarative, imperative and functional coding
-              paradigms.',
-            ],
-          ]
-          .[
-            [title, text]=>>
-              [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
+          [
+            Dynamic,
+            'The output of a Maraca program is a changing stream of structured
+            data.',
           ],
+          [
+            Concise,
+            'Minimal syntax, and a single data structure for both indexes and
+            keys.',
+          ],
+          [
+            Powerful,
+            'Seamlessly combine declarative, imperative and functional coding
+            paradigms.',
+          ],
+        ]
+        .[
+          [title, text]=>>
+            [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
+        ],
     ],
   ],
   [
@@ -58,26 +58,26 @@
       gap: 40,
       ~:
         [
-            [
-              Data templating,
-              'Run a Maraca file statically to compose a data structure, similar
-              to Jsonnet.',
-            ],
-            [
-              Coordination,
-              'Concise syntax and access to context work well for high level
-              configuration files.',
-            ],
-            [
-              Interactive UIs,
-              'Use with Maraca-Render to declaratively create UIs, similar to
-              React and React-DOM.',
-            ],
-          ]
-          .[
-            [title, text]=>>
-              [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
+          [
+            Data templating,
+            'Run a Maraca file statically to compose a data structure, similar
+            to Jsonnet.',
           ],
+          [
+            Coordination,
+            'Concise syntax and access to context work well for high level
+            configuration files.',
+          ],
+          [
+            Interactive UIs,
+            'Use with Maraca-Render to declaratively create UIs, similar to
+            React and React-DOM.',
+          ],
+        ]
+        .[
+          [title, text]=>>
+            [gap: 20, [style: bold 20, color: colors?.green, title?], text?],
+        ],
     ],
   ],
   [
@@ -107,20 +107,20 @@
     'This basic example uses Maraca and Maraca-Render to create a colorful,
     hoverable button which increments a counter.',
     code3?
-      ."{
-        count: 1,
+    ."{
+      count: 1,
+      [
+        gap: 15,
         [
-          gap: 15,
-          [
-            pad: 10,
-            fill: (#tick * 5) 80 (hover?, 80, => 70),
-            round: 5,
-            style: bold,
-            Click me,
-            click? | count? + 1 -> count?,
-          ],
-          Count\\: {count?},
-        ]
-      }",
+          pad: 10,
+          fill: (#tick * 5) 80 (hover?, 80, => 70),
+          round: 5,
+          style: bold,
+          Click me,
+          click? | count? + 1 -> count?,
+        ],
+        Count\\: {count?},
+      ]
+    }",
   ],
 ]

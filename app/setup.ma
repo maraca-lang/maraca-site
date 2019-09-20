@@ -30,7 +30,7 @@
         [
           style: bullet,
           link?
-            .['maraca-render', "https://github.com/maraca-lang/maraca-render"],
+          .['maraca-render', "https://github.com/maraca-lang/maraca-render"],
           ' (react-dom)',
         ],
         [
@@ -64,10 +64,10 @@
       [
         'There is a Prettier plugin for Maraca, ',
         link?
-          .[
-            'prettier-plugin-maraca',
-            "https://github.com/maraca-lang/prettier-plugin-maraca",
-          ],
+        .[
+          'prettier-plugin-maraca',
+          "https://github.com/maraca-lang/prettier-plugin-maraca",
+        ],
         '. It is highly recommended to use this instead of manually managing
         indentation in Maraca files.',
       ],,
@@ -80,7 +80,7 @@
           style: bullet,
           'Visual Studio Code: ',
           link?
-            .['vscode-maraca', "https://github.com/maraca-lang/vscode-maraca"],
+          .['vscode-maraca', "https://github.com/maraca-lang/vscode-maraca"],
         ],
       ],
     ],

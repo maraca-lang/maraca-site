@@ -62,13 +62,13 @@
     '(Note that if you are using the Prettier plugin, you can take advantage of
     this and use multiple commas to create spaces between lines.)',
     code?
-      .[
-        "[
-          Lorem ipsum dolor,,
+    .[
+      "[
+        Lorem ipsum dolor,,
 
-          Sed do eiusmod tempor
-        ]",
-      ],,
+        Sed do eiusmod tempor
+      ]",
+    ],,
 
     [style: 18 bold, Nesting],
     'Both values and keys can also themselves be lists.',

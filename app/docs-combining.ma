@@ -21,13 +21,13 @@
     'Line breaks can be included by ending a line with a backslash, effectively
     prefixing the line break just like other non alphanumeric characters.',
     code?
-      .[
-        "Hello world",
-        "\\£30",
-        "\"\" WX YZ",
-        "A
-        B",
-      ],
+    .[
+      "Hello world",
+      "\\£30",
+      "\"\" WX YZ",
+      "A
+      B",
+    ],
   ],
   [
     gap: 25,,
