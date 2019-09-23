@@ -1,7 +1,22 @@
 {
-  value: "1 + 1",
+  value:
+    "{
+      count: 1,
+      [
+        gap: 15,
+        [
+          pad: 10,
+          fill: (#tick * 5) 80 (hover?, 80, => 70),
+          round: 5,
+          style: bold,
+          Click me,
+          click? | count? + 1 -> count?,
+        ],
+        Count\\: {count?},
+      ],
+    }",
   open: true,
-  printview: true,
+  printview: ,
   #title("Try | Maraca"),
   [
     x: 1000,
@@ -15,7 +30,7 @@
         gap: 5,
         [
           pad: 5 15,
-          style: center,
+          style: bold center,
           color: 0 0 100,
           fill: 40 85 (hover?, 45, => 50),
           click? | !open? -> open?,
@@ -25,7 +40,7 @@
           open?,
           [
             pad: 5 15,
-            style: center,
+            style: bold center,
             color: 0 0 100,
             fill: 40 85 (hover?, 45, => 50),
             click: format?,
@@ -36,14 +51,23 @@
       ],
       [
         cols: all,
-        x: right,
         [
-          pad: 5 15,
-          style: center,
+          x: left,
+          pad: 5 5 5 15,
+          style: bold,
           color: 0 0 100,
-          fill: 40 85 (hover?, 45, => 50),
-          click? | !printview? -> printview?,
-          'Toggle Print / Render',
+          (printview?, Printing, => Rendering),
+        ],
+        [
+          x: right,
+          [
+            pad: 5 15,
+            style: bold center,
+            color: 0 0 100,
+            fill: 40 85 (hover?, 45, => 50),
+            click? | !printview? -> printview?,
+            "Switch to" (printview?, Render, => Print),
+          ],
         ],
       ],
     ],

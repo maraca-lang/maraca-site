@@ -1324,9 +1324,9 @@ encodeurl@~1.0.2:
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.1.tgz#ed29634d19baba463b6ce6b80a37213eab71ec43"
-  integrity sha512-1MkrZNvWTKCaigbn+W15elq2BB/L22nqrSY5DKlo3X6+vclJm8Bb5djXJBmEX6fS3+zCh/F4VBK5Z2KxJt4s2Q==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.2.tgz#080bf028edce8312b665ff18ea03cae0c3ac0ecb"
+  integrity sha512-gUSUszrsxlDnUbUwEI9Oygyrk4ZEWtVaHQc+uZHphVeNxl+qeqMV/jDWoTkjN1RmGlZ5QWAP7o458p/JMlikQg==
   dependencies:
     once "^1.4.0"
 
@@ -2594,18 +2594,18 @@ maraca-loader@^0.2.2:
     maraca "^0.4.1"
 
 maraca-render@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/maraca-render/-/maraca-render-0.3.2.tgz#c9d705e09f879f1079b1c7696cd885c4a88c785a"
-  integrity sha512-ZmVc07JHAK0aGNplM8blcpGN5Ea7m6qnmdsDzHes5JulkY5Q1D7glzoBAFXFcNzqmeL8IiJX7TVhIiIbsZzRzQ==
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/maraca-render/-/maraca-render-0.3.3.tgz#0b5e4ae3da409f40d7eec26cdbe9c20d743c1cb4"
+  integrity sha512-t9S+JrMXbSMExtztp57wFR4UkczTAuxhqLZvAClQqdYfFOlv+0H9gQT8jIqCD/4akOse/8ZFUqfaLeFZG8PBrg==
   dependencies:
     element-resize-detector "^1.2.0"
     lodash.throttle "^4.1.1"
-    maraca "^0.4.4"
+    maraca "^0.5.1"
 
-maraca@0.5.0, maraca@^0.4.1, maraca@^0.4.4, maraca@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.5.0.tgz#5261df5c27447a98fe508257418fa555662c1756"
-  integrity sha512-FzgySKjSr4IK75UW0hBlDKHWCKdZKzJOAvKpz34XagoNOIgm80NFTC299NC+iOXF5Q2dZwKM0UNHz5pzqab60A==
+maraca@0.5.1, maraca@^0.4.1, maraca@^0.4.4, maraca@^0.5.0, maraca@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.5.1.tgz#945eab0b97a90547a365755e6f4d6077e582f8ac"
+  integrity sha512-ByHR7QGNZtiitot6kxlr1MGNB29ZeeGa8U3YpqU2lx/z0OFUiPb+WfJ1eYAP0naCMyWZYDm0kFeS4IAzMCd92g==
   dependencies:
     moo "^0.5.0"
     nearley "^2.19.0"
@@ -2746,9 +2746,9 @@ minimist@^1.2.0:
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
 
 minipass@^2.2.1, minipass@^2.6.0, minipass@^2.6.4:
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.6.5.tgz#1c245f9f2897f70fd4a219066261ce6c29f80b18"
-  integrity sha512-ewSKOPFH9blOLXx0YSE+mbrNMBFPS+11a2b03QZ+P4LVrUHW/GAlqeYC7DBknDyMWkHzrzTpDhUvy7MUxqyrPA==
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.8.3.tgz#aa87cf674150a1b3c8e278c5f5937d1d3d02b955"
+  integrity sha512-NcbXxDThFeNW47XHPCCsb6uQdAg7CHy4KNCPKzE0KN2VC0t4E09beCsI5x+3UnB6+AFMnC9jso92SB3KGRpkJQ==
   dependencies:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
@@ -4327,9 +4327,9 @@ toposort@^1.0.0:
   integrity sha1-LmhELZ9k7HILjMieZEOsbKqVACk=
 
 ts-loader@^6.0.3:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-6.1.1.tgz#f30c68aa1ce59fa266f0bb70a36959ca68f40ddc"
-  integrity sha512-AoOek8ZWJlWwTRH5ttNmZPBRcASUJZc8wc8E/2PGOXef96H97J8KaLXaW/zUnvyFjvCoRBhTGh9ZIMKL1arcCA==
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-6.1.2.tgz#ff6bc767334970226438949fbde2e211147a1325"
+  integrity sha512-dudxFKm0Ellrg/gLNlu+97/UgwvoMK0SdUVImPUSzq3IcRUVtShylZvcMX+CgvCQL1BEKb913NL0gAP1GA/OFw==
   dependencies:
     chalk "^2.3.0"
     enhanced-resolve "^4.0.0"

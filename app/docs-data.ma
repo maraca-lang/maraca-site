@@ -31,8 +31,16 @@
 
     [style: 18 bold, Quoted values],
     'Longer complex strings can be created with double quotes, allowing
-    non-alphanumeric characters and extra spaces.',
-    code?.["\"Let's go!\"", "\"Hello 123\""],,
+    non-alphanumeric characters and extra spaces / newlines. Double quotes can
+    be escaped with a backslash.',
+    code?
+    .[
+      "\"Let's go!\"",
+      "\"Hello \\\"world\\\"!\"",
+      "\"A
+      B
+      C\"",
+    ],,
 
     [style: 18 bold, Nil],
     'The empty value is called nil and has special behaviour in various
@@ -50,7 +58,7 @@
 
     [style: 26 bold, color: colors?.red, Lists],
     'There is only one data structure in Maraca, the list. Lists are ordered
-    collections of keyed values grouped by square brackets.',
+    collections of keyed values.',
     'Values without a key are automatically assigned to the positive integer
     keys - 1, 2, 3, etc - which are called indices. (Where possible, these are
     omitted from the printed output.)',
@@ -77,7 +85,7 @@
     [style: 18 bold, Sort order],
     'Lists are ordered by a dictionary sort of the keys, apart from indices
     which are sorted at the beginning, in numeric order.',
-    code?.["[z: a, y: b, 1, 2]"],,
+    code?.["[z: 1, y: 2, b, a]"],,
 
     [style: 18 bold, Assignment shorthand],
     'There is a shorthand syntax for assigning a key to its own value.',

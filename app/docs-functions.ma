@@ -13,7 +13,12 @@
     [style: 18 bold, Argument destructuring],
     'Function arguments are unpacked onto the parameter value provided, allowing
     for destructuring.',
-    code?.["[1, 2].[[x, y]=> x? + y?]"],
+    code?.["[1, 2].[[x, y]=> x? + y?]"],,
+
+    [style: 18 bold, The identity function],
+    'There is a shorthand syntax for the identity function, ‘~’, which sends any
+    value to itself.',
+    code?.["x.~", "[1, 2].~"],
   ],
   [
     gap: 25,,
@@ -22,7 +27,7 @@
     'There is also a ‘map’ form, which only works with list arguments, and
     applies the function individually to every key / value pair of the provided
     list. There is a shorthand syntax for when you only need to access the
-    items.',
+    values.',
     'The map is applied to each element in the order they are sorted in the
     list.',
     code?.["[5, 10].[v=> k=> [v?, k?]]", "[5, 10].[v=>> v? + 5]"],,
