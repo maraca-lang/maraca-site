@@ -7,7 +7,8 @@
     "build": "maraca-build"
   },
   "resolutions": {
-    "maraca": "0.5.2"
+    "maraca": "0.5.2",
+    "maraca-render": "0.4.0"
   },
   "devDependencies": {
     "chrono-node": "^1.3.11",

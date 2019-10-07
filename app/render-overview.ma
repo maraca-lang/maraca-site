@@ -70,7 +70,7 @@
     .[
       "[
         pad: 10,
-        fill: (#tick * 5) 80 80,
+        fill: (#tick * 20) 80 80,
         (hover?, Hello\\!, => Hover me),
       ]",
     ],

@@ -1,10 +1,12 @@
-import { fromJs, parse } from 'maraca';
+import { fromJs, parse as parseMaraca } from 'maraca';
 import {
   createNodes,
-  createUpdater,
-  padNode,
-  padText,
+  getChildren,
+  pad,
+  parse,
   parseValue,
+  resize,
+  updateNode,
 } from 'maraca-render';
 import * as prism from 'prismjs';
 
@@ -12,28 +14,30 @@ import printMaraca from './print';
 
 import 'codemirror/lib/codemirror.css';
 
-const withPromises = (...promises) => {
-  const func = promises.pop();
-  let resolved;
-  let current;
-  let stopped;
-  const run = () => func(...resolved, ...current);
-  Promise.all(promises).then(res => {
-    if (!stopped) {
-      resolved = res;
-      run();
-    }
-  });
-  return {
-    update: (...args) => {
-      current = args;
-      if (resolved) run();
-    },
-    destroy: () => {
-      stopped = true;
-    },
-  };
-};
+class WithPromises {
+  resolved;
+  current;
+  stopped;
+  update(..._) {}
+  constructor(...promises) {
+    Promise.all(promises).then(res => {
+      if (!this.stopped) {
+        this.resolved = res;
+        this.run();
+      }
+    });
+  }
+  run() {
+    this.update(...this.resolved, ...this.current);
+  }
+  render(...args) {
+    this.current = args;
+    if (this.resolved) this.run();
+  }
+  dispose() {
+    this.stopped = true;
+  }
+}
 
 const loadCodeMirror = async () => {
   const [{ default: CodeMirror }] = await Promise.all([
@@ -115,7 +119,7 @@ const printValue = value => {
 
 const formatCode = (prettier, plugin, code, printWidth?) => {
   try {
-    parse(code);
+    parseMaraca(code);
     return prettier.format(code, {
       parser: 'maraca',
       plugins: [plugin],
@@ -127,101 +131,129 @@ const formatCode = (prettier, plugin, code, printWidth?) => {
 };
 
 export default {
-  code: () => {
-    const [node, inner] = createNodes('div', 'span');
-    const nodeUpdater = createUpdater();
-    const innerUpdater = createUpdater();
-    return {
+  code: class Code extends WithPromises {
+    constructor(node) {
+      super(import('prettier/standalone'), import('prettier-plugin-maraca'));
+      createNodes(node, 'span');
+    }
+    static getInfo(values, context) {
+      const { context: nextContext, ...style } = parse.style(values, context);
+      const box = parse.box(values);
+      const size = parse.size(values);
+      const lang = parseValue(values.lang, 'string') || 'maraca';
+      const value = parseValue(values['1'], 'string');
+      return {
+        props: { values, style, box, size, lang, value },
+        context: nextContext,
+      };
+    }
+    update(
+      prettier,
+      prettierMaraca,
       node,
-      ...withPromises(
-        import('prettier/standalone'),
-        import('prettier-plugin-maraca'),
-        (prettier, prettierMaraca, values, indices, base) => {
-          nodeUpdater(node, base.info.box.props);
-          innerUpdater(inner, base.info.text.props);
-          padText(inner, base.info.text.pad);
-          padNode(inner, 'pad', base.info.box.pad);
+      { values, style, box, size, lang, value },
+      context,
+    ) {
+      const inner = getChildren(node)[0];
 
-          const lang = parseValue('string', values.lang) || 'maraca';
-          const value = parseValue('string', indices[0] || { type: 'nil' });
-          setTimeout(() => {
-            inner.innerHTML = prism.highlight(
-              lang === 'maraca'
-                ? formatCode(
-                    prettier,
-                    prettierMaraca,
-                    value,
-                    Math.ceil(node.offsetWidth / (base.context.size * 0.65)),
-                  )
-                : value,
-              languages[lang],
-            );
-          });
-        },
-      ),
-    };
-  },
-  print: () => {
-    const [node, inner] = createNodes('div', 'span');
-    const nodeUpdater = createUpdater();
-    const innerUpdater = createUpdater();
-    return {
-      node,
-      ...withPromises(
-        import('prettier/standalone'),
-        (prettier, _, indices, base) => {
-          nodeUpdater(node, base.info.box.props);
-          innerUpdater(inner, base.info.text.props);
-          padText(inner, base.info.text.pad);
-          padNode(inner, 'pad', base.info.box.pad);
-
-          setTimeout(() => {
-            inner.innerHTML = prism.highlight(
-              formatCode(
+      updateNode(inner, style.props);
+      setTimeout(() => {
+        inner.innerHTML = prism.highlight(
+          lang === 'maraca'
+            ? formatCode(
                 prettier,
-                printMaraca(prettier),
-                printValue(parseValue(true, indices[0] || { type: 'nil' })),
-                Math.ceil(node.offsetWidth / (base.context.size * 0.8)),
-              ),
-              {
-                string: /_/,
-                punctuation: /\[|\]|,/,
-                keyword: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?:\s/,
-                number: /./,
-              },
-            );
-          });
-        },
-      ),
-    };
+                prettierMaraca,
+                value,
+                Math.ceil(node.offsetWidth / (context.size * 0.65)),
+              )
+            : value,
+          languages[lang],
+        );
+        pad.node(inner, 'pad', box.pad);
+        pad.text(inner, style.pad);
+      });
+
+      resize(node, values);
+      updateNode(node, box.props, size.props);
+    }
   },
-  editor: () => {
-    const [node] = createNodes('div');
-    const updater = createUpdater();
-    return {
-      node,
-      ...withPromises(loadCodeMirror(), (CodeMirror, values, _, base) => {
-        updater(node, base.info.text.props, base.info.box.props);
-        const value = parseValue('string', values.value) || '';
-        const setValue = values.value.set;
-        node.style.height = '500px';
-        if (!node.__editor) {
-          node.__editor = CodeMirror(node, {
-            value,
-            mode: 'maraca',
-            tabSize: 2,
-            lineNumbers: true,
-          });
-          node.__editor.on('change', () => {
-            setValue(fromJs(node.__editor.getDoc().getValue()));
-          });
-        }
-        if (value !== node.__editor.getDoc().getValue()) {
-          node.__editor.getDoc().setValue(value);
-        }
-        setTimeout(() => node.__editor.refresh());
-      }),
-    };
+  print: class Print extends WithPromises {
+    constructor(node) {
+      super(import('prettier/standalone'));
+      createNodes(node, 'span');
+    }
+    static getInfo(values, context) {
+      const { context: nextContext, ...style } = parse.style(values, context);
+      const box = parse.box(values);
+      const size = parse.size(values);
+      const value = parseValue(values['1'], true);
+      return {
+        props: { values, style, box, size, value },
+        context: nextContext,
+      };
+    }
+    update(prettier, node, { values, style, box, size, value }, context) {
+      const inner = getChildren(node)[0];
+
+      updateNode(inner, style.props);
+      setTimeout(() => {
+        inner.innerHTML = prism.highlight(
+          formatCode(
+            prettier,
+            printMaraca(prettier),
+            printValue(value),
+            Math.ceil(node.offsetWidth / (context.size * 0.8)),
+          ),
+          {
+            string: /_/,
+            punctuation: /\[|\]|,/,
+            keyword: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?:\s/,
+            number: /./,
+          },
+        );
+        pad.node(inner, 'pad', box.pad);
+        pad.text(inner, style.pad);
+      });
+
+      resize(node, values);
+      updateNode(node, box.props, size.props);
+    }
+  },
+  editor: class Editor extends WithPromises {
+    constructor() {
+      super(loadCodeMirror());
+    }
+    static getInfo(values, context) {
+      const { context: nextContext, ...style } = parse.style(values, context);
+      const box = parse.box(values);
+      const size = parse.size(values);
+      const value = parseValue(values.value, 'string', '');
+      return {
+        props: { values, style, box, size, value },
+        context: nextContext,
+      };
+    }
+    update(CodeMirror, node, { values, style, box, size, value }) {
+      const setValue = values.value.set;
+      node.style.height = '500px';
+      if (!node.__editor) {
+        node.__editor = CodeMirror(node, {
+          value,
+          mode: 'maraca',
+          tabSize: 2,
+          lineNumbers: true,
+        });
+        node.__editor.on('change', () => {
+          setValue(fromJs(node.__editor.getDoc().getValue()));
+        });
+      }
+      if (value !== node.__editor.getDoc().getValue()) {
+        node.__editor.getDoc().setValue(value);
+      }
+      setTimeout(() => node.__editor.refresh());
+
+      updateNode(node, style.props, box.props, size.props);
+    }
   },
 };
 
@@ -241,70 +273,70 @@ if (typeof window !== 'undefined') {
     word-break: normal;
     word-wrap: normal;
     line-height: 1.5;
-  
+
     -moz-tab-size: 4;
     -o-tab-size: 4;
     tab-size: 4;
-  
+
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
   }
-  
+
   pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
   code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
     text-shadow: none;
     background: #b3d4fc;
   }
-  
+
   pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
   code[class*="language-"]::selection, code[class*="language-"] ::selection {
     text-shadow: none;
     background: #b3d4fc;
   }
-  
+
   @media print {
     code[class*="language-"],
     pre[class*="language-"] {
       text-shadow: none;
     }
   }
-  
+
   /* Code blocks */
   pre[class*="language-"] {
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
   }
-  
+
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
     background: #f5f2f0;
   }
-  
+
   /* Inline code */
   :not(pre) > code[class*="language-"] {
     padding: .1em;
     border-radius: .3em;
     white-space: normal;
   }
-  
+
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
     color: slategray;
   }
-  
+
   .token.punctuation {
     color: #999;
   }
-  
+
   .namespace {
     opacity: .7;
   }
-  
+
   .token.property,
   .token.tag,
   .token.boolean,
@@ -314,7 +346,7 @@ if (typeof window !== 'undefined') {
   .token.deleted {
     color: #905;
   }
-  
+
   .token.selector,
   .token.attr-name,
   .token.string,
@@ -323,7 +355,7 @@ if (typeof window !== 'undefined') {
   .token.inserted {
     color: #690;
   }
-  
+
   .token.operator,
   .token.entity,
   .token.url,
@@ -332,24 +364,24 @@ if (typeof window !== 'undefined') {
     color: #9a6e3a;
     background: hsla(0, 0%, 100%, .5);
   }
-  
+
   .token.atrule,
   .token.attr-value,
   .token.keyword {
     color: #07a;
   }
-  
+
   .token.function,
   .token.class-name {
     color: #DD4A68;
   }
-  
+
   .token.regex,
   .token.important,
   .token.variable {
     color: #e90;
   }
-  
+
   .token.important,
   .token.bold {
     font-weight: bold;
@@ -357,7 +389,7 @@ if (typeof window !== 'undefined') {
   .token.italic {
     font-style: italic;
   }
-  
+
   .token.entity {
     cursor: help;
   }

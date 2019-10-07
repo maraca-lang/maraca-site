@@ -113,7 +113,7 @@
         gap: 15,
         [
           pad: 10,
-          fill: (#tick * 5) 80 (hover?, 80, => 70),
+          fill: (#tick * 20) 80 (hover?, 80, => 70),
           round: 5,
           style: bold,
           Click me,

@@ -38,7 +38,7 @@
         [style: bold, Todos App],
         [
           input: new?,
-          fill: 80 80 95,
+          fill: 290 80 95,
           pad: 10,
         ],
         ~: todos?,
@@ -61,7 +61,7 @@
         [style: bold, Todos App],
         [
           input: new?,
-          fill: 80 80 95,
+          fill: 290 80 95,
           pad: 10,
           enter? | [new?, ~: todos?]
             ->
@@ -105,7 +105,7 @@
         [style: bold, Todos App],
         [
           input: new?,
-          fill: 80 80 95,
+          fill: 290 80 95,
           pad: 10,
           enter? | next? -> todos?,
           enter? | \"\" -> new?,

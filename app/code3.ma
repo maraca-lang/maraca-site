@@ -18,12 +18,7 @@
               v?,
             ],
         ],
-      [: code, style: 15, pad: (i? == 1, 10, => 5) 10 10, text?],
-      [
-        style: Montserrat 18 normal,
-        color: 0 0 20,
-        pad: (i? == 1, 10, => 5) 10 10,
-        text? $ [],
-      ],
+      [: code, style: 15, pad: 10, text?],
+      [style: Montserrat 18 normal, color: 0 0 20, pad: 10, text? $ []],
     ],
 ]
