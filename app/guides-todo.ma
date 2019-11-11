@@ -19,7 +19,7 @@
         gap: 10,
         pad: 20,
         [style: bold, Todos App],
-        ~: todos?,
+        : todos?,
       ],
     }",,
 
@@ -41,7 +41,7 @@
           fill: 290 80 95,
           pad: 10,
         ],
-        ~: todos?,
+        : todos?,
       ],
     }",,
 
@@ -63,12 +63,12 @@
           input: new?,
           fill: 290 80 95,
           pad: 10,
-          enter? | [new?, ~: todos?]
+          enter? | [new?, : todos?]
             ->
             todos?,
           enter? | \"\" -> new?,
         ],
-        ~: todos?.[t=>> [style: bullet, t?]],
+        : todos?.[t=>> [style: bullet, t?]],
       ],
     }",,
 
@@ -87,7 +87,7 @@
         ],
       new: ,
       next:
-        [[text: new?, done: ], ~: todos?],,
+        [[text: new?, done: ], : todos?],,
       renderTodo:
         [
           t=>
@@ -110,7 +110,7 @@
           enter? | next? -> todos?,
           enter? | \"\" -> new?,
         ],
-        ~: todos?.[t=>> renderTodo?.t?],
+        : todos?.[t=>> renderTodo?.t?],
       ],
     }",
   ],

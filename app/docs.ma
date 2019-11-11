@@ -15,7 +15,7 @@
         round: 10,
         pad: 15,
         gap: 0,
-        ~:
+        :
           [
             [Data],
             [Combining, combining],

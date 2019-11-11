@@ -26,7 +26,7 @@
     [
       cols: equal,
       gap: 40,
-      ~:
+      :
         [
           [
             Dynamic,
@@ -56,7 +56,7 @@
     [
       cols: equal,
       gap: 40,
-      ~:
+      :
         [
           [
             Data templating,
@@ -86,18 +86,18 @@
 
     [
       'To get a high level overview, take a look at the
-      <~: link?.['Todo App Guide', [guides, todo]]/>, along with the
-      <~: link?.['Maraca-Render documentation', [render]]/>, to see Maraca in
+      <: link?.['Todo App Guide', [guides, todo]]/>, along with the
+      <: link?.['Maraca-Render documentation', [render]]/>, to see Maraca in
       action without worrying about the precise details.',
     ],
     [
       'Quite soon however, you’ll want to read through the main
-      <~: link?.['Maraca Docs', [docs]]/> to see how the core language works.',
+      <: link?.['Maraca Docs', [docs]]/> to see how the core language works.',
     ],
     [
       'To try out Maraca yourself, either use the
-      <~: link?.['Try page', [try]]/>, or follow the instructions on the
-      <~: link?.['Setup page', [setup]]/>.',
+      <: link?.['Try page', [try]]/>, or follow the instructions on the
+      <: link?.['Setup page', [setup]]/>.',
     ],
   ],
   [

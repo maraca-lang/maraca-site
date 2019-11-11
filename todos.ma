@@ -3,8 +3,8 @@
   filtered:
     [
       All: allTodos?,
-      Active: allTodos?.[v=>> :: [(!v?.done, v?)]],
-      Completed: allTodos?.[v=>> :: [(v?.done, v?)]],
+      Active: allTodos?.[v=>> : [(!v?.done, v?)]],
+      Completed: allTodos?.[v=>> : [(v?.done, v?)]],
     ],
   filter: All,
   todos: filtered?.filter?,
@@ -22,7 +22,7 @@
         input: new?,
         fill: 0 0 95,
         pad: 10,
-        enter? | (new?, [[done: , text: new?], :: allTodos?], => allTodos?)
+        enter? | (new?, [[done: , text: new?], : allTodos?], => allTodos?)
           ->
           allTodos?,
         enter? | "" -> new?,
@@ -36,45 +36,45 @@
         [
           gap: 10,
           todos?
-            .[
-              v=> i=>
+          .[
+            v=> i=>
+              [
+                pad: 1 0 0 0,
+                fill: 0 0 30,
                 [
-                  pad: 1 0 0 0,
-                  fill: 0 0 30,
+                  hover: ,
+                  cols: all,
+                  fill: 0 0 (hover?, 80, => 95),
                   [
-                    hover: ,
-                    cols: all,
-                    fill: 0 0 (hover?, 80, => 95),
-                    [
-                      x: 40,
-                      pad: 10,
-                      [fill: 0 0 (v?.done, 30, => (hover?, 80, => 95))],
-                      click? | !v?.done -> v?.done,
-                    ],
-                    [
-                      pad: 5,
-                      style: (v?.done, strike),
-                      color: 0 0 (v?.done, 60, => 0),
-                      y: middle,
-                      v?.text,
-                      click? | !v?.done -> v?.done,
-                    ],
-                    {
-                      hovered: hover?,
-                      [
-                        hover: ,
-                        fill: 0 0 (hover?, 60, => (hovered?, 80, => 95)),
-                        x: 40,
-                        y: middle,
-                        style: 30 center,
-                        pad: 5,
-                        click? | allTodos?.[w=>> (w? ! v?, w?)] -> allTodos?,
-                        '×,
-                      ],
-                    },
+                    x: 40,
+                    pad: 10,
+                    [fill: 0 0 (v?.done, 30, => (hover?, 80, => 95))],
+                    click? | !v?.done -> v?.done,
                   ],
+                  [
+                    pad: 5,
+                    style: (v?.done, strike),
+                    color: 0 0 (v?.done, 60, => 0),
+                    y: middle,
+                    v?.text,
+                    click? | !v?.done -> v?.done,
+                  ],
+                  {
+                    hovered: hover?,
+                    [
+                      hover: ,
+                      fill: 0 0 (hover?, 60, => (hovered?, 80, => 95)),
+                      x: 40,
+                      y: middle,
+                      style: 30 center,
+                      pad: 5,
+                      click? | allTodos?.[w=>> (w? ! v?, w?)] -> allTodos?,
+                      \×,
+                    ],
+                  },
                 ],
-            ],
+              ],
+          ],
         ],
       ],
     ),
@@ -99,20 +99,20 @@
           pad: 0 0 0 5,
           cols: all,
           gap: 20,
-          ::
+          :
             [All, Active, Completed]
-              .[
-                v=>>
-                  [
-                    x: 100,
-                    style: center,
-                    color: 0 0 (filter? == v?, 30, => 70),
-                    fill: 0 0 (filter? == v?, 30, => 90),
-                    pad: 1,
-                    [pad: 4, fill: 0 0 90, v?],
-                    click? | v? -> filter?,
-                  ],
-              ],
+            .[
+              v=>>
+                [
+                  x: 100,
+                  style: center,
+                  color: 0 0 (filter? == v?, 30, => 70),
+                  fill: 0 0 (filter? == v?, 30, => 90),
+                  pad: 1,
+                  [pad: 4, fill: 0 0 90, v?],
+                  click? | v? -> filter?,
+                ],
+            ],
         ],
       ],
     ],

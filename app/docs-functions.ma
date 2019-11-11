@@ -13,12 +13,7 @@
     [style: 18 bold, Argument destructuring],
     'Function arguments are unpacked onto the parameter value provided, allowing
     for destructuring.',
-    code?.["[1, 2].[[x, y]=> x? + y?]"],,
-
-    [style: 18 bold, The identity function],
-    'There is a shorthand syntax for the identity function, ‘~’, which sends any
-    value to itself.',
-    code?.["x.~", "[1, 2].~"],
+    code?.["[1, 2].[[x, y]=> x? + y?]"],
   ],
   [
     gap: 25,,

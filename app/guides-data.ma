@@ -12,7 +12,7 @@
     [style: 18 bold, Index],
     'To turn a keyed list into an indexed one, map through it and unpack each
     item onto the next available index.',
-    code?.["#data.[v=>> ~: [v?]]"],,
+    code?.["#data.[v=>> : [v?]]"],,
 
     [style: 18 bold, Sort],
     'First re-key the items, and then index them.',
@@ -20,7 +20,7 @@
     .[
       "#data
       .[v=>> v?.Name: v?]
-      .[v=>> ~: [v?]]",
+      .[v=>> : [v?]]",
     ],,
 
     [style: 18 bold, Filter],
@@ -37,9 +37,9 @@
     code?
     .[
       "#data
-      .[v=>> ~: [v?]]
+      .[v=>> : [v?]]
       .[v=> k=> (k? >= 2, v?)]
-      .[v=>> ~: [v?]]",
+      .[v=>> : [v?]]",
     ],
   ],
 ]

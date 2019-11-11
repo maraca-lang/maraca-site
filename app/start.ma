@@ -28,7 +28,7 @@
           gap: 30,
           x: left,
           y: middle,
-          ~:
+          :
             [
               [Setup, setup],
               [Docs, docs],
@@ -62,6 +62,6 @@
         ],
       ],
     ],
-    page?.[: home?, setup:=?, docs:=?, render:=?, guides:=?, try:=?],
+    page?.["": home?, setup:=?, docs:=?, render:=?, guides:=?, try:=?],
   ],
 }

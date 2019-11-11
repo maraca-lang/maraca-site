@@ -51,7 +51,7 @@ const loadCodeMirror = async () => {
       { regex: /\]|\)|\}/, token: 'attribute', dedent: true },
       { regex: /,/, token: 'attribute' },
       {
-        regex: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>|~)/,
+        regex: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>)/,
         token: 'keyword',
       },
       { regex: /\?/, token: 'attribute' },
@@ -84,7 +84,7 @@ const languages = {
     },
     punctuation: /\[|\(|\{|\]|\)|\}|,|\?/,
     keyword: {
-      pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>|~)/,
+      pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>)/,
       greedy: true,
     },
     function: /(@@@|@@|@)|(#((\d+\.\d+)|([a-zA-Z0-9]+))?)/,

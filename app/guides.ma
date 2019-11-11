@@ -15,7 +15,7 @@
         round: 10,
         pad: 15,
         gap: 0,
-        ~:
+        :
           [[Data Operations], [Todo App, todo]]
           .[
             [text, url]=>>
