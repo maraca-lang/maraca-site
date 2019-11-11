@@ -2600,10 +2600,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-maraca-app@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/maraca-app/-/maraca-app-0.2.0.tgz#6d95e7f8db393a7e95c3c68e3fc0ac74c833cbdf"
-  integrity sha512-gKzO3LE5ysveShcDaL1OC9vrd25MxE8xwGYWR67Oenthd+9C2lIljm8tix7/+VoM3BDC8f5f3yJD7sJnFwJhlw==
+maraca-app@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/maraca-app/-/maraca-app-0.2.1.tgz#78f5fc514c19cc0612a8a83a58c11b694695c6d0"
+  integrity sha512-+VD8ckw6mkR19KaCcj+R/vOrlpH7ceWETCrWEfcRwP2djjiuen3c9QpXTbatLi2QkVjturgf9pP+bPfBhRwwLA==
   dependencies:
     add-asset-webpack-plugin "^1.0.0"
     copy-webpack-plugin "^5.0.5"
