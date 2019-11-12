@@ -38,18 +38,17 @@
     code?.["y [x: a, y: b]", "[x: a, y: b]x"],
     'Positive integers access indexed values.',
     code?.["2 [a, b, c]", "[a, b, c] 1"],
-    'Accessing a missing key returns nil, or the default if provided (see the
-    Functions section).',
-    code?.["[x: a, y: b] z", "[x: a, y: b, => c] z"],
+    'Accessing a missing key returns nil.',
+    code?.["[x: a, y: b] z"],
   ],
   [
     gap: 25,,
 
     [style: 26 bold, color: colors?.red, 'The dot operator'],
     'The dot operator also performs combination, but at a lower precedence than
-    direct combinations. This is useful for avoiding lots of parentheses, for
+    direct combinations. This is useful for avoiding extra parentheses, for
     example the following are equivalent.',
-    code?.["([a b: c])(a b)", "[a b: c].a b"],,
+    code?.["[First name: Bob](First name)", "[First name: Bob].First name"],,
 
     'When used between values, no space is added.',
     code?.["Hello.world"],,

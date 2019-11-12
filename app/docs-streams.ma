@@ -40,13 +40,13 @@
     code?.["#slowtick | @now"],,
 
     [style: 18 bold, Push],
-    'Whenever the stream on the left emits, the push operator pushes a static
-    copy of the value into the stream on the right.',
-    code?.["[x: hello, #tick -> x?]"],,
+    'Whenever the stream on the left emits, the push operator pushes a copy of
+    the value into the stream on the right.',
+    code?.["[x: 1, #tick -> x?]"],,
 
     [style: 18 bold, Triggering updates],
     'Together, the snapshot and push operators allow for updating values in
     response to events.',
-    code?.["[ x: 10, #tick | x? + 10 -> x?, ]"],
+    code?.["[ x: 1, #tick | (x? * 2) % 5 -> x?, ]"],
   ],
 ]

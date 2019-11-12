@@ -18,12 +18,12 @@
         :
           [
             [Data],
-            [Combining, combining],
             [Operators, operators],
+            [Combining, combining],
             [Context, context],
-            [Unpacking, unpacking],
+            [Assignment, assignment],
             [Functions, functions],
-            [Semilists, semilists],
+            [Logic\-lists, logic\-lists],
             [Streams, streams],
             [Metacode, metacode],
           ]

@@ -1,1 +1,1 @@
-[streams: "js/streams", components: "js/components"]
+[streams: "js/streams", components: "js/components", favicon: "favicon.ico"]

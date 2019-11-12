@@ -64,6 +64,11 @@
     omitted from the printed output.)',
     code?.["[hello, world]", "[x: a, y: b]", "[10, 20, key: value]"],,
 
+    [style: 18 bold, Nesting],
+    'List values can also themselves be lists.',
+    code?.["[x: [a, b]]"],,,
+
+
     [style: 18 bold, Nils are ignored],
     'All nil values are ignored, whether keyed or not.',
     code?.["[a, , b, , c: ]", "[`This is a comment`, 1, 2]"],
@@ -78,17 +83,9 @@
       ]",
     ],,
 
-    [style: 18 bold, Nesting],
-    'Both values and keys can also themselves be lists.',
-    code?.["[x: 1, y: [b, c]]", "[[a, b]: 100]"],,
-
     [style: 18 bold, Sort order],
     'Lists are ordered by a dictionary sort of the keys, apart from indices
     which are sorted at the beginning, in numeric order.',
-    code?.["[z: 1, y: 2, b, a]"],,
-
-    [style: 18 bold, Assignment shorthand],
-    'There is a shorthand syntax for assigning a key to its own value.',
-    code?.["[item:=]"],
+    code?.["[z: 1, y: 2, b, a]"],
   ],
 ]
