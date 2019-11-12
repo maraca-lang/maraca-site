@@ -1140,9 +1140,9 @@ depd@~1.1.2:
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
 des.js@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.0.tgz#c074d2e2aa6a8a9a07dbd61f9a15c2cd83ec8ecc"
-  integrity sha1-wHTS4qpqipoH29YfmhXCzYPsjsw=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
+  integrity sha512-Q0I4pfFrv2VPd34/vfLrFOoRmlYj3OV50i7fskps1jZWK1kApMWWT9G6RRUeYedLcBDIhnSDaUvJMb3AhUlaEA==
   dependencies:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
@@ -2600,10 +2600,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-maraca-app@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/maraca-app/-/maraca-app-0.2.2.tgz#a51c3a8ed01eb02f1bd6cca019779b67a6432060"
-  integrity sha512-hK/WEjCFoQvei79J3b8Dzz+pBLi0NjfgjH0JdfpFlhvCqnPNuGY6CW/0crOoFIQHreJim3d/7zbx81qGEsWatA==
+maraca-app@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/maraca-app/-/maraca-app-0.2.4.tgz#755c105bc07854248c92f753154ce7ebd6284967"
+  integrity sha512-+oIfC9dth4F9jxFboc40wkMbzJJ9ZGhZ7gP/wyJl6i/Xu3NPsP1KLi2D+8iATAwWvB3SYkx69kemYp423tBNew==
   dependencies:
     add-asset-webpack-plugin "^1.0.0"
     copy-webpack-plugin "^5.0.5"
