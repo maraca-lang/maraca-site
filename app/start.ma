@@ -44,7 +44,7 @@
                   click? | [url?] -> #url,
                   [
                     pad: 0 0 2,
-                    fill: ({page? == url?, hover?}, colors?.green, => 0 0 100),
+                    fill: ({page? = url?, hover?}, colors?.green, => 0 0 100),
                     [pad: 5 0 3, fill: 0 0 100, text?],
                   ],
                 ],

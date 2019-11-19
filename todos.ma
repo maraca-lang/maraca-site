@@ -90,7 +90,7 @@
           pad: 10,
           {
             num: #(filtered?.Active),
-            (num? == 1, 1 item left, => {num?} items left),
+            (num? = 1, 1 item left, => {num?} items left),
           },
         ],
         [
@@ -106,8 +106,8 @@
                 [
                   x: 100,
                   style: center,
-                  color: 0 0 (filter? == v?, 30, => 70),
-                  fill: 0 0 (filter? == v?, 30, => 90),
+                  color: 0 0 (filter? = v?, 30, => 70),
+                  fill: 0 0 (filter? = v?, 30, => 90),
                   pad: 1,
                   [pad: 4, fill: 0 0 90, v?],
                   click? | v? -> filter?,

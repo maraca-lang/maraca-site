@@ -39,10 +39,10 @@
 
     [style: 18 bold, Loose equal],
     'Lower values mean more similar.',
-    code?.["John = James", "John = Jon"],,
+    code?.["John ~ James", "John ~ Jon"],,
 
     [style: 18 bold, Strict equal],
-    code?.["2 == 6", "3 == 3"],,
+    code?.["2 = 6", "3 = 3"],,
 
     [style: 18 bold, Comparisons],
     code?.["5 < 3", "5 <= 5", "8 > 2", "1 >= 3"],,

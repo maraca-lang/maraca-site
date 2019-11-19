@@ -58,7 +58,7 @@ const loadCodeMirror = async () => {
       { regex: /@@@|@@|@/, token: 'def' },
       { regex: /#((\d+\.\d+)|([a-zA-Z0-9]+))?/, token: 'def' },
       {
-        regex: /->|<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
+        regex: /->|<=|>=|<|>|~|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
         token: 'operator',
       },
       { regex: /(\d+\.\d+)|([a-zA-Z0-9]+)/, token: 'number' },
@@ -88,7 +88,7 @@ const languages = {
       greedy: true,
     },
     function: /(@@@|@@|@)|(#((\d+\.\d+)|([a-zA-Z0-9]+))?)/,
-    operator: /->|<=|>=|==|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
+    operator: /->|<=|>=|<|>|~|=|\+|\-|\*|\/|%|\^|!|\.|\||\$/,
     number: { pattern: /(\d+\.\d+)|([a-zA-Z0-9]+)/, greedy: true },
     comment: { pattern: /`[^`]*`/, greedy: true },
   },

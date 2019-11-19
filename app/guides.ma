@@ -22,8 +22,8 @@
               [
                 pad: 10,
                 click? | [guides, url?] -> #url,
-                fill: ({page? == url?, hover?}, 0 0 95, => 0 0 98),
-                color: (page? == url?, colors?.red, => colors?.green),
+                fill: ({page? = url?, hover?}, 0 0 95, => 0 0 98),
+                color: (page? = url?, colors?.red, => colors?.green),
                 text?,
               ],
           ],

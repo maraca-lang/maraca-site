@@ -13,7 +13,7 @@
     'An and-list is written using parentheses, and returns true only if all of
     the values are true. More precisely, it returns the last value if all are
     true (non-nil), otherwise nil.',
-    code?.["(3 > 4, 5 == 5)", "(1 == 1, 2 < 3)"],
+    code?.["(3 > 4, 5 =  5)", "(1 =  1, 2 < 3)"],
     'This syntax is shorthand for accessing the last indexed value of a list.
     For example, the following are equivalent.',
     code?.["(5, 10)", "[5, 10].2"],
@@ -25,7 +25,7 @@
     'An or-list is written using braces, and returns true if any of the values
     are true. More precisely, it returns the first true (non-nil) value in the
     list.',
-    code?.["{3 < 4, 10}", "{1 == 2, 4 < 2}"],
+    code?.["{3 < 4, 10}", "{1 =  2, 4 < 2}"],
     'This syntax is shorthand for accessing the first indexed value of a list.
     For example, the following are equivalent.',
     code?.["{5, 10}", "[5, 10].1"],
@@ -52,6 +52,6 @@
 
     [style: 18 bold, Ternary],
     'You can create a ternary expression using an and-list with a default.',
-    code?.["(1 == 2, x, => y)"],
+    code?.["(1 =  2, x, => y)"],
   ],
 ]

@@ -2,17 +2,21 @@
   "name": "maraca-site",
   "version": "1.0.0",
   "scripts": {
-    "prettier": "prettier --write \"app/**/*.ma\""
+    "prettier": "prettier --write \"**/*.{ma,ts}\""
   },
-  "devDependencies": {
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "proseWrap": "always"
+  },
+  "dependencies": {
     "chrono-node": "^1.3.11",
     "codemirror": "^5.49.2",
-    "maraca-app": "^0.2.4",
+    "maraca-app": "^0.2.5",
     "prettier": "^1.19.1",
-    "prettier-plugin-maraca": "^0.3.2",
+    "prettier-plugin-maraca": "^0.3.4",
     "prismjs": "^1.17.1",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.2",
-    "webfontloader": "^1.6.28"
+    "typescript": "^3.7.2"
   }
 }
