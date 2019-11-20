@@ -2638,9 +2638,9 @@ maraca-render@^0.4.1:
     maraca "^0.5.4"
 
 maraca@*, maraca@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.5.4.tgz#313695b694f6740baf76df65a9fced95e61f84f0"
-  integrity sha512-2vas0AE9Ybyry0V9zVu2jLVTvy70TskUPWr3j9pXTATGmaKFHFpL6nH6ByUM6y97up6SqRlRjffpI5dnhXRaXA==
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/maraca/-/maraca-0.5.5.tgz#234226bca08007f0ccb3475309279d61e9f82c24"
+  integrity sha512-yQxMADy2EVgp33vo1/wApB5AiamSA6fqsW11Ee/w8cTbD0Ngy/Eyf20nNvLa16sZDIQVKEsmvaOqepqbX9Ke/g==
   dependencies:
     ohm-js "^0.14.0"
 

@@ -37,7 +37,7 @@
     'Boolean operations in Maraca return either the string ‘true’ (for true), or
     nil (for false).',,
 
-    [style: 18 bold, Loose equal],
+    [style: 18 bold, Similarity],
     'Lower values mean more similar.',
     code?.["John ~ James", "John ~ Jon"],,
 
