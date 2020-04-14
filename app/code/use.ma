@@ -10,48 +10,53 @@ util?
           color: util?.colors.red.parseColor?,
           'font-weight': bold,
         ],
-      "Use blocks",
+      "Using blocks",
     ],
     [
       [
         style: ['padding-bottom': 10px],
         "Use a <: util?.prismchar.[\., operator]/> to get a value from a block,
-        with integers for unkeyed values:",
+        with integers for unkeyed values, and missing keys returning nil:",
       ],
       example?
       .[
         '[First name: Thomas, Last name: Dawson, Age: 62].Last name',
         '[Monday, Tuesday, Wednesday].2',
+        '[Name: Lucy].Address',
       ],
     ],
     [
       [
         style: ['padding-bottom': 10px],
-        "Missing keys return nil, or a default can be provided:",
-      ],
-      example?
-      .['[Name: Lucy].Address', '[Name: Lucy, => Data missing\\!].Address'],
-    ],
-    [
-      [
-        style: ['padding-bottom': 10px],
-        "Add a label for the provided key to create a function, and use blocks
-        for both the function label and the input key to create a function of
-        multiple values:",
+        "Add a default for missing keys, and add a label for the provided key to
+        turn the default into a function:",
       ],
       example?
       .[
+        '[Name: Lucy, => Data missing\\!].Address',
         '[Name: Lucy, Field=> {Field?} value missing\\!].Address',
-        '[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]',
       ],
     ],
     [
       [
         style: ['padding-bottom': 10px],
-        "Match function inputs by key, especially for values that may be nil
-        (otherwise nils are removed and inputs are matched unexpectedly):",
+        "Use blocks for both the function label and the input to create a
+        function of multiple values:",
       ],
-      example?.['[[Title:=, Name:=]=> Hi {Title?} {Name?}\\!].[Name: Harriet]'],
+      example?
+      .[
+        '[[Title:=, Name:=]=> Hi {Title?} {Name?}\\!].[Title: Ms, Name: Harriet]'
+      ,
+      ],
+    ],
+    [
+      [
+        style: ['padding-bottom': 10px],
+        "If none of the inputs might be nil, you can match the values by
+        position rather than by key (if any values are nil, they will be removed
+        and the remaining inputs will match wrong):",
+      ],
+      example?.['[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]'],
     ],
   ],
 ]

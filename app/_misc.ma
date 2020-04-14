@@ -61,5 +61,16 @@ util?
         ]',
       ],
     ],
+    [
+      [
+        style: ['padding-bottom': 10px],
+        "Remove keys completely by copying in each item:",
+      ],
+      example?
+      .[
+        '[A: Sue, B: Bob, C: Joe]
+        .[Person=>> : [Person?]]',
+      ],
+    ],
   ],
 ]

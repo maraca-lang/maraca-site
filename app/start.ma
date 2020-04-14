@@ -86,14 +86,14 @@
               ],
               [
                 style: ['font-weight': bold, 'padding-bottom': 16px],
-                "Use Maraca to write effective code.",
+                "Use Maraca to write dynamic code.",
               ],
               "Once you’re comforable writing data, use functions and
               transformers to generate and modify your data dynamically.",
             ],
-            code?.build,
             code?.use,
             code?.transform,
+            code?.keys,
           ],
         ],
       app:

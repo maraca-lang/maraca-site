@@ -10,7 +10,7 @@ util?
           color: util?.colors.red.parseColor?,
           'font-weight': bold,
         ],
-      "Transform blocks",
+      "Transforming blocks",
     ],
     [
       [
@@ -34,30 +34,15 @@ util?
     [
       [
         style: ['padding-bottom': 10px],
-        "Transformed items keep the same key, but you can set items to new keys,
-        or copy in each item to remove the keys completely:",
+        "Items transformed to nil are removed, so filter items by using a
+        transformer that changes some items to nil, and leaves the rest the
+        unchanged:",
       ],
       example?
       .[
-        '[
-          A: [Name: Sue],
-          B: [Name: Bob],
-          C: [Name: Joe],
-        ].[Person=> Key=> Person {Key?}: Person?]',
-        '[
-          A: [Name: Sue],
-          B: [Name: Bob],
-          C: [Name: Joe],
-        ].[Person=>> : [Person?]]',
+        '[A: [Name: Roger, Age: 58], B: [Name: Emma, Age: 24], C: [Name: Issy, Age: 41]]
+        .[Person=>> (Person?.Age > 30, Person?)]',
       ],
-    ],
-    [
-      [
-        style: ['padding-bottom': 10px],
-        "Set an initial value and keep setting the same key to transform a block
-        into a single value:",
-      ],
-      example?.['[1, 2, 3, 4, 5].[sum: 0, num=>> sum: sum? + num?]'],
     ],
   ],
 ]
