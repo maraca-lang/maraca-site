@@ -1,67 +1,158 @@
-{
-  [page]: #url,
+[
+  style: ['font-family': Montserrat, 'font-size': 18px, color: \#333],
+  title?.Maraca,
+  navbar?,
   [
-    style: Montserrat 18,
-    color: 0 0 20,
-    [
-      style: 18 bold,
-      color: colors?.green,
-      gap: 10,
-      cols: all,
-      x: 1000,
-      pad: 10 5,
-      [
-        cols: all,
-        gap: 50,
-        x: left,
-        [
-          cols: all,
-          gap: 15,
-          x: left,
-          pad: 5,
-          click? | [] -> #url,
-          [image: "../img/maraca.png", x: 18, y: middle],
-          [style: 26, color: colors?.red, Maraca, y: middle],
-        ],
-        [
-          cols: all,
-          gap: 30,
-          x: left,
-          y: middle,
-          :
+    style: ['max-width': 750px, padding: 40px 10px, margin: 0 auto],
+    url?
+    .1
+    .[
+      '':
+        util?
+        .stack
+        .[
+          40px,
+          [
             [
-              [Setup, setup],
-              [Docs, docs],
-              [Render, render],
-              [Guides, guides],
-              [Try, try],
-            ]
-            .[
-              [text, url]=>>
-                [
-                  pad: 0 5,
-                  hover: ,
-                  click? | [url?] -> #url,
+              [
+                style:
                   [
-                    pad: 0 0 2,
-                    fill: ({page? = url?, hover?}, colors?.green, => 0 0 100),
-                    [pad: 5 0 3, fill: 0 0 100, text?],
+                    'font-size': 40px,
+                    color: util?.colors.red.parseColor?,
+                    'font-weight': bold,
+                    'padding-bottom': 12px,
                   ],
-                ],
+                "Level 1. Formula",
+              ],
+              [
+                style: ['font-weight': bold, 'padding-bottom': 16px],
+                "Use Maraca to work with existing data.",
+              ],
+              "Any data can be connected to Maraca so you can do calculations,
+              create filters, sort, and use built-in functions - a little like
+              using a spreadsheet.",
             ],
+            formula?.calculate,
+            formula?.filter,
+            formula?.summarise,
+          ],
         ],
-      ],
-      [
-        x: 150,
-        y: middle,
-        [
-          x: right,
-          click? | "https://github.com/maraca-lang" -> #url,
-          pad: 5,
-          GitHub,
+      data:
+        util?
+        .stack
+        .[
+          40px,
+          [
+            [
+              [
+                style:
+                  [
+                    'font-size': 40px,
+                    color: util?.colors.red.parseColor?,
+                    'font-weight': bold,
+                    'padding-bottom': 12px,
+                  ],
+                "Level 2. Data",
+              ],
+              [
+                style: ['font-weight': bold, 'padding-bottom': 16px],
+                "Use Maraca to compose structured data.",
+              ],
+              "At its heart, Maraca is a simple language for defining data, with
+              a clean syntax, and the ability to work with logic, variables, and
+              much more.",
+            ],
+            data?.basics,
+            data?.if,
+            data?.use,
+          ],
         ],
-      ],
+      code:
+        util?
+        .stack
+        .[
+          40px,
+          [
+            [
+              [
+                style:
+                  [
+                    'font-size': 40px,
+                    color: util?.colors.red.parseColor?,
+                    'font-weight': bold,
+                    'padding-bottom': 12px,
+                  ],
+                "Level 3. Code",
+              ],
+              [
+                style: ['font-weight': bold, 'padding-bottom': 16px],
+                "Use Maraca to write effective code.",
+              ],
+              "Once you’re comforable writing data, use functions and
+              transformers to generate and modify your data dynamically.",
+            ],
+            code?.build,
+            code?.use,
+            code?.transform,
+          ],
+        ],
+      app:
+        util?
+        .stack
+        .[
+          40px,
+          [
+            [
+              [
+                style:
+                  [
+                    'font-size': 40px,
+                    color: util?.colors.red.parseColor?,
+                    'font-weight': bold,
+                    'padding-bottom': 12px,
+                  ],
+                "Level 4. App",
+              ],
+              [
+                style: ['font-weight': bold, 'padding-bottom': 16px],
+                "Use Maraca to develop interactive apps.",
+              ],
+              "Finally, map your dynamic data to HTML, and respond to user
+              actions, to create an interactive web app.",
+            ],
+            app?.html,
+            app?.live,
+            app?.code,
+          ],
+        ],
+      setup:
+        util?
+        .stack
+        .[
+          40px,
+          [
+            [
+              [
+                style:
+                  [
+                    'font-size': 40px,
+                    color: util?.colors.red.parseColor?,
+                    'font-weight': bold,
+                    'padding-bottom': 12px,
+                  ],
+                "Setup",
+              ],
+              [
+                style: ['font-weight': bold, 'padding-bottom': 16px],
+                "Setup Maraca on your computer.",
+              ],
+              "Maraca is a lightweight, embeddable language. Currently, the only
+              language environment supported is JavaScript & web. Follow the
+              instructions below to get started.",
+            ],
+            setup?,
+          ],
+        ],
     ],
-    page?.["": home?, setup:=?, docs:=?, render:=?, guides:=?, try:=?],
   ],
-}
+]

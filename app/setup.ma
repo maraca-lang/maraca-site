@@ -1,86 +1,111 @@
 {
-  [_, page]: #url,
-  #title("Setup | Maraca"),
-  [
-    x: 750,
-    pad: 50 10,
-    gap: 40,
-    [style: 40 bold, color: colors?.red, Setup],
+  link:
     [
-      gap: 25,,
-
-      'Maraca is a lightweight, embeddable language. Setup instructions will
-      vary depending on your environment.',
-      'Currently, the only language environment supported is JavaScript & web.',
+      [text, link]=>
+        [
+          : a,
+          href: \/{link?},
+          stopMouse: [left],
+          mouse?.left = down | [link?] -> url?,
+          style:
+            [
+              'text-decoration': none,
+              color: util?.colors.green.parseColor?,
+              'font-weight': bold,
+            ],
+          text?,
+        ],
     ],
+  util?
+  .stack
+  .[
+    40px,
     [
-      gap: 25,,
-
-      [style: 26 bold, color: colors?.red, 'JavaScript & web'],,
-
-      'The three main packages for using Maraca for web development (with
-      approximate React equivalents) are:',
-      [
-        gap: 10,
+      util?
+      .stack
+      .[
+        20px,
         [
-          style: bullet,
-          link?.['maraca-js', "https://github.com/maraca-lang/maraca-js"],
-          ' (react)',
+          [
+            style:
+              [
+                'font-size': 30px,
+                color: util?.colors.red.parseColor?,
+                'font-weight': bold,
+              ],
+            "JavaScript & web",
+          ],
+          "For all the following options, details instructions are available on
+          the linked NPM package pages.",
+          [style: ['font-weight': bold], "JavaScript runtime"],
+          [
+            "To use Maraca directly in JavaScript, install the
+            <
+              :
+                link?
+                .['maraca-js runtime', 'https://www.npmjs.com/package/maraca'],
+            />.",
+          ],
+          [style: ['font-weight': bold], "Building web apps"],
+          [
+            "To use Maraca to build a web app, the simplest way to get started
+            is with the
+            <
+              : link?.['maraca-app', 'https://www.npmjs.com/package/maraca-app']
+            ,
+            />
+            package, which sets up everything you need (webpack, maraca-render
+            etc), letting you dive right in to building your app.",
+          ],
+          [
+            "If you need more control however, you can use the
+            <
+              :
+                link?
+                .[
+                  'maraca-render',
+                  'https://www.npmjs.com/package/maraca-render',
+                ],
+            />
+            package directly to manually render your Maraca output as HTML.",
+          ],
         ],
+      ],
+      util?
+      .stack
+      .[
+        20px,
         [
-          style: bullet,
-          link?
-          .['maraca-render', "https://github.com/maraca-lang/maraca-render"],
-          ' (react-dom)',
-        ],
-        [
-          style: bullet,
-          link?.['maraca-app', "https://github.com/maraca-lang/maraca-app"],
-          ' (create-react-app)',
-        ],
-      ],,
-
-      'The easiest way to get started is with maraca-app, which sets everything
-      up (webpack, render etc) so you can write web apps just in Maraca.',,
-
-      'Otherwise, you can use the JavaScript runtime directly and handle the
-      output yourself (for example using maraca-render).',,
-
-      [
-        'There is also a webpack loader available, ',
-        link?.['maraca-loader', "https://github.com/maraca-lang/maraca-loader"],
-        \.,
-      ],,
-
-      'The documentation for all of these packages is on their linked GitHub
-      pages.',
-    ],
-    [
-      gap: 25,,
-
-      [style: 26 bold, color: colors?.red, Editor tools],,
-
-      [style: 18 bold, Prettier],
-      [
-        'There is a Prettier plugin for Maraca, ',
-        link?
-        .[
-          'prettier-plugin-maraca',
-          "https://github.com/maraca-lang/prettier-plugin-maraca",
-        ],
-        '. It is highly recommended to use this instead of manually managing
-        indentation in Maraca files.',
-      ],,
-
-      [style: 18 bold, Editor extensions],
-      'The following editor extensions are available:',
-      [
-        gap: 10,
-        [
-          style: bullet,
-          'Visual Studio Code: ',
-          link?
-          .['vscode-maraca', "https://github.com/maraca-lang/vscode-maraca"],
+          [
+            style:
+              [
+                'font-size': 30px,
+                color: util?.colors.red.parseColor?,
+                'font-weight': bold,
+              ],
+            "Editor tools",
+          ],
+          [style: ['font-weight': bold], "Prettier"],
+          [
+            "There is a Prettier plugin for Maraca,
+            <
+              :
+                link?
+                .[
+                  'prettier-plugin-maraca',
+                  'https://github.com/maraca-lang/prettier-plugin-maraca',
+                ],
+            />.
+            It is highly recommended to use this.",
+          ],
+          [style: ['font-weight': bold], "Editor extensions"],
+          "There are editor extensions available for the following IDEs,
+          installable using their built-in extension systems:",
+          [
+            : ul,
+            style: ['list-style-type': disc, 'padding-left': 21px],
+            [: li, "Visual Studio Code"],
+          ],
         ],
       ],
     ],

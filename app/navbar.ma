@@ -1,0 +1,103 @@
+{
+  link:
+    [
+      [text, link]=>
+        [
+          : a,
+          href: \/{link?},
+          stopMouse: [left],
+          mouse?.left = down | [link?] -> url?,
+          style:
+            [
+              display: block,
+              'text-decoration': none,
+              color: util?.colors.green.parseColor?,
+              padding: 0 5px,
+            ],
+          [
+            : span,
+            style:
+              [
+                display: 'inline-block',
+                padding: 2px 0 0,
+                'border-bottom':
+                  2px solid
+                  (
+                    {mouse?, url?.1 = link?},
+                    util?.colors.green.parseColor?,
+                    => white,
+                  ),
+              ],
+            text?,
+          ],
+        ],
+    ],
+  [
+    style:
+      [
+        'max-width': 1000px,
+        margin: 0 auto,
+        'font-size': 18px,
+        'font-weight': bold,
+        padding: 10px 5px,
+      ],
+    util?
+    .row
+    .[
+      [
+        util?
+        .row
+        .[
+          [
+            [
+              : a,
+              href: \/,
+              stopMouse: [left],
+              mouse?.left = down | [] -> url?,
+              style:
+                [
+                  display: block,
+                  'margin-right': 20px,
+                  'font-size': 26px,
+                  color: util?.colors.red.parseColor?,
+                  'text-decoration': none,
+                  padding: 0 5px,
+                ],
+              [
+                : span,
+                style: [display: table],
+                [
+                  : span,
+                  style:
+                    [
+                      display: 'table-cell',
+                      'vertical-align': middle,
+                      'padding-right': 15px,
+                    ],
+                  [
+                    : img,
+                    src: '../img/maraca.png',
+                    style: [display: block, width: 18px],
+                  ],
+                ],
+                [
+                  : span,
+                  style: [display: 'table-cell', 'vertical-align': middle],
+                  Maraca,
+                ],
+              ],
+            ],
+            ['1. Formula'].link?,
+            ['2. Data', data].link?,
+            ['3. Code', code].link?,
+            ['4. App', app].link?,
+          ],
+          30px,
+        ],
+        [style: [float: right], [Setup, setup].link?],
+      ],
+      0px,
+      true,
+    ],
+  ],
+}

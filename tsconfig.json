@@ -10,5 +10,6 @@
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "downlevelIteration": true
-  }
+  },
+  "exclude": ["old"]
 }
