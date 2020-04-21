@@ -1,15 +1,15 @@
 [
   style: ['font-family': Montserrat, 'font-size': 18px, color: \#333],
   title?.Maraca,
-  navbar?,
+  Navbar?,
   [
     style: ['max-width': 750px, padding: 40px 10px, margin: 0 auto],
     url?
     .1
     .[
       '':
-        util?
-        .stack
+        Util?
+        .Stack
         .[
           40px,
           [
@@ -18,7 +18,7 @@
                 style:
                   [
                     'font-size': 40px,
-                    color: util?.colors.red.parseColor?,
+                    color: Util?.Colors.red.parseColor?,
                     'font-weight': bold,
                     'padding-bottom': 12px,
                   ],
@@ -32,14 +32,14 @@
               create filters, sort, and use built-in functions - a little like
               using a spreadsheet.",
             ],
-            formula?.calculate,
-            formula?.filter,
-            formula?.summarise,
+            Formula?.Calculate,
+            Formula?.Filter,
+            Formula?.Summarise,
           ],
         ],
       data:
-        util?
-        .stack
+        Util?
+        .Stack
         .[
           40px,
           [
@@ -48,7 +48,7 @@
                 style:
                   [
                     'font-size': 40px,
-                    color: util?.colors.red.parseColor?,
+                    color: Util?.Colors.red.parseColor?,
                     'font-weight': bold,
                     'padding-bottom': 12px,
                   ],
@@ -62,14 +62,14 @@
               a clean syntax, and the ability to work with logic, variables, and
               much more.",
             ],
-            data?.basics,
-            data?.if,
-            data?.use,
+            Data?.Basics,
+            Data?.If,
+            Data?.Use,
           ],
         ],
       code:
-        util?
-        .stack
+        Util?
+        .Stack
         .[
           40px,
           [
@@ -78,7 +78,7 @@
                 style:
                   [
                     'font-size': 40px,
-                    color: util?.colors.red.parseColor?,
+                    color: Util?.Colors.red.parseColor?,
                     'font-weight': bold,
                     'padding-bottom': 12px,
                   ],
@@ -91,14 +91,14 @@
               "Once you’re comforable writing data, use functions and
               transformers to generate and modify your data dynamically.",
             ],
-            code?.use,
-            code?.transform,
-            code?.keys,
+            Code?.Use,
+            Code?.Transform,
+            Code?.Keys,
           ],
         ],
       app:
-        util?
-        .stack
+        Util?
+        .Stack
         .[
           40px,
           [
@@ -107,7 +107,7 @@
                 style:
                   [
                     'font-size': 40px,
-                    color: util?.colors.red.parseColor?,
+                    color: Util?.Colors.red.parseColor?,
                     'font-weight': bold,
                     'padding-bottom': 12px,
                   ],
@@ -120,14 +120,14 @@
               "Finally, map your dynamic data to HTML, and respond to user
               actions, to create an interactive web app.",
             ],
-            app?.html,
-            app?.live,
-            app?.code,
+            App?.Html,
+            App?.Live,
+            App?.Code,
           ],
         ],
       setup:
-        util?
-        .stack
+        Util?
+        .Stack
         .[
           40px,
           [
@@ -136,7 +136,7 @@
                 style:
                   [
                     'font-size': 40px,
-                    color: util?.colors.red.parseColor?,
+                    color: Util?.Colors.red.parseColor?,
                     'font-weight': bold,
                     'padding-bottom': 12px,
                   ],
@@ -150,7 +150,7 @@
               language environment supported is JavaScript & web. Follow the
               instructions below to get started.",
             ],
-            setup?,
+            Setup?,
           ],
         ],
     ],

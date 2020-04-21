@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Filter",
@@ -15,24 +15,22 @@ util?
     [
       [
         style: ['padding-bottom': 10px],
-        "True / false tests (<: util?.prismchar.[\=, operator]/>,
-        <: util?.prismchar.[\!, operator]/> for any values,
-        <: util?.prismchar.[\<, operator]/>,
-        <: util?.prismchar.[\>, operator]/>,
-        <: util?.prismchar.[\<\=, operator]/>,
-        <: util?.prismchar.[\>\=, operator]/> for numbers) return empty (nil)
-        for false:",
+        "True / false tests (<: Util?.Format.[\=, operator]/>,
+        <: Util?.Format.[\!, operator]/> for any values,
+        <: Util?.Format.[\<, operator]/>, <: Util?.Format.[\>, operator]/>,
+        <: Util?.Format.[\<\=, operator]/>, <: Util?.Format.[\>\=, operator]/>
+        for numbers) return empty (nil) for false:",
       ],
-      example?.['8 > 2.5', 'cat = dog', width: 60],
+      Example?.['8 > 2.5', 'cat = dog', width: 60],
     ],
     [
       [
         style: ['padding-bottom': 10px],
-        "The ‘not’ test (<: util?.prismchar.[\!, operator]/>) returns true if
-        the values are different, or if used on another test returns true if
-        that test is false:",
+        "The ‘not’ test (<: Util?.Format.[\!, operator]/>) returns true if the
+        values are different, or if used on another test returns true if that
+        test is false:",
       ],
-      example?.['cat ! dog', '! 5 = 7', width: 60],
+      Example?.['cat ! dog', '! 5 = 7', width: 60],
     ],
     [
       [
@@ -40,7 +38,7 @@ util?
         "Round brackets return true if
         <: span, style: ['font-weight': bold], all/> terms are true:",
       ],
-      example?.['(1 = 2, 3 < 4)', '(5 = 5, 7 < 8)', width: 60],
+      Example?.['(1 = 2, 3 < 4)', '(5 = 5, 7 < 8)', width: 60],
     ],
     [
       [
@@ -48,7 +46,7 @@ util?
         "Curly brackets return true if
         <: span, style: ['font-weight': bold], any/> term is true:",
       ],
-      example?.['{1 = 2, 3 < 4}', '{5 = 6, 7 > 8}', width: 60],
+      Example?.['{1 = 2, 3 < 4}', '{5 = 6, 7 > 8}', width: 60],
     ],
     [
       style:

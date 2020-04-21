@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,23 +7,23 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Live values",
     ],
     [
       [style: ['padding-bottom': 10px], "Values can change over time:"],
-      example?.['tick?', width: 70],
+      Example?.['tick?', width: 70],
     ],
     [
       [
         style: ['padding-bottom': 10px],
         "In this way, element properties update in response to user
-        interactions, such as the <: util?.prismchar.[value, keyword]/> property
-        of an input element:",
+        interactions, such as the <: Util?.Format.[value, keyword]/> property of
+        an input element:",
       ],
-      example?
+      Example?
       .[
         '{
           name: ,
@@ -44,12 +44,11 @@ util?
     [
       [
         style: ['padding-bottom': 10px],
-        "Use ‘A <: util?.prismchar.[\|, operator]/> B
-        <: util?.prismchar.['->', operator]/> C’ to watch a value (A) for
-        changes, and when it is true to push an update (B) to another value
-        (C):",
+        "Use ‘A <: Util?.Format.[\|, operator]/> B
+        <: Util?.Format.['->', operator]/> C’ to watch a value (A) for changes,
+        and when it is true to push an update (B) to another value (C):",
       ],
-      example?
+      Example?
       .[
         '{
           count: 0,
@@ -71,7 +70,7 @@ util?
         inside a nested block (like the style), otherwise you need to set it to
         nil on the element first:",
       ],
-      example?
+      Example?
       .[
         '[
           : input,
@@ -98,19 +97,16 @@ util?
           ],
         [
           : li,
-          "<: util?.prismchar.[box, keyword]/>:
-          <: util?.prismchar.[top, number]/>,
-          <: util?.prismchar.[left, number]/>,
-          <: util?.prismchar.[height, number]/>,
-          <: util?.prismchar.[width, number]/> (number)",
+          "<: Util?.Format.[box, keyword]/>: <: Util?.Format.[top, number]/>,
+          <: Util?.Format.[left, number]/>, <: Util?.Format.[height, number]/>,
+          <: Util?.Format.[width, number]/> (number)",
         ],
         [
           : li,
-          "<: util?.prismchar.[mouse, keyword]/>:
-          <: util?.prismchar.[x, number]/>, <: util?.prismchar.[y, number]/>
-          (number) & <: util?.prismchar.[left, number]/>,
-          <: util?.prismchar.[right, number]/>,
-          <: util?.prismchar.[middle, number]/> (down / up / nil)",
+          "<: Util?.Format.[mouse, keyword]/>: <: Util?.Format.[x, number]/>,
+          <: Util?.Format.[y, number]/> (number) &
+          <: Util?.Format.[left, number]/>, <: Util?.Format.[right, number]/>,
+          <: Util?.Format.[middle, number]/> (down / up / nil)",
         ],
       ],
       [style: ['padding-bottom': 5px, 'padding-top': 15px], "And on inputs:"],
@@ -122,12 +118,10 @@ util?
             'padding-left': 21px,
             'font-family': 'Source Code Pro',
           ],
-        [: li, "<: util?.prismchar.[value, keyword]/> (text)"],
-        [: li, "<: util?.prismchar.[focus, keyword]/> (true / nil)"],
-        [
-          : li,
-          "<: util?.prismchar.[keys, keyword]/> (key codes: down / up / nil)",
-        ],
+        [: li, "<: Util?.Format.[value, keyword]/> (text)"],
+        [: li, "<: Util?.Format.[focus, keyword]/> (true / nil)"],
+        [: li, "<: Util?.Format.[keys, keyword]/> (key codes: down / up / nil)"]
+      ,
       ],
     ],
   ],

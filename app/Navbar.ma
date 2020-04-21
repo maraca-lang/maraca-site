@@ -11,7 +11,7 @@
             [
               display: block,
               'text-decoration': none,
-              color: util?.colors.green.parseColor?,
+              color: Util?.Colors.green.parseColor?,
               padding: 0 5px,
             ],
           [
@@ -24,7 +24,7 @@
                   2px solid
                   (
                     {mouse?, url?.1 = link?},
-                    util?.colors.green.parseColor?,
+                    Util?.Colors.green.parseColor?,
                     => white,
                   ),
               ],
@@ -41,12 +41,12 @@
         'font-weight': bold,
         padding: 10px 5px,
       ],
-    util?
-    .row
+    Util?
+    .Row
     .[
       [
-        util?
-        .row
+        Util?
+        .Row
         .[
           [
             [
@@ -59,7 +59,7 @@
                   display: block,
                   'margin-right': 20px,
                   'font-size': 26px,
-                  color: util?.colors.red.parseColor?,
+                  color: Util?.Colors.red.parseColor?,
                   'text-decoration': none,
                   padding: 0 5px,
                 ],

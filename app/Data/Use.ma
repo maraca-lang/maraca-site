@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Using values",
@@ -16,9 +16,9 @@ util?
       [
         style: ['padding-bottom': 10px],
         "Get previous values with their key and
-        <: util?.prismchar.[\?, punctuation]/>:",
+        <: Util?.Format.[\?, punctuation]/>:",
       ],
-      example?.['[x: 3, y: x? * 5]', '[Name: Daisy, Welcome: Hello {Name?}\\!]']
+      Example?.['[x: 3, y: x? * 5]', '[Name: Daisy, Welcome: Hello {Name?}\\!]']
     ,
     ],
     [
@@ -27,7 +27,7 @@ util?
         "This returns the most recent value, including from outer blocks, or
         values that may be available from outside your code:",
       ],
-      example?
+      Example?
       .[
         '[Name: William, Welcome: [Addressed to: Name?, Name: Billy, Text: Hello {Name?}]]'
         ,
@@ -40,7 +40,7 @@ util?
         "Curly blocks return their first non-nil term, and setting a key is a
         nil term, so you can set and use ‘hidden’ values to build your data:",
       ],
-      example?
+      Example?
       .[
         '{1 = 2, hello, there}',
         '{

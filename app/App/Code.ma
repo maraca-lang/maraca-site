@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Running code",
@@ -18,11 +18,11 @@ util?
         "Run a value as Maraca code, optionally passing in any values that
         should be available:",
       ],
-      example?.['>>\'5 * 8\'', '[Name: Kelly]>>\'Hi {Name?}\'', width: 70],
+      Example?.['>>\'5 * 8\'', '[Name: Kelly]>>\'Hi {Name?}\'', width: 70],
     ],
     [
       [style: ['padding-bottom': 10px], "Run code entered by the user:"],
-      example?
+      Example?
       .[
         '{
           code: \'3 + 7\',
@@ -43,10 +43,10 @@ util?
       [
         style: ['padding-bottom': 10px],
         "Run user calculations on data, using the
-        <: util?.prismchar.[':=?', keyword]/> shorthand to copy existing values
+        <: Util?.Format.[':=?', keyword]/> shorthand to copy existing values
         into the code input:",
       ],
-      example?
+      Example?
       .[
         '{
           input: [data: [43, 22, 55], sum:=?, average:=?, minimum:=?, maximum:=?],

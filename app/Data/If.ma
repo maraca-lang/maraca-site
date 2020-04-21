@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "If / then / else",
@@ -19,7 +19,7 @@ util?
         term, but only if <: span, style: ['font-weight': bold], all/> terms are
         non-nil:",
       ],
-      example?.['(a, b, c)', '(1 = 2, hello, 3 < 4)'],
+      Example?.['(a, b, c)', '(1 = 2, hello, 3 < 4)'],
     ],
     [
       [
@@ -27,7 +27,7 @@ util?
         "Use this to write ‘if A then B’, as the second term will be returned
         only when the first term is true (non-nil):",
       ],
-      example?.['(First name? = John, Hello)', '(First name? = Sarah, Hello)'],
+      Example?.['(First name? = John, Hello)', '(First name? = Sarah, Hello)'],
     ],
     [
       [
@@ -35,7 +35,7 @@ util?
         "A default value, returned if any term is nil, can be used to write ‘if
         A then B else C’:",
       ],
-      example?
+      Example?
       .[
         '(Age? < 20, Hi, => Hello)',
         '(

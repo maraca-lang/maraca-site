@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Summarise",
@@ -17,7 +17,7 @@ util?
         style: ['padding-bottom': 10px],
         "Square brackets group values together (called a block):",
       ],
-      example?.['[1, 2, 3]', '[hello, world]', width: 60],
+      Example?.['[1, 2, 3]', '[hello, world]', width: 60],
     ],
     [
       [
@@ -30,7 +30,7 @@ util?
         />,
         and use a dot to apply them:",
       ],
-      example?.['[4, 87, 45].maximum?', '[10, 4, 27, 51].average?', width: 60],
+      Example?.['[4, 87, 45].maximum?', '[10, 4, 27, 51].average?', width: 60],
     ],
     [
       style:
@@ -143,21 +143,25 @@ util?
                 : td,
                 style: [padding: 6px 10px],
                 innerHTML:
-                  (
+                  [
                     [
-                      :
-                        [First name, Last name, Age]
-                        .[k=>> k?: data?.[v=>> v?.k?]],
-                      sum:=?,
-                      average:=?,
-                      minimum:=?,
-                      maximum:=?,
+                      (
+                        [
+                          :
+                            [First name, Last name, Age]
+                            .[k=>> k?: data?.[v=>> v?.k?]],
+                          sum:=?,
+                          average:=?,
+                          minimum:=?,
+                          maximum:=?,
+                        ]
+                          >>
+                          formula?,
+                      )
+                      .print?,
                     ]
-                      >>
-                      formula?,
-                  )
-                  .print?
-                  .prettier?
+                    .prettier?,
+                  ]
                   .prism?,
               ],
             ],

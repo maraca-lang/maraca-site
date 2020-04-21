@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "codemirror": "^5.52.2",
-    "maraca-app": "^0.2.10",
+    "maraca-app": "^0.3.1",
     "prettier": "^2.0.4",
-    "prettier-plugin-maraca": "^0.3.8",
+    "prettier-plugin-maraca": "^0.3.9",
     "prismjs": "^1.20.0",
-    "ts-loader": "^6.2.2",
+    "ts-loader": "^7.0.1",
     "typescript": "^3.8.3"
   }
 }

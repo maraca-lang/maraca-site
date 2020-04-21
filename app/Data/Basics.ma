@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Values & blocks",
@@ -16,10 +16,10 @@ util?
       [
         style: ['padding-bottom': 10px],
         "Join together adjacent values (gaps become a single space), using
-        <: util?.prismchar.[\\, string]/> or single quotes for special
-        characters (not letters or numbers), and brackets to group:",
+        <: Util?.Format.[\\, string]/> or single quotes for special characters
+        (not letters or numbers), and brackets to group:",
       ],
-      example?
+      Example?
       .['\\£25', '\'132-3004-132\'', 'Hello   {First name?}', noprettier: true],
     ],
     [
@@ -28,11 +28,11 @@ util?
         "Values in blocks can have keys, which are sorted (alphabetically) after
         unkeyed values:",
       ],
-      example?.['[Label: heights, Units: m, 1.5, 1.8, 1.7]'],
+      Example?.['[Label: heights, Units: m, 1.5, 1.8, 1.7]'],
     ],
     [
       [style: ['padding-bottom': 10px], "Blocks can be nested:"],
-      example?
+      Example?
       .[
         '[Name: \'Jack O’Connor\', Address: [House: 4, Street: Fairlawn Road, Town: Sheffield]]'
       ,
@@ -44,7 +44,7 @@ util?
         "Values can be set to a blank (nil) key, but nil values are removed,
         including comments (which show text but have a value of nil):",
       ],
-      example?
+      Example?
       .[
         '[: list, Item 1, Item 2, Item 3]',
         '[a, , b]',

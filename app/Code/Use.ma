@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Using blocks",
@@ -15,10 +15,10 @@ util?
     [
       [
         style: ['padding-bottom': 10px],
-        "Use a <: util?.prismchar.[\., operator]/> to get a value from a block,
+        "Use a <: Util?.Format.[\., operator]/> to get a value from a block,
         with integers for unkeyed values, and missing keys returning nil:",
       ],
-      example?
+      Example?
       .[
         '[First name: Thomas, Last name: Dawson, Age: 62].Last name',
         '[Monday, Tuesday, Wednesday].2',
@@ -31,7 +31,7 @@ util?
         "Add a default for missing keys, and add a label for the provided key to
         turn the default into a function:",
       ],
-      example?
+      Example?
       .[
         '[Name: Lucy, => Data missing\\!].Address',
         '[Name: Lucy, Field=> {Field?} value missing\\!].Address',
@@ -43,7 +43,7 @@ util?
         "Use blocks for both the function label and the input to create a
         function of multiple values:",
       ],
-      example?
+      Example?
       .[
         '[[Title:=, Name:=]=> Hi {Title?} {Name?}\\!].[Title: Ms, Name: Harriet]'
       ,
@@ -56,7 +56,7 @@ util?
         position rather than by key (if any values are nil, they will be removed
         and the remaining inputs will match wrong):",
       ],
-      example?.['[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]'],
+      Example?.['[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]'],
     ],
   ],
 ]

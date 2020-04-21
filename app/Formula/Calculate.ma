@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,32 +7,31 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Calculate",
     ],
     [
       [style: ['padding-bottom': 10px], "Write text and number values:"],
-      example?.[Hello, 7.5, width: 60],
+      Example?.[Hello, 7.5, width: 60],
     ],
     [
       [
         style: ['padding-bottom': 10px],
-        "Do calculations (<: util?.prismchar.[\+, operator]/>,
-        <: util?.prismchar.[\-, operator]/>,
-        <: util?.prismchar.[\*, operator]/>,
-        <: util?.prismchar.[\/, operator]/>,
-        <: util?.prismchar.[\^, operator]/>), using brackets to group:",
+        "Do calculations (<: Util?.Format.[\+, operator]/>,
+        <: Util?.Format.[\-, operator]/>, <: Util?.Format.[\*, operator]/>,
+        <: Util?.Format.[\/, operator]/>, <: Util?.Format.[\^, operator]/>),
+        using brackets to group:",
       ],
-      example?.['8 * 2.5', '(3 + 5) / 2', width: 60],
+      Example?.['8 * 2.5', '(3 + 5) / 2', width: 60],
     ],
     [
       [
         style: ['padding-bottom': 10px],
-        "Use <: util?.prismchar.[\?, punctuation]/> to get data:",
+        "Use <: Util?.Format.[\?, punctuation]/> to get data:",
       ],
-      example?.['Age?', 'First name?', width: 60],
+      Example?.['Age?', 'First name?', width: 60],
     ],
     [
       style:

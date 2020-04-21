@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Data as HTML",
@@ -18,7 +18,7 @@ util?
         "Data can be mapped to HTML, with each block becoming an element, and
         the nil key determining the type (div if blank):",
       ],
-      example?
+      Example?
       .[
         '[
           style: [padding: 5px 10px],
@@ -35,9 +35,9 @@ util?
         "Transform data into elements, set initial values on the transformer to
         define the containing element, and use the index if needed, for example
         to set alternating colors using the modulo operator
-        (<: util?.prismchar.[\%, operator]/>):",
+        (<: Util?.Format.[\%, operator]/>):",
       ],
-      example?
+      Example?
       .[
         '[Item 1, Item 2, Item 3]
         .[: ul, id: \'item-list\', item=>> [: li, item?]]',
@@ -56,7 +56,7 @@ util?
         within text content (any gaps inside double quotes become single
         spaces):",
       ],
-      example?
+      Example?
       .[
         '[
           id: banner,

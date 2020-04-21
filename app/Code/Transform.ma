@@ -1,5 +1,5 @@
-util?
-.stack
+Util?
+.Stack
 .[
   25px,
   [
@@ -7,7 +7,7 @@ util?
       style:
         [
           'font-size': 30px,
-          color: util?.colors.red.parseColor?,
+          color: Util?.Colors.red.parseColor?,
           'font-weight': bold,
         ],
       "Transforming blocks",
@@ -18,14 +18,14 @@ util?
         "Use a double arrow to create a transformer, which takes a block and
         applies a function to each of its items:",
       ],
-      example?.['[Emma, Roger, Issy].[Name=>> Hi {Name?}\\!]'],
+      Example?.['[Emma, Roger, Issy].[Name=>> Hi {Name?}\\!]'],
     ],
     [
       [
         style: ['padding-bottom': 10px],
         "Turn the double arrow into two arrows to also access the keys:",
       ],
-      example?
+      Example?
       .[
         '[Emma, Roger, Issy].[Name=> Key=> Hi {Name?}\\, you\\’re number {Key?}]'
       ,
@@ -38,7 +38,7 @@ util?
         transformer that changes some items to nil, and leaves the rest the
         unchanged:",
       ],
-      example?
+      Example?
       .[
         '[A: [Name: Roger, Age: 58], B: [Name: Emma, Age: 24], C: [Name: Issy, Age: 41]]
         .[Person=>> (Person?.Age > 30, Person?)]',
