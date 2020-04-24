@@ -25,7 +25,7 @@ Util?
       Example?
       .[
         '{
-          code: \'3 + 7\',
+          code:~ \'3 + 7\',
           [
             [
               : input,
@@ -50,7 +50,7 @@ Util?
       .[
         '{
           input: [data: [43, 22, 55], sum:=?, average:=?, minimum:=?, maximum:=?],
-          code: \'data?.sum?\',
+          code:~ \'data?.sum?\',
           [
             [
               : input,

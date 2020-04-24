@@ -58,18 +58,22 @@ const mathMap = (func) => map((x) => func(toJs(x, ['number']) || []));
 const languages = {
   ...prism.languages,
   maraca: {
-    string: {
+    plain: {
       pattern: /"([^\\]|\\[\S\s])*?"/,
       greedy: true,
       inside: {
-        string: {
+        plain: {
           pattern: /<[^\\]*\/>/,
         },
       },
     },
-    punctuation: /\[|\(|\{|<|\]|\)|\}|\/>|,|\?/,
+    punctuation: /\[|\(|\{|<|\]|\)|\}|\/>|,/,
     keyword: {
-      pattern: /((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))?(:=\?|:=|:|=>>|=>)/,
+      pattern: /(((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))|('([^\\]|\\[\S\s])*?'))?(:=\?|:=|:~|:|=>>|=>)/,
+      greedy: true,
+    },
+    string: {
+      pattern: /(((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))|('([^\\]|\\[\S\s])*?'))?(\?)/,
       greedy: true,
     },
     operator: /->|<=|>=|<|>|~|=|\+|\-|\*|\/|%|\^|!|\.|\||>>|#/,
@@ -81,7 +85,7 @@ const languages = {
     comment: { pattern: /`[^`]*`/, greedy: true },
   },
 };
-languages.maraca.string.inside.string.inside = { rest: languages.maraca };
+languages.maraca.plain.inside.plain.inside = { rest: languages.maraca };
 
 export default {
   parseColor: map((color) =>

@@ -53,7 +53,7 @@ Util?
             [First name: Sarah, Last name: Davies, Age: 55],
           ],
         columns: [First name, Last name, Age],
-        formula: 'Age?.sum?',
+        formula:~ 'Age?.sum?',
         [
           style: ['font-family': 'Source Code Pro', 'font-size': 16px],
           [
@@ -124,8 +124,8 @@ Util?
                 style: [width: 50\%],
                 [
                   : input,
-                  focus: ,
-                  mouse: ,
+                  focus:~ ,
+                  mouse:~ ,
                   base: ({mouse?, focus?}, (145 30 95), => (145 30 90)),
                   style:
                     [

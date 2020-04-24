@@ -50,7 +50,7 @@ Util?
             [First name: Sarah, Last name: Davies, Age: 55],
           ],
         columns: [First name, Last name, Age],
-        formula: 'Age? + 10',
+        formula:~ 'Age? + 10',
         [
           : table,
           style:
@@ -76,8 +76,8 @@ Util?
                 style: [width: 40\%, 'padding-bottom': 10px],
                 [
                   : input,
-                  focus: ,
-                  mouse: ,
+                  focus:~ ,
+                  mouse:~ ,
                   base: ({mouse?, focus?}, (145 30 95), => (145 30 90)),
                   style:
                     [

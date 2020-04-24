@@ -26,7 +26,7 @@ Util?
       Example?
       .[
         '{
-          name: ,
+          name:~ ,
           [
             [
               : input,
@@ -51,8 +51,9 @@ Util?
       Example?
       .[
         '{
-          count: 0,
+          count:~ 0,
           [
+            mouse:~ ,
             mouse?.left = down | count? + 1 -> count?,
             style: [padding: 10px, background: coral],
             Clicked {count?} times,
@@ -74,7 +75,7 @@ Util?
       .[
         '[
           : input,
-          focus: ,
+          focus:~ ,
           placeholder: (focus?, \'Now type...\', => \'Click here...\'),
           style: [padding: 10px, background: (focus?, orange, => gold)],
         ]',

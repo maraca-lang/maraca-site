@@ -18,7 +18,7 @@ Util?
         "Use a double arrow to create a transformer, which takes a block and
         applies a function to each of its items:",
       ],
-      Example?.['[Emma, Roger, Issy].[Name=>> Hi {Name?}\\!]'],
+      Example?.['[Emma, Roger, Issy].[Name=>> Hi {Name?}\\!]', width: 55],
     ],
     [
       [
@@ -28,7 +28,8 @@ Util?
       Example?
       .[
         '[Emma, Roger, Issy].[Name=> Key=> Hi {Name?}\\, you\\’re number {Key?}]'
-      ,
+        ,
+        width: 55,
       ],
     ],
     [
@@ -42,6 +43,7 @@ Util?
       .[
         '[A: [Name: Roger, Age: 58], B: [Name: Emma, Age: 24], C: [Name: Issy, Age: 41]]
         .[Person=>> (Person?.Age > 30, Person?)]',
+        width: 55,
       ],
     ],
   ],

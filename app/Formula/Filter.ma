@@ -66,13 +66,13 @@ Util?
             [First name: Sarah, Last name: Davies, Age: 55],
           ],
         columns: [First name, Last name, Age],
-        filter: '{First name? = Anne, Age? > 50}',
+        filter:~ '{First name? = Anne, Age? > 50}',
         [
           style: ['font-family': 'Source Code Pro', 'font-size': 16px],
           [
             : input,
-            focus: ,
-            mouse: ,
+            focus:~ ,
+            mouse:~ ,
             base: ({mouse?, focus?}, (145 30 95), => (145 30 90)),
             style:
               [

@@ -23,6 +23,7 @@ Util?
         '[First name: Thomas, Last name: Dawson, Age: 62].Last name',
         '[Monday, Tuesday, Wednesday].2',
         '[Name: Lucy].Address',
+        width: 55,
       ],
     ],
     [
@@ -35,6 +36,7 @@ Util?
       .[
         '[Name: Lucy, => Data missing\\!].Address',
         '[Name: Lucy, Field=> {Field?} value missing\\!].Address',
+        width: 55,
       ],
     ],
     [
@@ -46,7 +48,8 @@ Util?
       Example?
       .[
         '[[Title:=, Name:=]=> Hi {Title?} {Name?}\\!].[Title: Ms, Name: Harriet]'
-      ,
+        ,
+        width: 55,
       ],
     ],
     [
@@ -56,7 +59,8 @@ Util?
         position rather than by key (if any values are nil, they will be removed
         and the remaining inputs will match wrong):",
       ],
-      Example?.['[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]'],
+      Example?
+      .['[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]', width: 55],
     ],
   ],
 ]

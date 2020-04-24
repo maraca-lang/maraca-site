@@ -6,6 +6,7 @@
           : a,
           href: \/{link?},
           stopMouse: [left],
+          mouse:~ ,
           mouse?.left = down | [link?] -> url?,
           style:
             [
@@ -53,6 +54,7 @@
               : a,
               href: \/,
               stopMouse: [left],
+              mouse:~ ,
               mouse?.left = down | [] -> url?,
               style:
                 [

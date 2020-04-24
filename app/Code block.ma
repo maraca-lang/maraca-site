@@ -7,11 +7,13 @@
         box: ,
         [
           : code,
+          box:~ ,
           style:
             [
               'font-family': 'Source Code Pro',
               'font-size': 16px,
               'font-weight': bold,
+              display: block,
             ],
           innerHTML:
             [

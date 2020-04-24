@@ -22,6 +22,7 @@ Util?
       .[
         '[A: [Name: Sue], B: [Name: Bob], C: [Name: Joe]]
         .[Person=>> {Person?.Name}: Person?]',
+        width: 55,
       ],
     ],
     [
@@ -34,6 +35,7 @@ Util?
       .[
         '[A: [Name: Sue], B: [Name: Bob], C: [Name: Joe]]
         .[Person=>> -{Person?.Name}: Person?]',
+        width: 55,
       ],
     ],
     [
@@ -42,7 +44,8 @@ Util?
         "Set an initial value and keep setting the same key to transform a block
         into a single value:",
       ],
-      Example?.['[1, 2, 3, 4, 5].[Sum: 0, Number=>> Sum: Sum? + Number?]'],
+      Example?
+      .['[1, 2, 3, 4, 5].[Sum: 0, Number=>> Sum: Sum? + Number?]', width: 55],
     ],
   ],
 ]
