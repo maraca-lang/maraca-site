@@ -1,6 +1,7 @@
 import { fromJs, print, toJs } from 'maraca';
 import * as prism from 'prismjs';
 
+import './style.css';
 import './prism.css';
 
 import parseColor from './color';
@@ -60,7 +61,6 @@ const languages = {
   maraca: {
     plain: {
       pattern: /"([^\\]|\\[\S\s])*?"/,
-      greedy: true,
       inside: {
         plain: {
           pattern: /<[^\\]*\/>/,
@@ -70,19 +70,17 @@ const languages = {
     punctuation: /\[|\(|\{|<|\]|\)|\}|\/>|,/,
     keyword: {
       pattern: /(((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))|('([^\\]|\\[\S\s])*?'))?(:=\?|:=|:~|:|=>>|=>)/,
-      greedy: true,
     },
     string: {
       pattern: /(((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))|('([^\\]|\\[\S\s])*?'))?(\?)/,
-      greedy: true,
     },
     operator: /->|<=|>=|<|>|~|=|\+|\-|\*|\/|%|\^|!|\.|\||>>|#/,
     number: {
       pattern: /(\d+\.\d+)|([a-zA-Z0-9]+)|('([^\\]|\\[\S\s])*?')/,
       greedy: true,
     },
-    function: { pattern: /(\\(\S|\n)|_)/, greedy: true },
-    comment: { pattern: /`[^`]*`/, greedy: true },
+    function: { pattern: /(\\(\S|\n)|_)/ },
+    comment: { pattern: /`[^`]*`/ },
   },
 };
 languages.maraca.plain.inside.plain.inside = { rest: languages.maraca };
