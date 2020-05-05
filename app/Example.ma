@@ -1,7 +1,7 @@
 [
   args=>
-    {
-      [width: w, noprettier:=, html:=, render:=, nooutput:=, => items]: args?,
+    (
+      [width: w, noprettier:=, html:=, render:=, nooutput:=, => items]: @args,
       [
         style: [padding: 10px 0],
         [
@@ -10,7 +10,7 @@
           style:
             [
               width: 100\%,
-              'max-width': (nooutput? = true, 400px),
+              'max-width': (@nooutput = true, 400px),
               background: \#f9f9f9,
               'border-radius': 10px,
               'font-family': 'Source Code Pro',
@@ -28,86 +28,86 @@
                 : td,
                 style:
                   [
-                    'border-radius': 10px (nooutput?, 10px, => 0) 0 0,
-                    width: {w?, 50}\%,
+                    'border-radius': 10px (@nooutput, 10px, => 0) 0 0,
+                    width: {@w, 50}\%,
                     padding: 6px 10px,
                   ],
                 Code,
               ],
               (
-                ! nooutput?,
+                ! @nooutput,
                 [
                   : td,
                   style: ['border-radius': 0 10px 0 0, padding: 6px 10px],
-                  ({html?, render?}, HTML, => Value),
+                  ({@html, @render}, HTML, => Value),
                 ],
               ),
             ],
           ],
-          items?
+          @items
           .[
             : tbody,
             v=> i=>
               :
-                {
-                  text: ([=>> ].v?, v?.1, => v?),
-                  code: ([=>> ].v?, v?.2, => v?),
+                (
+                  text: ([=>> ].@v, @v.1, => @v),
+                  code: ([=>> ].@v, @v.2, => @v),
                   [
                     [
                       : tr,
                       style: [height: 3px, background: white],
                       [: td],
-                      (! nooutput?, [: td]),
+                      (! @nooutput, [: td]),
                     ],
                     [
                       : tr,
                       [
                         : td,
                         style: [padding: 6px 10px, 'vertical-align': top],
-                        Code block?.[code: text?, noprettier:=?],
+                        @Code block.[code: @text, noprettier: @noprettier],
                       ],
                       (
-                        ! nooutput?,
+                        ! @nooutput,
                         [
                           : td,
                           style:
                             [
-                              padding: (render?, 10, => 6)px 10px,
+                              padding: (@render, 10, => 6)px 10px,
                               'vertical-align': top,
                             ],
-                          {
+                          (
                             eval:
                               [
                                 First name: John,
                                 Last name: Smith,
                                 Age: 43,
                                 env: prod,
-                                sum:=?,
-                                average:=?,
-                                minimum:=?,
-                                maximum:=?,
-                                tick:=?,
+                                sum: @sum,
+                                average: @average,
+                                minimum: @minimum,
+                                maximum: @maximum,
+                                tick: @tick,
                               ]
                                 >>
-                                code?,
+                                @code,
                             (
-                              render?,
-                              eval?,
+                              @render,
+                              @eval,
                               =>
-                                Code block?
+                                @Code block
                                 .[
-                                  code: eval?.(html?, printhtml?, => print?),
-                                  html:=?,
+                                  code: @eval.(@html, @printhtml, => @print),
+                                  html: @html,
                                 ],
                             ),
-                          },
+                          ),
                         ],
                       ),
                     ],
                   ],
-                },
+                ),
           ],
         ],
       ],
-    },
+    ),
 ]

@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   25px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Using values",
@@ -16,10 +16,10 @@ Util?
       [
         style: ['padding-bottom': 10px],
         "Get previous values with their key and
-        <: Util?.Format.[\?, punctuation]/>:",
+        <: @Util.Format.[\@, punctuation]/>:",
       ],
-      Example?.['[x: 3, y: x? * 5]', '[Name: Daisy, Welcome: Hello {Name?}\\!]']
-    ,
+      @Example.['[x: 3, y: @x * 5]', '[Name: Daisy, Welcome: Hello (@Name)\\!]']
+      ,
     ],
     [
       [
@@ -27,11 +27,11 @@ Util?
         "This returns the most recent value, including from outer blocks, or
         values that may be available from outside your code:",
       ],
-      Example?
+      @Example
       .[
-        '[Name: William, Welcome: [Addressed to: Name?, Name: Billy, Text: Hello {Name?}]]'
+        '[Name: William, Welcome: [Addressed to: @Name, Name: Billy, Text: Hello (@Name)]]'
         ,
-        '[User full name: {First name?} {Last name?}]',
+        '[User full name: (@First name) (@Last name)]',
       ],
     ],
     [
@@ -40,22 +40,22 @@ Util?
         "Curly blocks return their first non-nil term, and setting a key is a
         nil term, so you can set and use ‘hidden’ values to build your data:",
       ],
-      Example?
+      @Example
       .[
         '{1 = 2, hello, there}',
-        '{
+        '(
           env: dev,
           port: 3000,
           [
             id: \'405-3995-209\',
             server:
               (
-                env? = dev,
-                \'http://localhost:\'{port?},
+                @env = dev,
+                \'http://localhost:\'(@port),
                 => \'http://www.server.com\',
               )
           ],
-        }',
+        )',
       ],
     ],
   ],

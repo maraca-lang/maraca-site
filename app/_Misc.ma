@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   25px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Build blocks",
@@ -17,7 +17,7 @@ Util?
         style: ['padding-bottom': 10px],
         "Use blocks for both the key and value to set multiple values at once:",
       ],
-      Example?.['[[First name, Last name]: [Joe, Evans], Age: 32]'],
+      @Example.['[[First name, Last name]: [Joe, Evans], Age: 32]'],
     ],
     [
       [
@@ -25,7 +25,7 @@ Util?
         "Setting a block to a blank key copies everything from one block into
         another (keyed values override, unkeyed ones follow existing ones):",
       ],
-      Example?
+      @Example
       .[
         '[First name: Laura, Age: 25, : [First name: Tara, Last name: Wilson]]',
         '[One, Two, : [Three, Four]]',
@@ -36,7 +36,7 @@ Util?
         style: ['padding-bottom': 10px],
         "Pairs to be set are matched by key, and unmatched keys are ignored:",
       ],
-      Example?
+      @Example
       .[
         '[
           Age: 47,
@@ -48,10 +48,10 @@ Util?
     [
       [
         style: ['padding-bottom': 10px],
-        "The <: Util?.Format.[':=', keyword]/> shorthand sets a key to its own
+        "The <: @Util.Format.[':=', keyword]/> shorthand sets a key to its own
         value, letting you copy specific values from a block:",
       ],
-      Example?
+      @Example
       .[
         '[First name:=]',
         '[
@@ -66,10 +66,10 @@ Util?
         style: ['padding-bottom': 10px],
         "Remove keys completely by copying in each item:",
       ],
-      Example?
+      @Example
       .[
         '[A: Sue, B: Bob, C: Joe]
-        .[Person=>> : [Person?]]',
+        .[Person=>> : [@Person]]',
       ],
     ],
   ],

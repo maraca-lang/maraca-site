@@ -1,7 +1,7 @@
 [
   [code:=, noprettier:=, html:=]=>
     (
-      code?,
+      @code,
       [
         : pre,
         box: ,
@@ -19,17 +19,17 @@
             [
               {
                 (
-                  noprettier?,
-                  code?,
+                  @noprettier,
+                  @code,
                   =>
-                    (html?, prettierhtml?, => prettier?)
-                    .[code?, {box?.width / 9.5, 30}],
+                    (@html, @prettierhtml, => @prettier)
+                    .[@code, {@box.width / '9.5', 30}],
                 ),
                 _,
               },
-              (html?, html),
+              (@html, html),
             ]
-            .prism?,
+            .@prism,
         ],
       ],
     ),

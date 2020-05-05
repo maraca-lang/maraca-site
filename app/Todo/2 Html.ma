@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   15px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Generating HTML",
@@ -26,7 +26,7 @@ Util?
         [: li, "A value with a blank key =\> element type (defaults to div)"],
       ],
     ],
-    Example?
+    @Example
     .[
       '[
         style: [margin: 5px 10px],
@@ -40,7 +40,7 @@ Util?
       "From now on, when we’re generating HTML we’ll render the output, rather
       than showing it in code form.",
     ],
-    Example?
+    @Example
     .[
       '[
         style: [background: coral, padding: 10px],

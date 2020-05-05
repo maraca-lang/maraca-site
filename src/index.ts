@@ -61,26 +61,21 @@ const languages = {
   maraca: {
     plain: {
       pattern: /"([^\\]|\\[\S\s])*?"/,
-      inside: {
-        plain: {
-          pattern: /<[^\\]*\/>/,
-        },
-      },
+      inside: { plain: { pattern: /<[^\\]*\/>/ } },
     },
     punctuation: /\[|\(|\{|<|\]|\)|\}|\/>|,/,
     keyword: {
-      pattern: /(((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))|('([^\\]|\\[\S\s])*?'))?(:=\?|:=|:~|:|=>>|=>)/,
+      pattern: /(((([a-zA-Z0-9]+) +)*([a-zA-Z0-9]+))|('([^\\]|\\[\S\s])*?'))?(:=\?|:=|:~|:|=>>|=>|->)/,
     },
     string: {
-      pattern: /(((((\d+\.\d+)|([a-zA-Z0-9]+)) +)*((\d+\.\d+)|([a-zA-Z0-9]+)))|('([^\\]|\\[\S\s])*?'))?(\?)/,
+      pattern: /(\@)(((([a-zA-Z0-9]+) +)*([a-zA-Z0-9]+))|('([^\\]|\\[\S\s])*?'))/,
     },
-    operator: /->|<=|>=|<|>|~|=|\+|\-|\*|\/|%|\^|!|\.|\||>>|#/,
+    operator: /<=|>=|<|>|=|\+|\-|\*|\/|%|\^|!|\.|\||>>|#/,
     number: {
-      pattern: /(\d+\.\d+)|([a-zA-Z0-9]+)|('([^\\]|\\[\S\s])*?')/,
+      pattern: /([a-zA-Z0-9]+)|('([^\\]|\\[\S\s])*?')/,
       greedy: true,
     },
     function: { pattern: /(\\(\S|\n)|_)/ },
-    comment: { pattern: /`[^`]*`/ },
   },
 };
 languages.maraca.plain.inside.plain.inside = { rest: languages.maraca };

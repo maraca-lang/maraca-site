@@ -2,25 +2,25 @@
   Row:
     [
       [items, spacing, wide]=>
-        items?
+        @items
         .[
-          style: [display: table, width: (wide?, 100\%, => auto)],
+          style: [display: table, width: (@wide, 100\%, => auto)],
           x=> i=>
             [
               style:
                 [
                   display: 'table-cell',
                   'vertical-align': middle,
-                  'padding-left': (i? ! 1, spacing?),
+                  'padding-left': (@i ! 1, @spacing),
                 ],
-              x?,
+              @x,
             ],
         ],
     ],
   Stack:
     [
       [spacing, items]=>
-        items?.[x=> i=> [style: ['padding-top': (i? ! 1, spacing?)], x?]],
+        @items.[x=> i=> [style: ['padding-top': (@i ! 1, @spacing)], @x]],
     ],
   Colors: [green: 145 85 50, red: 35 85 50],
   Format:
@@ -29,8 +29,8 @@
         [
           : span,
           style: ['font-family': 'Source Code Pro', 'font-weight': bold],
-          class: token {type?},
-          text?,
+          class: token (@type),
+          @text,
         ],
     ],
 ]

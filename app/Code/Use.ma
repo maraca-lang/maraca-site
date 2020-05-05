@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   25px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Using blocks",
@@ -15,10 +15,10 @@ Util?
     [
       [
         style: ['padding-bottom': 10px],
-        "Use a <: Util?.Format.[\., operator]/> to get a value from a block,
+        "Use a <: @Util.Format.[\., operator]/> to get a value from a block,
         with integers for unkeyed values, and missing keys returning nil:",
       ],
-      Example?
+      @Example
       .[
         '[First name: Thomas, Last name: Dawson, Age: 62].Last name',
         '[Monday, Tuesday, Wednesday].2',
@@ -32,10 +32,10 @@ Util?
         "Add a default for missing keys, and add a label for the provided key to
         turn the default into a function:",
       ],
-      Example?
+      @Example
       .[
         '[Name: Lucy, => Data missing\\!].Address',
-        '[Name: Lucy, Field=> {Field?} value missing\\!].Address',
+        '[Name: Lucy, Field=> (@Field) value missing\\!].Address',
         width: 55,
       ],
     ],
@@ -45,9 +45,9 @@ Util?
         "Use blocks for both the function label and the input to create a
         function of multiple values:",
       ],
-      Example?
+      @Example
       .[
-        '[[Title:=, Name:=]=> Hi {Title?} {Name?}\\!].[Title: Ms, Name: Harriet]'
+        '[[Title:=, Name:=]=> Hi (@Title) (@Name)\\!].[Title: Ms, Name: Harriet]'
         ,
         width: 55,
       ],
@@ -59,8 +59,8 @@ Util?
         position rather than by key (if any values are nil, they will be removed
         and the remaining inputs will match wrong):",
       ],
-      Example?
-      .['[[Title, Name]=> Hi {Title?} {Name?}\\!].[Ms, Harriet]', width: 55],
+      @Example
+      .['[[Title, Name]=> Hi (@Title) (@Name)\\!].[Ms, Harriet]', width: 55],
     ],
   ],
 ]

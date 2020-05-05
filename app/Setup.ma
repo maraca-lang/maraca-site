@@ -1,27 +1,28 @@
-{
+(
   link:
     [
       [text, link]=>
         [
           : a,
-          href: \/{link?},
+          href: \/(@link),
           stopMouse: [left],
-          mouse?.left = down | [link?] -> url?,
+          mouse:~ ,
+          @mouse.left = down | [@link] -> @url,
           style:
             [
               'text-decoration': none,
-              color: Util?.Colors.green.parseColor?,
+              color: @Util.Colors.green.@parseColor,
               'font-weight': bold,
             ],
-          text?,
+          @text,
         ],
     ],
-  Util?
+  @Util
   .Stack
   .[
     40px,
     [
-      Util?
+      @Util
       .Stack
       .[
         20px,
@@ -30,7 +31,7 @@
             style:
               [
                 'font-size': 30px,
-                color: Util?.Colors.red.parseColor?,
+                color: @Util.Colors.red.@parseColor,
                 'font-weight': bold,
               ],
             "JavaScript & web",
@@ -42,7 +43,7 @@
             "To use Maraca directly in JavaScript, install the
             <
               :
-                link?
+                @link
                 .['maraca-js runtime', 'https://www.npmjs.com/package/maraca'],
             />.",
           ],
@@ -51,8 +52,8 @@
             "To use Maraca to build a web app, the simplest way to get started
             is with the
             <
-              : link?.['maraca-app', 'https://www.npmjs.com/package/maraca-app']
-            ,
+              : @link.['maraca-app', 'https://www.npmjs.com/package/maraca-app']
+              ,
             />
             package, which sets up everything you need (webpack, maraca-render
             etc), letting you dive right in to building your app.",
@@ -61,7 +62,7 @@
             "If you need more control however, you can use the
             <
               :
-                link?
+                @link
                 .[
                   'maraca-render',
                   'https://www.npmjs.com/package/maraca-render',
@@ -71,7 +72,7 @@
           ],
         ],
       ],
-      Util?
+      @Util
       .Stack
       .[
         20px,
@@ -80,7 +81,7 @@
             style:
               [
                 'font-size': 30px,
-                color: Util?.Colors.red.parseColor?,
+                color: @Util.Colors.red.@parseColor,
                 'font-weight': bold,
               ],
             "Editor tools",
@@ -90,7 +91,7 @@
             "There is a Prettier plugin for Maraca,
             <
               :
-                link?
+                @link
                 .[
                   'prettier-plugin-maraca',
                   'https://github.com/maraca-lang/prettier-plugin-maraca',
@@ -110,4 +111,4 @@
       ],
     ],
   ],
-}
+)

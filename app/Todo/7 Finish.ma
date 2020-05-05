@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   15px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Final app",
@@ -22,9 +22,9 @@ Util?
     where the tasks are transformed into clickable elements.",
     "We can also improve the readability of our code by using double commas to
     create blank lines in the layout.",
-    Example?
+    @Example
     .[
-      '{
+      '(
       tasks:~ [
         [text: Task 1, done:~ ],
         [text: Task 2, done:~ ],
@@ -36,29 +36,29 @@ Util?
         [
           : input,
           placeholder: \'Enter new item...\',
-          value: new?,,
+          value: @new,,
           keys:~ ,
-          keys?.Enter = down | [[text: new?, done:~ ], : tasks?] -> tasks?,
-          keys?.Enter = down | \'\' -> new?,,
+          @keys.Enter = down | [[text: @new, done:~ ], : @tasks] -> @tasks,
+          @keys.Enter = down | \'\' -> @new,,
           focus:~ ,
-          style: [padding: 10px, background: (focus?, orange, => gold)],
+          style: [padding: 10px, background: (@focus, orange, => gold)],
           ],,
-          tasks?
+          @tasks
           .[task=>>
             [
               mouse:~ ,
-              mouse?.left = down | ! task?.done -> task?.done,,
+              @mouse.left = down | ! @task.done -> @task.done,,
               style:
                 [
                   cursor: pointer,
-                  background: (mouse?, lightblue),
-                  \'text-decoration\': (task?.done, \'line-through\'),
+                  background: (@mouse, lightblue),
+                  \'text-decoration\': (@task.done, \'line-through\'),
                 ],,
-              task?.text,
+              @task.text,
             ],
           ],
         ]
-      }',
+      )',
       nooutput: wide,
     ],
   ],

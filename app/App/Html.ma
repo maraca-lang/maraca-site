@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   25px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Data as HTML",
@@ -18,7 +18,7 @@ Util?
         "Data can be mapped to HTML, with each block becoming an element, and
         the nil key determining the type (div if blank):",
       ],
-      Example?
+      @Example
       .[
         '[
           style: [padding: 5px 10px],
@@ -35,20 +35,19 @@ Util?
         "Transform data into elements, set initial values on the transformer to
         define the containing element, and use the index if needed, for example
         to set alternating colors using the modulo operator
-        (<: Util?.Format.[\%, operator]/>):",
+        (<: @Util.Format.[\%, operator]/>):",
       ],
-      Example?
+      @Example
       .[
         '[Item 1, Item 2, Item 3]
-        .[: ul, id: \'item-list\', item=>> [: li, item?]]',
+        .[: ul, id: \'item-list\', item=>> [: li, @item]]',
         '[Item 1, Item 2, Item 3]
-        .[: table, item=> i=> [: tr, style: [background: (i? % 2 = 2, red, => blue)], [: td, item?]]]'
+        .[: table, item=> i=> [: tr, style: [background: (@i % 2 = 2, red, => blue)], [: td, @item]]]'
         ,
         html: true,
         width: 55,
       ],
     ],
-    ` [Item 1, Item 2, Item 3] `,
     [
       [
         style: ['padding-bottom': 10px],
@@ -56,7 +55,7 @@ Util?
         within text content (any gaps inside double quotes become single
         spaces):",
       ],
-      Example?
+      @Example
       .[
         '[
           id: banner,

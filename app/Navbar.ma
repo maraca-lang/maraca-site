@@ -1,18 +1,18 @@
-{
+(
   link:
     [
       [text, link]=>
         [
           : a,
-          href: \/{link?},
+          href: \/(@link),
           stopMouse: [left],
           mouse:~ ,
-          mouse?.left = down | [link?] -> url?,
+          @mouse.left = down | [@link] -> @url,
           style:
             [
               display: block,
               'text-decoration': none,
-              color: Util?.Colors.green.parseColor?,
+              color: @Util.Colors.green.@parseColor,
               padding: 0 5px,
             ],
           [
@@ -24,12 +24,12 @@
                 'border-bottom':
                   2px solid
                   (
-                    {mouse?, url?.1 = link?},
-                    Util?.Colors.green.parseColor?,
+                    {@mouse, @url.1 = @link},
+                    @Util.Colors.green.@parseColor,
                     => white,
                   ),
               ],
-            text?,
+            @text,
           ],
         ],
     ],
@@ -42,11 +42,11 @@
         'font-weight': bold,
         padding: 10px 5px,
       ],
-    Util?
+    @Util
     .Row
     .[
       [
-        Util?
+        @Util
         .Row
         .[
           [
@@ -55,13 +55,13 @@
               href: \/,
               stopMouse: [left],
               mouse:~ ,
-              mouse?.left = down | [] -> url?,
+              @mouse.left = down | [] -> @url,
               style:
                 [
                   display: block,
                   'margin-right': 20px,
                   'font-size': 26px,
-                  color: Util?.Colors.red.parseColor?,
+                  color: @Util.Colors.red.@parseColor,
                   'text-decoration': none,
                   padding: 0 5px,
                 ],
@@ -89,14 +89,14 @@
                 ],
               ],
             ],
-            [Tutorial].link?,
+            [Tutorial].@link,
           ],
           30px,
         ],
-        [style: [float: right], [Setup, setup].link?],
+        [style: [float: right], [Setup, setup].@link],
       ],
       0px,
       true,
     ],
   ],
-}
+)

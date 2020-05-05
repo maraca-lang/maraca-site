@@ -1,4 +1,4 @@
-Util?
+@Util
 .Stack
 .[
   25px,
@@ -7,7 +7,7 @@ Util?
       style:
         [
           'font-size': 30px,
-          color: Util?.Colors.red.parseColor?,
+          color: @Util.Colors.red.@parseColor,
           'font-weight': bold,
         ],
       "Summarise",
@@ -17,7 +17,7 @@ Util?
         style: ['padding-bottom': 10px],
         "Square brackets group values together (called a block):",
       ],
-      Example?.['[1, 2, 3]', '[hello, world]', width: 60],
+      @Example.['[1, 2, 3]', '[hello, world]', width: 60],
     ],
     [
       [
@@ -26,16 +26,16 @@ Util?
         <
           : span,
           style: ['font-family': 'Source Code Pro', 'font-weight': bold],
-          innerHTML: \?.prism?,
+          innerHTML: \@.@prism,
         />,
         and use a dot to apply them:",
       ],
-      Example?.['[4, 87, 45].maximum?', '[10, 4, 27, 51].average?', width: 60],
+      @Example.['[4, 87, 45].@maximum', '[10, 4, 27, 51].@average', width: 60],
     ],
     [
       style:
         [
-          border: 3px solid ((145 30 90).parseColor?),
+          border: 3px solid ((145 30 90).@parseColor),
           padding: 30px,
           'margin-top': 10px,
           'border-radius': 10px,
@@ -45,7 +45,7 @@ Util?
         "Try changing the summary formula (data fields now contain all values
         from the column):",
       ],
-      {
+      (
         data:
           [
             [First name: John, Last name: Smith, Age: 43],
@@ -53,7 +53,7 @@ Util?
             [First name: Sarah, Last name: Davies, Age: 55],
           ],
         columns: [First name, Last name, Age],
-        formula:~ 'Age?.sum?',
+        formula:~ '@Age.@sum',
         [
           style: ['font-family': 'Source Code Pro', 'font-size': 16px],
           [
@@ -65,13 +65,13 @@ Util?
               [
                 : tr,
                 :
-                  columns?
+                  @columns
                   .[
                     v=> i=>
                       [
                         : td,
                         style: ['vertical-align': middle, padding: 6px 10px],
-                        v?,
+                        @v,
                       ],
                   ],
               ],
@@ -79,14 +79,14 @@ Util?
             [
               : tbody,
               :
-                data?
+                @data
                 .[
                   d=> i=>
                     [
                       : tr,
-                      style: [background: (i? % 2 = 1, \#f1f1f1)],
+                      style: [background: (@i % 2 = 1, \#f1f1f1)],
                       :
-                        columns?
+                        @columns
                         .[
                           v=> i=>
                             [
@@ -96,11 +96,11 @@ Util?
                                   padding: 6px 10px,
                                   'border-radius':
                                     {
-                                      (i? = 1, 10px 0 0 10px),
-                                      (i? = 3, 0 10px 10px 0),
+                                      (@i = 1, 10px 0 0 10px),
+                                      (@i = 3, 0 10px 10px 0),
                                     },
                                 ],
-                              d?.v?,
+                              @d.@v,
                             ],
                         ],
                     ],
@@ -126,17 +126,17 @@ Util?
                   : input,
                   focus:~ ,
                   mouse:~ ,
-                  base: ({mouse?, focus?}, (145 30 95), => (145 30 90)),
+                  base: ({@mouse, @focus}, (145 30 95), => (145 30 90)),
                   style:
                     [
-                      background: base?.parseColor?,
+                      background: @base.@parseColor,
                       padding: 4px 8px,
                       display: block,
                       'border-radius': 10px 0 0 10px,
                       border:
-                        2px solid {(focus?, (145 85 50), => base?).parseColor?},
+                        2px solid ((@focus, (145 85 50), => @base).@parseColor),
                     ],
-                  value: formula?,
+                  value: @formula,
                 ],
               ],
               [
@@ -149,25 +149,25 @@ Util?
                         [
                           :
                             [First name, Last name, Age]
-                            .[k=>> k?: data?.[v=>> v?.k?]],
-                          sum:=?,
-                          average:=?,
-                          minimum:=?,
-                          maximum:=?,
+                            .[k=>> @k: @data.[v=>> @v.@k]],
+                          sum: @sum,
+                          average: @average,
+                          minimum: @minimum,
+                          maximum: @maximum,
                         ]
                           >>
-                          formula?,
+                          @formula,
                       )
-                      .print?,
+                      .@print,
                     ]
-                    .prettier?,
+                    .@prettier,
                   ]
-                  .prism?,
+                  .@prism,
               ],
             ],
           ],
         ],
-      },
+      ),
     ],
   ],
 ]
