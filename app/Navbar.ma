@@ -1,13 +1,13 @@
 (
   link:
     [
-      [text, link]=>
+      [text, linkUrl]=>
         [
           : a,
-          href: \/(@link),
+          href: \/(@linkUrl),
           stopMouse: [left],
           mouse:~ ,
-          @mouse.left = down | [@link] -> @url,
+          @mouse.left = down | [@linkUrl] -> @url,
           style:
             [
               display: block,
@@ -24,7 +24,7 @@
                 'border-bottom':
                   2px solid
                   (
-                    {@mouse, @url.1 = @link},
+                    {@mouse, @url.1 = @linkUrl},
                     @Util.Colors.green.@parseColor,
                     => white,
                   ),

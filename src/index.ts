@@ -1,4 +1,4 @@
-import { fromJs, print, toJs } from 'maraca';
+import { fromJs, print, resolve, streamMap, toJs } from 'maraca';
 import * as prism from 'prismjs';
 
 import './style.css';
@@ -22,15 +22,12 @@ const printHTML = (data) => {
     .sort()
     .map((k) => `${k}="${props[k]}"`)
     .join(' ');
-  const content = data.value
-    .toBoth()
-    .indices.map((d) => printHTML(d))
-    .join('');
+  const content = data.value.indices.map((d) => printHTML(d)).join('');
   return `<${tag || 'div'} ${attrs}>${content}</${tag || 'div'}>`;
 };
 
 const map = (func) =>
-  fromJs((x) => (set, get) => () => set(fromJs(func(get(x, true)))));
+  fromJs((x) => streamMap((get) => fromJs(func(resolve(x, get)))));
 const mapWithPromises = (...args) => {
   const func = args.pop();
   return fromJs((x) => (set, get) => {
@@ -48,7 +45,7 @@ const mapWithPromises = (...args) => {
       if (dispose) {
         stopped = true;
       } else {
-        current = get(x, true);
+        current = resolve(x, get);
         if (resolved) run();
       }
     };
@@ -84,7 +81,7 @@ export default {
   parseColor: map((color) =>
     parseColor(color.type === 'value' ? color.value : ''),
   ),
-  print: map((v) => print(v)),
+  print: map((v) => print(v, (x) => x)),
   printhtml: map((v) => printHTML(v)),
   prettier: mapWithPromises(
     import('prettier/standalone'),
