@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "codemirror": "^5.58.2",
-    "maraca-app": "^0.4.2",
+    "maraca-app": "^0.4.4",
     "prettier": "^2.1.2",
     "prettier-plugin-maraca": "^0.3.13",
     "prismjs": "^1.22.0",
