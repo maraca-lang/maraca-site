@@ -1,13 +1,13 @@
 (
   link:
     [
-      [text, link]=>
+      [text, linkUrl]=>
         [
           : a,
-          href: \/(@link),
+          href: @linkUrl,
           stopMouse: [left],
           mouse:~ ,
-          @mouse.left = down | [@link] -> @url,
+          @mouse.left = down | [@linkUrl] -> @url,
           style:
             [
               'text-decoration': none,

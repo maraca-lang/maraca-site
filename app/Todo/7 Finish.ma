@@ -24,7 +24,7 @@
     create blank lines in the layout.",
     @Example
     .[
-      '(
+      '{
       tasks:~ [
         [text: Task 1, done:~ ],
         [text: Task 2, done:~ ],
@@ -58,7 +58,7 @@
             ],
           ],
         ]
-      )',
+      }',
       nooutput: wide,
     ],
   ],

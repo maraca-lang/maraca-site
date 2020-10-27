@@ -59,13 +59,13 @@
       [
         '[
           ...,
-          (
+          {
             done: true,
             [
               style: [\'text-decoration\': (@done, \'line-through\')],
               Task 1,
             ],
-          ),
+          },
           ...,
         ]',
         '[
@@ -76,13 +76,13 @@
             focus:~ ,
             style: [padding: 10px, background: (@focus, orange, => gold)],
           ],
-          (
+          {
             done: true,
             [
               style: [\'text-decoration\': (@done, \'line-through\')],
               Task 1,
             ]
-          ),
+          },
           [Task 2],
           [Task 3],
         ]',
@@ -118,7 +118,7 @@
       [
         '[
           ...,
-          (
+          {
             done:~,
             [
               mouse:~ ,
@@ -126,7 +126,7 @@
               style: [\'text-decoration\': (@done, \'line-through\')],
               Task 1,
             ]
-          ),
+          },
           ...,
         ]',
         '[
@@ -137,7 +137,7 @@
             focus:~ ,
             style: [padding: 10px, background: (@focus, orange, => gold)],
           ],
-          (
+          {
             done:~,
             [
               mouse:~ ,
@@ -145,7 +145,7 @@
               style: [\'text-decoration\': (@done, \'line-through\')],
               Task 1,
             ]
-          ),
+          },
           [Task 2],
           [Task 3],
         ]',

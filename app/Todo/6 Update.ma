@@ -18,7 +18,7 @@
     @Example
     .[
       [
-        '(
+        '{
           tasks:~ [Task 1, Task 2, Task 3],
           [
             ...,
@@ -28,8 +28,8 @@
                 ...,
             ],
           ],
-        )',
-        '(
+        }',
+        '{
           tasks: [Task 1, Task 2, Task 3],
           [
             [: h1, Todos],
@@ -41,7 +41,7 @@
             ],
             @tasks
             .[task=>>
-              (
+              {
                 done:~,
                 [
                   mouse:~ ,
@@ -54,10 +54,10 @@
                     ],
                   @task,
                 ]
-              ),
+              },
             ],
           ]
-        )',
+        }',
       ],
       render: true,
       width: 70,
@@ -77,7 +77,7 @@
     @Example
     .[
       [
-        '(
+        '{
         tasks:~ [Task 1, Task 2, Task 3],
         new:~ ,
         [
@@ -93,8 +93,8 @@
             ],
             ...,
           ],
-        )',
-        '(
+        }',
+        '{
         tasks:~ [Task 1, Task 2, Task 3],
         new:~ ,
         [
@@ -111,7 +111,7 @@
             ],
             @tasks
             .[task=>>
-              (
+              {
                 done:~,
                 [
                   mouse:~ ,
@@ -124,10 +124,10 @@
                     ],
                   @task,
                 ]
-              ),
+              },
             ],
           ]
-        )',
+        }',
       ],
       render: true,
       width: 70,
